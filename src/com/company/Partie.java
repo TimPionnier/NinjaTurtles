@@ -1,4 +1,10 @@
 package com.company;
 
-public class Partie {
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.*;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Partie  {
+
+
 }
