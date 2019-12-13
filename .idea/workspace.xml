@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Carte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Case.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Joueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Mur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Partie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/Plateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTortless/com/company/WindowGame.class" beforeDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +127,39 @@
     <state x="341" y="164" key="SettingsEditor" timestamp="1575902320388">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
+<<<<<<< Updated upstream
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1575902320388" />
+=======
+    <state x="615" y="305" key="DetectedRootsChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971601897" />
+    <state width="819" height="295" key="GridCell.Tab.0.bottom" timestamp="1576227660836">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="819" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576227660836" />
+    <state width="819" height="295" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810283" />
+    <state width="819" height="295" key="GridCell.Tab.0.center" timestamp="1576227660834">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="819" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576227660834" />
+    <state width="819" height="295" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810282" />
+    <state width="819" height="295" key="GridCell.Tab.0.left" timestamp="1576227660833">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="819" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576227660833" />
+    <state width="819" height="295" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810281" />
+    <state width="819" height="295" key="GridCell.Tab.0.right" timestamp="1576227660835">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="819" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576227660835" />
+    <state width="819" height="295" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810283" />
+    <state x="341" y="164" key="SettingsEditor" timestamp="1575971653663">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1575971653663" />
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog" timestamp="1576176318822">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576176318822" />
+>>>>>>> Stashed changes
     <state x="589" y="403" width="710" height="293" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1575910679603">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
