@@ -1,9 +1,9 @@
 <component name="libraryTable">
-  <library name="natives">
+  <library name="macosx">
     <CLASSES />
     <JAVADOC />
     <NATIVE>
-      <root url="file://$PROJECT_DIR$/lib/natives" />
+      <root url="file://$PROJECT_DIR$/library/native/macosx" />
     </NATIVE>
     <SOURCES />
   </library>
