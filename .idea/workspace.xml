@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jogg_0_0_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jorbis_0_0_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NinjaTurtles.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NinjaTurtles.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Plateau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/WindowGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/WindowGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +108,7 @@
       <workItem from="1576257588575" duration="495000" />
       <workItem from="1576419166683" duration="10423000" />
       <workItem from="1576487754098" duration="2404000" />
-      <workItem from="1576504776313" duration="450000" />
+      <workItem from="1576504776313" duration="573000" />
     </task>
     <servers />
   </component>
