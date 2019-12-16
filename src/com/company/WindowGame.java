@@ -28,8 +28,8 @@ public class WindowGame extends BasicGameState {
 
         background = new Image("map/background.jpeg");
         playButton = new Image("map/boutonPlay.png");
-        //Music mixtape = new Music("sound/mixtape.ogg");
-        //mixtape.loop();
+        Music mixtape = new Music("sound/mixtape.ogg");
+        mixtape.loop();
 
     }
 
@@ -70,6 +70,7 @@ public class WindowGame extends BasicGameState {
 
         if(getID() == 2 ) {
             background = null;
+            //Partie.askNbrJoueur(key);
         }
 
     }

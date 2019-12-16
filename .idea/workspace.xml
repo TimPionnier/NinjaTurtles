@@ -2,50 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/slick.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/natives.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/macosx.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jogg_0_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jorbis_0_0_15.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NinjaTurtles.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NinjaTurtles.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ibxm.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jinput.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jnlp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jogg-0.0.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jorbis-0.0.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lwjgl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lwjgl_util.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lwjgl_util_applet.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives-linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives-mac.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives-windows.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/OpenAL32.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/OpenAL64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/jinput-dx8.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/jinput-dx8_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/jinput-raw.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/jinput-raw_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/libjinput-linux.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/libjinput-linux64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/libjinput-osx.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/liblwjgl.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/liblwjgl.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/liblwjgl64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/libopenal.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/libopenal64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/lwjgl.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/lwjgl64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/natives/openal.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/slick-examples.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/slick.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tinylinepp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/board.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Plateau.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/WindowGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/WindowGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +119,11 @@
       <workItem from="1575899579051" duration="10006000" />
       <workItem from="1576086200723" duration="1990000" />
       <workItem from="1576176268249" duration="9834000" />
-      <workItem from="1576228047119" duration="9501000" />
+      <workItem from="1576228047119" duration="14062000" />
+      <workItem from="1576257588575" duration="495000" />
+      <workItem from="1576419166683" duration="10423000" />
+      <workItem from="1576487754098" duration="2404000" />
+      <workItem from="1576504776313" duration="450000" />
     </task>
     <servers />
   </component>
@@ -158,6 +131,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1576421723287">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576421723287" />
     <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576238396458">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -166,10 +143,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="627" y="237" key="#com.intellij.ide.macro.MacrosDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575901600877" />
-    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1576239681417">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="653" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1576430720891">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1576239681417" />
+    <state x="653" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1576430720891" />
     <state x="689" y="421" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1575971664939">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -178,42 +156,44 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="591" y="344" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971550271" />
-    <state x="423" y="127" key="CommitChangelistDialog2" timestamp="1576087278213">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="423" y="147" key="CommitChangelistDialog2" timestamp="1576423712854">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="423" y="127" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1576087278213" />
+    <state x="423" y="147" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1576423712854" />
     <state x="615" y="305" key="DetectedRootsChooserDialog" timestamp="1575971601897">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="615" y="305" key="DetectedRootsChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971601897" />
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1576246832672">
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom" timestamp="1576504000741">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576246832672" />
-    <state width="819" height="295" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810283" />
-    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1576246832671">
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000741" />
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087719" />
+    <state width="1638" height="294" key="GridCell.Tab.0.center" timestamp="1576504000740">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576246832670" />
-    <state width="819" height="295" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810282" />
-    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1576246832670">
+    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
+    <state width="1638" height="294" key="GridCell.Tab.0.left" timestamp="1576504000740">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576246832670" />
-    <state width="819" height="295" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810281" />
-    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1576246832671">
+    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087717" />
+    <state width="1638" height="294" key="GridCell.Tab.0.right" timestamp="1576504000740">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576246832671" />
-    <state width="819" height="295" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576087810283" />
-    <state x="341" y="164" key="SettingsEditor" timestamp="1576238089913">
+    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
+    <state x="341" y="164" key="SettingsEditor" timestamp="1576507806905">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1576238089913" />
-    <state x="517" y="357" key="com.intellij.ide.util.TipDialog" timestamp="1576176318822">
+    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1576507806905" />
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog" timestamp="1576504789759">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576176318822" />
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576504789759" />
+    <state x="517" y="372" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576419167535" />
     <state x="589" y="403" width="710" height="293" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1575910679603">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

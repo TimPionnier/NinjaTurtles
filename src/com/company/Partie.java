@@ -5,11 +5,16 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+
 public class Partie  extends BasicGameState {
     private GameContainer gc;
     private Image background;
     String mouse = "No input yet!";
+    static String demande = "";
+    public static int nbrJoueur;
     private Image dammier;
+    public static Image woodBox;
+    public static char[][] plateaux;
 
 
     public Partie(int i) {
@@ -21,7 +26,13 @@ public class Partie  extends BasicGameState {
         //AppGameContainer gameContainer = (AppGameContainer) gc; // function resizing the window, do not work
         //gameContainer.setDisplayMode(1100, 620, false);
         background = new Image("map/background.jpeg");
+       // woodBox = new Image("map/woodBox.png");
         dammier = new Image("map/dammier.png");
+        dammier = new Image("map/dammier.png");
+        dammier = new Image("map/dammier.png");
+        dammier = new Image("map/dammier.png");
+        dammier = new Image("map/dammier.png");
+
     }
 
 
@@ -29,6 +40,23 @@ public class Partie  extends BasicGameState {
         //g.drawImage(background, 0, 0);
         g.drawImage(dammier, 150, 241);
         g.drawString(mouse,150,50);
+        g.drawString(demande, 200, 700 );
+        //g.drawImage(plateau,150,241);
+
+
+
+       /* Plateau.setPlateau(Plateau.plateau);
+        for (int i=0 ; i<=7 ; i++) {
+            for (int j=0 ; j<=7 ; j++) {
+                int x = 150;
+                int y = 241;
+                if (Plateau.plateau[i][j] == 'C') {
+                    g.drawImage(woodBox,x,y);
+                }
+                x += 40;
+                y += 40;
+            }
+        }*/
     }
 
 
@@ -39,11 +67,36 @@ public class Partie  extends BasicGameState {
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
     }
 
+
+
+
     public void keyReleased(int key, char c) {
+
         if (Input.KEY_ESCAPE == key) {
             gc.exit();
         }
     }
+
+    public static void askNbrJoueur(int key){
+        boolean condition = true; // on empeche le changement du nombre de joueur
+        demande = "A combien voulez vous jouer ?";
+        if (condition && (Input.KEY_1 == key || Input.KEY_2 == key || Input.KEY_3 == key)) {
+            Partie.nbrJoueur = key - 1;
+            demande = "";
+            condition = false;
+
+        }
+    }
+
+    public void setUp() {
+        Plateau.setPlateau(Plateau.plateau);
+
+        if(nbrJoueur == 2) {
+            //Joueur Leonardo = new Joueur(leonardo, (0,0),  )
+        }
+    }
+
+
 
     public int getID() {
         return 2;
