@@ -17,8 +17,9 @@ public class Partie  extends BasicGameState {
     public static char[][] plateaux;
 
 
-    public Partie(int i) {
-
+    public Partie() {
+        Plateau plateau = new Plateau();
+        plateau.setPlateau();
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -32,7 +33,6 @@ public class Partie  extends BasicGameState {
         dammier = new Image("map/dammier.png");
         dammier = new Image("map/dammier.png");
         dammier = new Image("map/dammier.png");
-
     }
 
 
@@ -45,18 +45,18 @@ public class Partie  extends BasicGameState {
 
 
 
-       /* Plateau.setPlateau(Plateau.plateau);
+
         for (int i=0 ; i<=7 ; i++) {
             for (int j=0 ; j<=7 ; j++) {
                 int x = 150;
                 int y = 241;
-                if (Plateau.plateau[i][j] == 'C') {
+                if (plateau[i][j] == 'C') {
                     g.drawImage(woodBox,x,y);
                 }
                 x += 40;
                 y += 40;
             }
-        }*/
+        }
     }
 
 
@@ -88,13 +88,7 @@ public class Partie  extends BasicGameState {
         }
     }
 
-    public void setUp() {
-        Plateau.setPlateau(Plateau.plateau);
 
-        if(nbrJoueur == 2) {
-            //Joueur Leonardo = new Joueur(leonardo, (0,0),  )
-        }
-    }
 
 
 

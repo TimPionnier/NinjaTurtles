@@ -1,23 +1,48 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Plateau {
+    private final int NB_CASES = 64;
+
     public static char[][] plateau;
     private static int nbrJoueur = 2;
-
-    public static char[][] getPlateau() {
-        return plateau;
-    }
+    private static ArrayList<Case> cases = new ArrayList<>();
 
 
-    public static void setPlateau(char[][]plateau) {
-        Plateau.plateau = plateau;
-
-        for (int i=0 ; i<=7 ; i++) {
-            for (int j=0 ; j<=7 ; j++) {
-                plateau[i][j] = ' ';
+    public Plateau() {
+        for (int k = 0; k<NB_CASES; k++) {
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 7; j++) {
+                     this.cases.set(k, new Case(i, j, ' '));
+                }
             }
         }
+    }
 
+    public static ArrayList<Case> getCases() {
+        return cases;
+    }
+
+    public static void setPlateau() {
+
+        for (int i = 0;i < cases.size();i++){
+            if ((cases.get(i).getPosition(0) == 0 && cases.get(i).getPosition(1) == 1) ||
+                    (cases.get(i).getPosition(0) == 0 && cases.get(i).getPosition(1) == 5)){
+                cases.get(i).setEtat('T');
+            }
+            if (cases.get(i).getPosition(0) == 7 && cases.get(i).getPosition(1) == 3){
+                cases.get(i).setEtat('?');
+            }
+            if (cases.get(i).getPosition(1) == 7){
+                cases.get(i).setEtat('C');
+            }
+        }
+        
+
+
+
+        /*
         if(nbrJoueur == 2){
             plateau[0][1] = Carte.carteTortue;
             plateau[0][5] = Carte.carteTortue;
@@ -35,7 +60,7 @@ public class Plateau {
             for(int i = 0; i <= 7; i++){
                 plateau[i][7] = Carte.caisseBois;
             }
-        }
+        }*/
     }
 
 }
