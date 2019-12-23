@@ -7,35 +7,37 @@ public class Plateau {
 
     public static char[][] plateau;
     private static int nbrJoueur = 2;
-    private static ArrayList<Case> cases = new ArrayList<>();
+    private ArrayList<Case> cases;
 
 
     public Plateau() {
-        for (int k = 0; k<NB_CASES; k++) {
-            for (int i = 0; i < 7; i++) {
-                for (int j = 0; j < 7; j++) {
-                     this.cases.set(k, new Case(i, j, ' '));
+        this.cases = new ArrayList<>();
+        int k = 0;
+            for (int i = 0; i <= 7; i++) {
+                for (int j = 0; j <= 7; j++) {
+                     this.cases.add(k, new Case(i, j, ' '));
+                     k++;
                 }
             }
-        }
+
     }
 
-    public static ArrayList<Case> getCases() {
-        return cases;
+    public Case getCase(int i) {
+        return this.cases.get(i);
     }
 
-    public static void setPlateau() {
+    public void setPlateau() {
 
-        for (int i = 0;i < cases.size();i++){
-            if ((cases.get(i).getPosition(0) == 0 && cases.get(i).getPosition(1) == 1) ||
-                    (cases.get(i).getPosition(0) == 0 && cases.get(i).getPosition(1) == 5)){
-                cases.get(i).setEtat('T');
+        for (int i = 0;i < this.cases.size();i++){
+            if ((this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 1) ||
+                    (this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 5)){
+                this.cases.get(i).setEtat('1');
             }
-            if (cases.get(i).getPosition(0) == 7 && cases.get(i).getPosition(1) == 3){
-                cases.get(i).setEtat('?');
+            if (this.cases.get(i).getPosition(0) == 7 && this.cases.get(i).getPosition(1) == 3){
+                this.cases.get(i).setEtat('?');
             }
-            if (cases.get(i).getPosition(1) == 7){
-                cases.get(i).setEtat('C');
+            if (this.cases.get(i).getPosition(1) == 7){
+                this.cases.get(i).setEtat('C');
             }
         }
         

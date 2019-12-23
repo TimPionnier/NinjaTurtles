@@ -12,7 +12,7 @@ public class Case {
 
 
     public int getPosition(int i) {
-        return position[i];
+        return this.position[i];
     }
 
     public char getEtat() {
