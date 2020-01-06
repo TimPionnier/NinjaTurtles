@@ -141,9 +141,16 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="591" y="344" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971550271" />
+<<<<<<< Updated upstream
     <state x="423" y="147" key="CommitChangelistDialog2" timestamp="1576423712854">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
+=======
+    <state x="363" y="105" key="CommitChangelistDialog2" timestamp="1578317679950">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="363" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578317679950" />
+>>>>>>> Stashed changes
     <state x="423" y="127" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1576087278213" />
     <state x="423" y="147" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1576423712854" />
     <state x="615" y="305" key="DetectedRootsChooserDialog" timestamp="1575971601897">
@@ -174,8 +181,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1576507806905" />
+<<<<<<< Updated upstream
     <state x="517" y="357" key="com.intellij.ide.util.TipDialog" timestamp="1576504789759">
       <screen x="0" y="0" width="1680" height="1050" />
+=======
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1578317688734">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1578317688734" />
+    <state x="443" y="306" key="com.intellij.ide.util.TipDialog" timestamp="1578241241566">
+      <screen x="0" y="0" width="1440" height="900" />
+>>>>>>> Stashed changes
     </state>
     <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576504789759" />
     <state x="517" y="372" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576419167535" />
