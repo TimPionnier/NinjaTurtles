@@ -12,13 +12,20 @@ public class Cartes {
 
 
 
+
+
     public Cartes() throws SlickException {
         Image woodBox = new Image("map/woodBox.png");
         Image jewel = new Image("map/RUBY40.png");
         Image turtle1 = new Image ("map/Donatelo40.png");
         Image turtle2 = new Image ("map/Leonardo.png");
+        Image carteBleue = new Image("map/cards/BlueCard.png");
+        Image carteJaune = new Image("map/cards/YellowCard.png");
+        Image carteViolette = new Image("map/cards/PurpleCard.png");
+        Image carteLaser = new Image("map/cards/LaserCard.png");
 
         cartes = new HashMap<>();
+
         /*
         cartes.put('D',"map/Donatelo.png");
         cartes.put('M',"map/michelangelo.png");
@@ -32,13 +39,17 @@ public class Cartes {
         cartes.put('2',turtle2);
         cartes.put('?',jewel);
 
+
+
     }
 
     public static HashMap<Character, Image> getCartes() {
         return cartes;
     }
 
-    static String[] deckCarte = new String[37];
+
+
+    /*static String[] deckCarte = new String[37];
     static char carteBleue = 'ß';//"Fait avancer la tortue d'une case.";
     static char carteJaune = 'J';//"Fait tourner la tortue dans le sens anti-horaire. Attention la tortue reste sur place.";
     static char carteViolette = 'V';//"Fait tourner la tortue dans le sens horaire. Attention la tortue reste sur place.";
@@ -48,5 +59,5 @@ public class Cartes {
     static char murPierres = 'P';//"Obstacle inamovible et indestructible.";
     static char murGlace = 'G';//"Obstacle inamovible mais destructible par un laser.";
 
-    static String[] deckDefausse;
+    static String[] deckDefausse;*/
 }

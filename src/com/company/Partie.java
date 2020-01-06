@@ -15,12 +15,15 @@ public class Partie  extends BasicGameState {
     String mouse = "No input yet!";
     static String demande = "";
 
+    private boolean etatPartie;
+
     private static int nbrJoueur;
     private static ArrayList<Joueur> joueurs = new ArrayList<>();
 
     private Image dammier;
     private Plateau plateau;
     private HashMap<Character,Image> list_cartes;
+    private Character[] deck;
 
 
     public Partie(int i, int nbrJoueur) {
@@ -31,8 +34,10 @@ public class Partie  extends BasicGameState {
         this.plateau = new Plateau();
         this.plateau.setPlateau();
 
-        Joueur joueur1 = new Joueur(new int[]{0, 2});
-        Joueur joueur2 = new Joueur(new int[]{0, 5});
+        etatPartie = true;
+
+        Joueur joueur1 = new Joueur(new int[]{0, 2}, new Character[37], new Character[0] , new Character[5]);
+        Joueur joueur2 = new Joueur(new int[]{0, 5}, new Character[37], new Character[0] , new Character[5]);
         this.joueurs.add(joueur1);
         this.joueurs.add(joueur2);
 
@@ -74,6 +79,7 @@ public class Partie  extends BasicGameState {
 
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        //finPartie();
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
@@ -90,7 +96,7 @@ public class Partie  extends BasicGameState {
         }
     }
 
-    public static void askNbrJoueur(int key){
+    /*public static void askNbrJoueur(int key){
         boolean condition = true; // on empeche le changement du nombre de joueur
         demande = "A combien voulez vous jouer ?";
         if (condition && (Input.KEY_1 == key || Input.KEY_2 == key || Input.KEY_3 == key)) {
@@ -99,6 +105,27 @@ public class Partie  extends BasicGameState {
             condition = false;
 
         }
+    }*/
+
+    public void tourJoueur(){
+
+    }
+
+    public Joueur getJoueur(int i) {
+        return this.joueurs.get(i);
+    }
+
+    public boolean finPartie(){
+
+        while (etatPartie) {
+            for (int i = 0; i < joueurs.size(); i++)
+                if ((this.joueurs.get(i).getPosition(0) == 7 && this.joueurs.get(i).getPosition(1) == 3)) {
+                    etatPartie = false;
+                }
+
+
+        }
+        return etatPartie;
     }
 
 

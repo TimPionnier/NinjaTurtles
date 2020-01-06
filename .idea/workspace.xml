@@ -2,28 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aecd1ee8-7622-420e-9a93-0ddf50fed527" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RobotTurtles.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/4TortuesNinja.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/Donatelo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/Donatelo40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/Leonardo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/RUBY40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/michelangelo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/rafaelo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Cartes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/WoodBox.png" beforeDir="false" afterPath="$PROJECT_DIR$/map/WoodBox.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Carte.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Case.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Plateau.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Carte.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Case.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/WindowGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cartes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Plateau.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +135,13 @@
       <workItem from="1576833234380" duration="5359000" />
       <workItem from="1577022206797" duration="522000" />
       <workItem from="1577040378638" duration="4267000" />
+      <workItem from="1577134920926" duration="2025000" />
+      <workItem from="1577272690934" duration="703000" />
+      <workItem from="1577310260668" duration="145000" />
+      <workItem from="1577357460243" duration="40000" />
+      <workItem from="1577400378727" duration="1276000" />
+      <workItem from="1577447568604" duration="6101000" />
+      <workItem from="1578314994107" duration="256000" />
     </task>
     <task id="LOCAL-00001" summary="Class Plateau initialisation">
       <created>1576512474671</created>
@@ -178,17 +174,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="627" y="237" key="#com.intellij.ide.macro.MacrosDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575901600877" />
-    <state x="560" y="207" key="#com.intellij.ide.util.MemberChooser" timestamp="1577040958692">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1577456606473">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="560" y="207" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1577040958692" />
-    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1576239681417" />
+    <state x="653" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1577456606473" />
     <state x="653" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1576430720891" />
-    <state x="591" y="361" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576509656645">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="689" y="421" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577134927497">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="591" y="361" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1576509656645" />
-    <state x="689" y="421" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971664939" />
+    <state x="689" y="421" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1577134927497" />
     <state x="591" y="344" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1575971550271">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -203,29 +199,29 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="615" y="305" key="DetectedRootsChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971601897" />
-    <state width="1398" height="303" key="GridCell.Tab.0.bottom" timestamp="1577044876127">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom" timestamp="1577481413662">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="303" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577044876127" />
-    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000741" />
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1577481413662" />
     <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087719" />
-    <state width="1398" height="303" key="GridCell.Tab.0.center" timestamp="1577044876126">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.center" timestamp="1577481413660">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="303" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577044876126" />
-    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1577481413660" />
     <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
-    <state width="1398" height="303" key="GridCell.Tab.0.left" timestamp="1577044876125">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.left" timestamp="1577481413660">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="303" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577044876125" />
-    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1577481413660" />
     <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087717" />
-    <state width="1398" height="303" key="GridCell.Tab.0.right" timestamp="1577044876127">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.right" timestamp="1577481413661">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="303" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577044876127" />
-    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1577481413661" />
     <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
     <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1577044876128">
       <screen x="0" y="0" width="1440" height="900" />
@@ -256,11 +252,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1576512481961" />
-    <state x="443" y="306" key="com.intellij.ide.util.TipDialog" timestamp="1577132420470">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog" timestamp="1578314995165">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="443" y="306" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1577132420470" />
-    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576504789759" />
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578314995165" />
     <state x="517" y="372" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576419167535" />
     <state x="589" y="403" width="710" height="293" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1575910679603">
       <screen x="0" y="0" width="1680" height="1050" />
