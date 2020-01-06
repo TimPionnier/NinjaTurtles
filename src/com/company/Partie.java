@@ -31,9 +31,11 @@ public class Partie  extends BasicGameState {
         this.plateau = new Plateau();
         this.plateau.setPlateau();
 
-        Joueur joueur1 = new Joueur(new int[]{0, 2});
-        Joueur joueur2 = new Joueur(new int[]{0, 5});
+
+
+        Joueur joueur1 = new Joueur(new int[]{0, 2},'1');
         this.joueurs.add(joueur1);
+        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
         this.joueurs.add(joueur2);
 
         Cartes cartes = new Cartes();
@@ -78,6 +80,8 @@ public class Partie  extends BasicGameState {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
+
+
     }
 
 
@@ -97,7 +101,6 @@ public class Partie  extends BasicGameState {
             Partie.nbrJoueur = key - 1;
             demande = "";
             condition = false;
-
         }
     }
 

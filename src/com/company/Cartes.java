@@ -16,7 +16,7 @@ public class Cartes {
         Image woodBox = new Image("map/woodBox.png");
         Image jewel = new Image("map/RUBY40.png");
         Image turtle1 = new Image ("map/Donatelo40.png");
-        Image turtle2 = new Image ("map/Leonardo.png");
+        Image turtle2 = new Image ("map/Leonardo40.png");
 
         cartes = new HashMap<>();
         /*
