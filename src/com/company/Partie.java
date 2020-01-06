@@ -16,7 +16,7 @@ public class Partie  extends BasicGameState {
     static String demande = "";
 
     private static int nbrJoueur;
-    private static ArrayList<Joueur> joueurs = new ArrayList<>();
+    private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 
     private Image dammier;
     private Plateau plateau;
@@ -37,6 +37,7 @@ public class Partie  extends BasicGameState {
         this.joueurs.add(joueur1);
         Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
         this.joueurs.add(joueur2);
+        System.out.println(this.joueurs.size());
 
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
@@ -82,6 +83,7 @@ public class Partie  extends BasicGameState {
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
         for (Joueur joueur : this.joueurs){
+            System.out.println(joueur.getNumJoueur());
             joueur.updateJoueur(this.plateau);
         }
     }

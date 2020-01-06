@@ -6,8 +6,8 @@ public class Joueur {
     private static Character[] main = new Character[5];
     private static Character[] deck = new Character[37];
     private static Character[] defausse = new Character[0];
-    private static int[] position;
-    private static char numJoueur;
+    private int[] position;
+    private char numJoueur;
 
     public Joueur(int[] position, char numJoueur) {
         this.numJoueur = numJoueur;
@@ -22,19 +22,19 @@ public class Joueur {
         }
     }
 
-    public static int[] getPosition() {
-        return position;
+    public int[] getPosition() {
+        return this.position;
     }
 
-    public static char getNumJoueur() {
-        return numJoueur;
+    public char getNumJoueur() {
+        return this.numJoueur;
     }
 
-    public static void setPosition(int[] position) {
-        Joueur.position = position;
+    public void setPosition(int[] position) {
+        this.position = position;
     }
 
-    public static void setNumJoueur(char numJoueur) {
-        Joueur.numJoueur = numJoueur;
+    public void setNumJoueur(char numJoueur) {
+        this.numJoueur = numJoueur;
     }
 }
