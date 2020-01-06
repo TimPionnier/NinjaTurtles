@@ -81,7 +81,9 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
-
+        for (Joueur joueur : this.joueurs){
+            joueur.updateJoueur(this.plateau);
+        }
     }
 
 
