@@ -5,58 +5,74 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Partie  extends BasicGameState {
     private GameContainer gc;
     private Image background;
     String mouse = "No input yet!";
     static String demande = "";
-    public static int nbrJoueur;
+
+    private static int nbrJoueur;
+    private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+
     private Image dammier;
-    public static Image woodBox;
-    public static char[][] plateaux;
+    private Plateau plateau;
+    private HashMap<Character,Image> list_cartes;
 
 
-    public Partie(int i) {
-
+    public Partie(int i, int nbrJoueur) {
+        this.nbrJoueur = nbrJoueur;
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        this.plateau = new Plateau();
+        this.plateau.setPlateau();
+
+
+
+        Joueur joueur1 = new Joueur(new int[]{0, 2},'1');
+        this.joueurs.add(joueur1);
+        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
+        this.joueurs.add(joueur2);
+        System.out.println(this.joueurs.size());
+
+        Cartes cartes = new Cartes();
+        this.list_cartes = cartes.getCartes();
+
         this.gc = gc;
         //AppGameContainer gameContainer = (AppGameContainer) gc; // function resizing the window, do not work
         //gameContainer.setDisplayMode(1100, 620, false);
         background = new Image("map/background.jpeg");
-       // woodBox = new Image("map/woodBox.png");
-        dammier = new Image("map/dammier.png");
-        dammier = new Image("map/dammier.png");
-        dammier = new Image("map/dammier.png");
-        dammier = new Image("map/dammier.png");
         dammier = new Image("map/dammier.png");
 
     }
 
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        //g.drawImage(background, 0, 0);
         g.drawImage(dammier, 150, 241);
         g.drawString(mouse,150,50);
         g.drawString(demande, 200, 700 );
-        //g.drawImage(plateau,150,241);
 
 
+        //Affichage des éléments du plateau
+        int x = 190;
+        int y = 200;
 
-       /* Plateau.setPlateau(Plateau.plateau);
-        for (int i=0 ; i<=7 ; i++) {
-            for (int j=0 ; j<=7 ; j++) {
-                int x = 150;
-                int y = 241;
-                if (Plateau.plateau[i][j] == 'C') {
-                    g.drawImage(woodBox,x,y);
-                }
-                x += 40;
-                y += 40;
-            }
-        }*/
+
+       for (int i=0 ; i<64; i++) {
+           if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide,
+               // il affiche l'image correspondant à l'état
+               g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+           }
+           x += 40;
+           if (i%8==0){
+               x = 190 ;
+               y+=40;
+           }
+        }
     }
 
 
@@ -65,6 +81,11 @@ public class Partie  extends BasicGameState {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
+
+        for (Joueur joueur : this.joueurs){
+            System.out.println(joueur.getNumJoueur());
+            joueur.updateJoueur(this.plateau);
+        }
     }
 
 
@@ -84,17 +105,10 @@ public class Partie  extends BasicGameState {
             Partie.nbrJoueur = key - 1;
             demande = "";
             condition = false;
-
         }
     }
 
-    public void setUp() {
-        Plateau.setPlateau(Plateau.plateau);
 
-        if(nbrJoueur == 2) {
-            //Joueur Leonardo = new Joueur(leonardo, (0,0),  )
-        }
-    }
 
 
 

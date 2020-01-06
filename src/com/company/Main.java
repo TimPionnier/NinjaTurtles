@@ -19,12 +19,11 @@ public class Main extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.addState(new WindowGame(menu));
-        this.addState(new Partie(play));
+        this.addState(new Partie(play,2));
         this.enterState(menu);
     }
 
     public static void main(String[] args) {
-        //Plateau.setPlateau(Partie.plateau);
         AppGameContainer app;
         try {
             app = new AppGameContainer(new Main(gameName));

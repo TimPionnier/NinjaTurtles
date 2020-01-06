@@ -1,23 +1,52 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Plateau {
+    private final int NB_CASES = 64;
+
     public static char[][] plateau;
     private static int nbrJoueur = 2;
+    private ArrayList<Case> cases;
 
-    public static char[][] getPlateau() {
-        return plateau;
+
+    public Plateau() {
+        this.cases = new ArrayList<>();
+        int k = 0;
+            for (int i = 0; i <= 7; i++) {
+                for (int j = 0; j <= 7; j++) {
+                     this.cases.add(k, new Case(i, j, ' '));
+                     k++;
+                }
+            }
+
     }
 
+    public Case getCase(int i) {
+        return this.cases.get(i);
+    }
 
-    public static void setPlateau(char[][]plateau) {
-        Plateau.plateau = plateau;
+    public ArrayList<Case> getCases() {return cases; }
 
-        for (int i=0 ; i<=7 ; i++) {
-            for (int j=0 ; j<=7 ; j++) {
-                plateau[i][j] = ' ';
+    public void setPlateau() {
+
+        for (int i = 0;i < this.cases.size();i++){
+            if ((this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 1) ||
+                    (this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 5)){
+                //this.cases.get(i).setEtat('1');
+            }
+            if (this.cases.get(i).getPosition(0) == 7 && this.cases.get(i).getPosition(1) == 3){
+                this.cases.get(i).setEtat('?');
+            }
+            if (this.cases.get(i).getPosition(1) == 7){
+                this.cases.get(i).setEtat('C');
             }
         }
+        
 
+
+
+        /*
         if(nbrJoueur == 2){
             plateau[0][1] = Carte.carteTortue;
             plateau[0][5] = Carte.carteTortue;
@@ -35,7 +64,7 @@ public class Plateau {
             for(int i = 0; i <= 7; i++){
                 plateau[i][7] = Carte.caisseBois;
             }
-        }
+        }*/
     }
 
 }

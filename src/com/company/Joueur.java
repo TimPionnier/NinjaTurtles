@@ -2,22 +2,39 @@ package com.company;
 
 import java.util.ArrayDeque;
 
-public class Joueur  {
-    public Joueur(Object tortue, int[] position, ArrayDeque<Character> fileInstructions, char[] main, char[] deck, char[] defausse) {
-        this.tortue = tortue;
+public class Joueur {
+    private static Character[] main = new Character[5];
+    private static Character[] deck = new Character[37];
+    private static Character[] defausse = new Character[0];
+    private int[] position;
+    private char numJoueur;
+
+    public Joueur(int[] position, char numJoueur) {
+        this.numJoueur = numJoueur;
         this.position = position;
-        this.fileInstructions = new ArrayDeque<Character>();
-        this.main = new char[5];
-        this.deck = new char[52];
-        this.defausse = new char[52];
     }
 
-    public Object tortue;
-    public int[] position;
-    public ArrayDeque<Character> fileInstructions;
-    public char[] main;
-    public char[] deck;
-    public char[] defausse;
+    public void updateJoueur(Plateau plateau) {
+        for (int i = 0; i < plateau.getCases().size(); i++) {
+            if ((plateau.getCase(i).getPosition(0) == this.position[0] && plateau.getCase(i).getPosition(1) == this.position[1])) {
+                plateau.getCase(i).setEtat(this.numJoueur);
+            }
+        }
+    }
 
+    public int[] getPosition() {
+        return this.position;
+    }
 
+    public char getNumJoueur() {
+        return this.numJoueur;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
+    }
+
+    public void setNumJoueur(char numJoueur) {
+        this.numJoueur = numJoueur;
+    }
 }

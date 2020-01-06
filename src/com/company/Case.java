@@ -1,31 +1,25 @@
 package com.company;
 
 public class Case {
-    private final Object Case = null;
-    public int[] position = new int[2];
-    public String etat;
+    private int[] position = new int[2];
+    private char etat;
 
-    public Case(int i, int j, String etat) {
+    public Case(int i, int j, char etat) {
         this.position[0] = i;
         this.position[1] = j;
         this.etat = etat;
-
     }
 
-    public Object getCase(){
-        return Case;
+
+    public int getPosition(int i) {
+        return this.position[i];
     }
 
-    public static void setPlateau(){
-        Case[][] plateau = new Case[8][8];
-        for (int i = 0; i< 7; i++){
-            for(int j = 0; j < 7; j++ ){
-                plateau[i][j] = new Case(i, j, "a") ;
-                //plateau[i][j] = newCase;
-                System.out.println(plateau[i][j]);
-            }
-        }
-
+    public char getEtat() {
+        return etat;
     }
 
+    public void setEtat(char etat) {
+        this.etat = etat;
+    }
 }
