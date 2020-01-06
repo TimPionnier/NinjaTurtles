@@ -24,7 +24,6 @@ public class Main extends StateBasedGame {
     }
 
     public static void main(String[] args) {
-        //Plateau.setPlateau(Partie.plateau);
         AppGameContainer app;
         try {
             app = new AppGameContainer(new Main(gameName));

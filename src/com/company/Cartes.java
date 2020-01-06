@@ -12,8 +12,6 @@ public class Cartes {
 
 
 
-
-
     public Cartes() throws SlickException {
         Image woodBox = new Image("map/woodBox.png");
         Image jewel = new Image("map/RUBY40.png");
@@ -25,7 +23,6 @@ public class Cartes {
         Image carteLaser = new Image("map/cards/LaserCard.png");
 
         cartes = new HashMap<>();
-
         /*
         cartes.put('D',"map/Donatelo.png");
         cartes.put('M',"map/michelangelo.png");
@@ -38,8 +35,6 @@ public class Cartes {
         cartes.put('1',turtle1);
         cartes.put('2',turtle2);
         cartes.put('?',jewel);
-
-
 
     }
 

@@ -26,12 +26,14 @@ public class Plateau {
         return this.cases.get(i);
     }
 
+    public ArrayList<Case> getCases() {return cases; }
+
     public void setPlateau() {
 
         for (int i = 0;i < this.cases.size();i++){
             if ((this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 1) ||
                     (this.cases.get(i).getPosition(0) == 0 && this.cases.get(i).getPosition(1) == 5)){
-                this.cases.get(i).setEtat('1');
+                //this.cases.get(i).setEtat('1');
             }
             if (this.cases.get(i).getPosition(0) == 7 && this.cases.get(i).getPosition(1) == 3){
                 this.cases.get(i).setEtat('?');

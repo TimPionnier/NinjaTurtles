@@ -15,15 +15,12 @@ public class Partie  extends BasicGameState {
     String mouse = "No input yet!";
     static String demande = "";
 
-    private boolean etatPartie;
-
     private static int nbrJoueur;
-    private static ArrayList<Joueur> joueurs = new ArrayList<>();
+    private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 
     private Image dammier;
     private Plateau plateau;
     private HashMap<Character,Image> list_cartes;
-    private Character[] deck;
 
 
     public Partie(int i, int nbrJoueur) {
@@ -34,12 +31,13 @@ public class Partie  extends BasicGameState {
         this.plateau = new Plateau();
         this.plateau.setPlateau();
 
-        etatPartie = true;
 
-        Joueur joueur1 = new Joueur(new int[]{0, 2}, new Character[37], new Character[0] , new Character[5]);
-        Joueur joueur2 = new Joueur(new int[]{0, 5}, new Character[37], new Character[0] , new Character[5]);
+
+        Joueur joueur1 = new Joueur(new int[]{0, 2},'1');
         this.joueurs.add(joueur1);
+        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
         this.joueurs.add(joueur2);
+        System.out.println(this.joueurs.size());
 
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
@@ -79,11 +77,15 @@ public class Partie  extends BasicGameState {
 
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        //finPartie();
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
+
+        for (Joueur joueur : this.joueurs){
+            System.out.println(joueur.getNumJoueur());
+            joueur.updateJoueur(this.plateau);
+        }
     }
 
 
@@ -96,36 +98,14 @@ public class Partie  extends BasicGameState {
         }
     }
 
-    /*public static void askNbrJoueur(int key){
+    public static void askNbrJoueur(int key){
         boolean condition = true; // on empeche le changement du nombre de joueur
         demande = "A combien voulez vous jouer ?";
         if (condition && (Input.KEY_1 == key || Input.KEY_2 == key || Input.KEY_3 == key)) {
             Partie.nbrJoueur = key - 1;
             demande = "";
             condition = false;
-
         }
-    }*/
-
-    public void tourJoueur(){
-
-    }
-
-    public Joueur getJoueur(int i) {
-        return this.joueurs.get(i);
-    }
-
-    public boolean finPartie(){
-
-        while (etatPartie) {
-            for (int i = 0; i < joueurs.size(); i++)
-                if ((this.joueurs.get(i).getPosition(0) == 7 && this.joueurs.get(i).getPosition(1) == 3)) {
-                    etatPartie = false;
-                }
-
-
-        }
-        return etatPartie;
     }
 
 
