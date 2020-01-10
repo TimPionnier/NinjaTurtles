@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 
 public class Joueur {
     private static Character[] main = new Character[5];
-    private static Character[] deck = new Character[37];
+    private Deck deck = new Deck();
     private static Character[] defausse = new Character[0];
     private int[] position;
     private char numJoueur;
@@ -12,6 +12,7 @@ public class Joueur {
     public Joueur(int[] position, char numJoueur) {
         this.numJoueur = numJoueur;
         this.position = position;
+
     }
 
     public void updateJoueur(Plateau plateau) {
@@ -36,5 +37,9 @@ public class Joueur {
 
     public void setNumJoueur(char numJoueur) {
         this.numJoueur = numJoueur;
+    }
+
+    public Deck getDeck() {
+        return deck;
     }
 }

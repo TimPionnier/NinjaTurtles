@@ -14,6 +14,7 @@ public class Partie  extends BasicGameState {
     private Image background;
     String mouse = "No input yet!";
     static String demande = "";
+    private String txt = "";
 
     private static int nbrJoueur;
     private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
@@ -21,6 +22,8 @@ public class Partie  extends BasicGameState {
     private Image dammier;
     private Plateau plateau;
     private HashMap<Character,Image> list_cartes;
+
+    private boolean tourEnCours = false;
 
 
     public Partie(int i, int nbrJoueur) {
@@ -33,7 +36,7 @@ public class Partie  extends BasicGameState {
 
 
 
-        Joueur joueur1 = new Joueur(new int[]{0, 2},'1');
+        Joueur joueur1 = new Joueur(new int[]{0, 1},'1');
         this.joueurs.add(joueur1);
         Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
         this.joueurs.add(joueur2);
@@ -55,6 +58,7 @@ public class Partie  extends BasicGameState {
         g.drawImage(dammier, 150, 241);
         g.drawString(mouse,150,50);
         g.drawString(demande, 200, 700 );
+        g.drawString(txt,130,600);
 
 
         //Affichage des éléments du plateau
@@ -63,8 +67,7 @@ public class Partie  extends BasicGameState {
 
 
        for (int i=0 ; i<64; i++) {
-           if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide,
-               // il affiche l'image correspondant à l'état
+           if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
            }
            x += 40;
@@ -82,8 +85,9 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
+
         for (Joueur joueur : this.joueurs){
-            System.out.println(joueur.getNumJoueur());
+            this.tourJoueur(joueur.getNumJoueur());
             joueur.updateJoueur(this.plateau);
         }
     }
@@ -96,6 +100,21 @@ public class Partie  extends BasicGameState {
         if (Input.KEY_ESCAPE == key) {
             gc.exit();
         }
+
+        //Choix du tour
+        if (tourEnCours){
+            switch (key){
+                case Input.KEY_Q:
+                    this.completerProgramme();
+                    break;
+                case Input.KEY_B:
+                    this.construireMur();
+                    break;
+                case Input.KEY_C:
+                    this.executerProgramme();
+                    break;
+            }
+        }
     }
 
     public static void askNbrJoueur(int key){
@@ -106,6 +125,28 @@ public class Partie  extends BasicGameState {
             demande = "";
             condition = false;
         }
+    }
+
+    public void tourJoueur(Character joueur){
+        this.tourEnCours = true;
+        
+            this.txt = "Quelle action souhaitez-vous effectuer ?\n" +
+                    "A- Compléter votre programme\n" +
+                    "B- Construir un mur\n" +
+                    "C- Executer votre programme";
+
+    }
+
+    public void construireMur(){
+
+    }
+
+    public void completerProgramme(){
+
+    }
+
+    public void executerProgramme(){
+
     }
 
 
