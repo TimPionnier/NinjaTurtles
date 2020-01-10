@@ -1,13 +1,16 @@
 package com.company;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.*;
+import org.newdawn.slick.state.StateBasedGame;
 
 
 public class Tour {
 
     private boolean debutTour = true;
+    int xpos = Mouse.getX();
+    int ypos = Mouse.getY();
+    GameContainer gc;
 
     public void init() throws SlickException {
 
@@ -23,6 +26,33 @@ public class Tour {
     }
 
     public void keyReleased(int key, char c) {
+        switch (key){
+            case Input.KEY_Q:
+                this.completerProgramme();
+                break;
+            case Input.KEY_B:
+                this.construireMur(gc);
+                break;
+            case Input.KEY_C:
+                this.executerProgramme();
+                break;
+        }
+    }
+
+    public void construireMur(GameContainer gc){
+        Input input = gc.getInput();
+        if ((xpos>260 && xpos<380) && (ypos<340 && ypos>297)){
+            if (input.isMouseButtonDown(0)) {
+
+            }
+        }
+    }
+
+    public void completerProgramme(){
+
+    }
+
+    public void executerProgramme(){
 
     }
 

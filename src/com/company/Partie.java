@@ -101,20 +101,7 @@ public class Partie  extends BasicGameState {
             gc.exit();
         }
 
-        //Choix du tour
-        if (tourEnCours){
-            switch (key){
-                case Input.KEY_Q:
-                    this.completerProgramme();
-                    break;
-                case Input.KEY_B:
-                    this.construireMur();
-                    break;
-                case Input.KEY_C:
-                    this.executerProgramme();
-                    break;
-            }
-        }
+
     }
 
     public static void askNbrJoueur(int key){
