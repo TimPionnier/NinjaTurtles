@@ -22,14 +22,14 @@ public class WindowGame extends BasicGameState {
         //new AppGameContainer(new WindowGame(), 620, 802, false).start();
     }*/
 
-
+    @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
 
         background = new Image("map/background.jpeg");
         playButton = new Image("map/boutonPlay.png");
         Music mixtape = new Music("sound/mixtape.ogg");
-        mixtape.loop();
+        //mixtape.loop();
 
     }
 
@@ -40,7 +40,7 @@ public class WindowGame extends BasicGameState {
         }
     }
 
-
+    @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         //g.scale(Display.getWidth()/620, Display.getHeight()/802);
         g.drawImage(background, 0, 0);
@@ -49,7 +49,7 @@ public class WindowGame extends BasicGameState {
 
     }
 
-
+    @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
