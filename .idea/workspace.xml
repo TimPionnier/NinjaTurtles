@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8df7ae2-ed0f-41fc-b419-b9523a95954e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Deck.java" afterDir="false" />
+    <list default="true" id="fa3eb36d-e47b-4541-b39e-2bd540653070" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Cartes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Cartes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Joueur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Mur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Mur.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NinjaTurtles/com/company/Partie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cartes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/WindowGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/WindowGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +62,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="12" />
+      <option name="ALTERNATIVE_JRE_PATH" value="13.0.1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="NinjaTurtles" />
@@ -201,11 +197,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="578" y="298" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576421723287" />
-    <state x="261" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578319773277">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578683434541">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="261" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578319773277" />
-    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576238396458" />
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1578683434541" />
     <state x="627" y="237" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1575901600877">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -235,32 +231,32 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="615" y="305" key="DetectedRootsChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575971601897" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1578683186729">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom" timestamp="1578684465052">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578683186729" />
-    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000741" />
+    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1578684465052" />
     <state width="1398" height="303" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1578319791837" />
     <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087719" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1578683186728">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.center" timestamp="1578684465051">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578683186728" />
-    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1578684465051" />
     <state width="1398" height="303" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1578319791836" />
     <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1578683186727">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.left" timestamp="1578684465050">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578683186727" />
-    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1578684465050" />
     <state width="1398" height="303" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1578319791836" />
     <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087717" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1578683186728">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1638" height="294" key="GridCell.Tab.0.right" timestamp="1578684465052">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578683186728" />
-    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576504000740" />
+    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1578684465052" />
     <state width="1398" height="303" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1578319791837" />
     <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576445087718" />
     <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1578319791838">
