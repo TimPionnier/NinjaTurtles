@@ -8,7 +8,7 @@ public class Deck {
     private ArrayList<Character> pioche = new ArrayList<>();
     private ArrayList<Character> murs = new ArrayList<>();
     private ArrayList<Character> defausse = new ArrayList<>();
-    private ArrayList<Character> main = new ArrayList<>();
+    private static ArrayList<Character> main = new ArrayList<>();
 
     public Deck() {
         //Remplissage de la pioche
@@ -35,6 +35,14 @@ public class Deck {
             this.main.add(this.pioche.get(0));
             this.pioche.remove(0);
         }
+    }
+
+    public static ArrayList<Character> getMain() {
+        return main;
+    }
+
+    public char getCarteMain(int i){
+        return this.main.get(i);
     }
 
     public static ArrayList<Character> shuffle (ArrayList<Character> liste){

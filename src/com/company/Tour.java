@@ -10,9 +10,13 @@ public class Tour {
     private boolean debutTour = true;
     int xpos = Mouse.getX();
     int ypos = Mouse.getY();
+    Joueur joueur;
+    Deck main;
     GameContainer gc;
 
     public void init() throws SlickException {
+        this.joueur = joueur;
+        this.main = main;
 
     }
 
@@ -49,6 +53,7 @@ public class Tour {
     }
 
     public void completerProgramme(){
+
 
     }
 
