@@ -14,10 +14,6 @@ public class Tour {
     Deck main;
     GameContainer gc;
 
-    public void init() throws SlickException {
-
-
-
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
         this.joueur = joueur;

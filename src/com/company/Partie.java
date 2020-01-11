@@ -64,6 +64,7 @@ public class Partie  extends BasicGameState {
         btnAdd = new Image("map/Add.png");
 
 
+
     }
 
 
@@ -112,6 +113,18 @@ public class Partie  extends BasicGameState {
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
 
+        //Check for button Add
+        if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
+            btnAdd = new Image("map/ADD-clicked.png");
+            if (input.isMouseButtonDown(0)) {
+                //sbg.enterState(2);
+            }
+        }
+        if ((xpos<410 || xpos>560) || (ypos<240 || ypos>187)){
+            btnAdd = new Image("map/ADD.png");
+        }
+
+
         for (Joueur joueur : this.joueurs){
             this.tourJoueur(joueur.getNumJoueur());
             joueur.updateJoueur(this.plateau);
@@ -142,12 +155,6 @@ public class Partie  extends BasicGameState {
 
     public void tourJoueur(Character joueur){
         this.tourEnCours = true;
-        
-            this.txt = "Quelle action souhaitez-vous effectuer ?\n" +
-                    "A- Compléter votre programme\n" +
-                    "B- Construir un mur\n" +
-                    "C- Executer votre programme";
-
     }
 
     public void construireMur(){
