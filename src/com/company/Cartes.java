@@ -17,6 +17,10 @@ public class Cartes {
         Image jewel = new Image("map/RUBY40.png");
         Image turtle1 = new Image ("map/Donatelo40.png");
         Image turtle2 = new Image ("map/Leonardo40.png");
+        Image carteBleue = new Image("map/cards/BlueCard.png");
+        Image carteLaser = new Image("map/cards/LaserCard.png");
+        Image carteViolette = new Image("map/cards/PurpleCard.png");
+        Image carteJaune = new Image("map/cards/YellowCard.png");
 
         cartes = new HashMap<>();
 
@@ -24,6 +28,10 @@ public class Cartes {
         cartes.put('1',turtle1);
         cartes.put('2',turtle2);
         cartes.put('?',jewel);
+        cartes.put('B',carteBleue);
+        cartes.put('L',carteLaser);
+        cartes.put('V',carteViolette);
+        cartes.put('J',carteJaune);
 
     }
 

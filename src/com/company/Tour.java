@@ -10,12 +10,18 @@ public class Tour {
     private boolean debutTour = true;
     int xpos = Mouse.getX();
     int ypos = Mouse.getY();
+    Joueur joueur;
+    Deck main;
     GameContainer gc;
+
+    public void init() throws SlickException {
 
 
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
+        this.joueur = joueur;
+        this.main = main;
     }
 
     public void renderChoixTour(Graphics g) throws SlickException {
@@ -42,7 +48,6 @@ public class Tour {
     }
 
     public void construireMur(GameContainer gc){
-        System.out.println("cest dedeans");
         Input input = gc.getInput();
         if ((xpos>260 && xpos<380) && (ypos<340 && ypos>297)){
             if (input.isMouseButtonDown(0)) {

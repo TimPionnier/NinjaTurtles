@@ -12,7 +12,6 @@ public class Joueur {
     public Joueur(int[] position, char numJoueur) {
         this.numJoueur = numJoueur;
         this.position = position;
-
     }
 
     public void updateJoueur(Plateau plateau) {
