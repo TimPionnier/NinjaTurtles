@@ -25,6 +25,8 @@ public class Partie  extends BasicGameState {
 
     private boolean tourEnCours = false;
 
+    private Tour tour = new Tour();
+
 
     public Partie(int i, int nbrJoueur) {
         this.nbrJoueur = nbrJoueur;
@@ -59,6 +61,7 @@ public class Partie  extends BasicGameState {
         g.drawString(mouse,150,50);
         g.drawString(demande, 200, 700 );
         g.drawString(txt,130,600);
+        tour.renderChoixTour(g);
 
 
         //Affichage des éléments du plateau
@@ -85,6 +88,7 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
+        tour.construireMur(gc);
 
         for (Joueur joueur : this.joueurs){
             this.tourJoueur(joueur.getNumJoueur());
@@ -116,12 +120,6 @@ public class Partie  extends BasicGameState {
 
     public void tourJoueur(Character joueur){
         this.tourEnCours = true;
-        
-            this.txt = "Quelle action souhaitez-vous effectuer ?\n" +
-                    "A- Compléter votre programme\n" +
-                    "B- Construir un mur\n" +
-                    "C- Executer votre programme";
-
     }
 
     public void construireMur(){
