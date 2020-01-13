@@ -117,11 +117,33 @@ public class Partie  extends BasicGameState {
         if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
             btnAdd = new Image("map/ADD-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                //sbg.enterState(2);
+                sbg.enterState(2);
             }
         }
-        if ((xpos<410 || xpos>560) || (ypos<240 || ypos>187)){
+        if ((xpos<410 || xpos>560) || (ypos>240 || ypos<187)){
             btnAdd = new Image("map/ADD.png");
+        }
+
+        //Check for button exe
+        if ((xpos>250 && xpos<400) && (ypos<240 && ypos>187)){
+            btnExe = new Image("map/EXE-clicked.png");
+            if (input.isMouseButtonDown(0)) {
+                sbg.enterState(2);
+            }
+        }
+        if ((xpos<250 || xpos>400) || (ypos>240 || ypos<187)){
+            btnExe = new Image("map/EXE.png");
+        }
+
+        //Check for button Walls
+        if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
+            btnWalls = new Image("map/Walls-clicked.png");
+            if (input.isMouseButtonDown(0)) {
+                sbg.enterState(2);
+            }
+        }
+        if ((xpos<90 || xpos>240) || (ypos>240 || ypos<187)){
+            btnWalls = new Image("map/Walls.png");
         }
 
 
