@@ -1,13 +1,17 @@
 package com.company;
 
+import com.company.Tours.AddToProgram;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
 
 public class Main extends StateBasedGame {
     public static String gameName = "NinjaTurtles :: Game";
-    public static int menu = 1;
-    public static int play = 2;
+    public static int menuState = 1;
+    public static int playState = 2;
+    public static int addToProgramState = 3;
+    public static int execProgram = 4;
+    public static int buildWalls = 5;
     public static int game = 0;
 
     public Main(String name) throws SlickException {
@@ -18,9 +22,16 @@ public class Main extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        this.addState(new WindowGame(menu));
-        this.addState(new Partie(play,2));
-        this.enterState(menu);
+        WindowGame menu = new WindowGame(menuState);
+        Partie partie = new Partie(playState,2);
+        AddToProgram addToProgram = new AddToProgram(addToProgramState);
+
+        partie.setAddToProgram(addToProgram);
+
+        this.addState(menu);
+        this.addState(partie);
+        this.addState(addToProgram);
+        this.enterState(menuState);
     }
 
     public static void main(String[] args) {
