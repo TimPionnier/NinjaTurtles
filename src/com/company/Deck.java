@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,6 +10,9 @@ public class Deck {
     private ArrayList<Character> murs = new ArrayList<>();
     private ArrayList<Character> defausse = new ArrayList<>();
     private static ArrayList<Character> main = new ArrayList<>();
+    private static ArrayDeque<Character> fileInstruction = new ArrayDeque<>();
+
+
 
     public Deck() {
         //Remplissage de la pioche
@@ -43,6 +47,14 @@ public class Deck {
 
     public char getCarteMain(int i){
         return this.main.get(i);
+    }
+
+    public static ArrayDeque<Character> getFileInstruction() {
+        return fileInstruction;
+    }
+
+    public int getNbrMurs(){
+        return this.murs.size();
     }
 
     public static ArrayList<Character> shuffle (ArrayList<Character> liste){

@@ -7,9 +7,7 @@ public class Plateau {
 
     public static char[][] plateau;
     private static int nbrJoueur = 2;
-    private ArrayList<Case> cases;
-    private ArrayList<Case> cartesMain;
-
+    private static ArrayList<Case> cases;
 
     public Plateau() {
         this.cases = new ArrayList<>();
@@ -23,8 +21,8 @@ public class Plateau {
 
     }
 
-    public Case getCase(int i) {
-        return this.cases.get(i);
+    public static Case getCase(int i) {
+        return cases.get(i);
     }
 
     public ArrayList<Case> getCases() {

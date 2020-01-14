@@ -153,7 +153,7 @@ public class Partie  extends BasicGameState {
     }
 
     public void completerProgramme(){
-        
+
     }
 
     public void executerProgramme(){
