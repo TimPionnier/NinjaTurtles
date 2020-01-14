@@ -29,7 +29,7 @@ public class WindowGame extends BasicGameState {
         background = new Image("map/background.jpeg");
         playButton = new Image("map/boutonPlay.png");
         Music mixtape = new Music("sound/mixtape.ogg");
-        mixtape.loop();
+        //mixtape.loop();
 
     }
 
@@ -57,15 +57,13 @@ public class WindowGame extends BasicGameState {
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
         if ((xpos>260 && xpos<380) && (ypos<340 && ypos>297)){
-            //if (input.isMouseButtonDown(0)) {
-            playButton = new Image("map/boutonPlayClicked.png");//}
+            playButton = new Image("map/boutonPlayClicked.png");
             if (input.isMouseButtonDown(0)) {
                 sbg.enterState(2);
             }
         }
         if ((xpos<260 || xpos>380) || (ypos<297 || ypos>340)){
             playButton = new Image("map/boutonPlay.png");
-
         }
 
         if(getID() == 2 ) {
