@@ -49,6 +49,11 @@ public class Deck {
         return this.main.get(i);
     }
 
+    public void suppCarteMain (int i) {
+        this.main.remove(i);
+        System.out.println("Carte supprimé");
+    }
+
     public static ArrayDeque<Character> getFileInstruction() {
         return fileInstruction;
     }

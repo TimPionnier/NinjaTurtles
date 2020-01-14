@@ -10,7 +10,7 @@ public class Joueur {
     private int[] position;
     private char direction = 'N';
     private char numJoueur;
-    private char instruction;
+    private ArrayDeque<Character> instructions = new ArrayDeque<>();
 
     public Joueur(int[] position, char numJoueur) {
         this.numJoueur = numJoueur;
@@ -47,38 +47,22 @@ public class Joueur {
         return deck;
     }
 
-    public void addInstruction(int nbrInstructions) {
-        if (0 < nbrInstructions && nbrInstructions < 6) {
-
-            for (int i = 0; i < nbrInstructions; i++) {
-                this.instruction = ' ';//recuperer choix joueur: cartebleu, jaune, etc
-
-                if (Deck.getMain().contains(instruction)) {
-                    Deck.getFileInstruction().add(instruction);
-
-                } else if (!(Deck.getMain().contains(instruction))) {
-                    System.out.println("Tu ne possedes pas cette carte petit filou.");
-
-                } else {
-                    System.out.println("autre error dsl mon bro");
-                }
-            }
-        }
-
+    public void addInstruction(Character instruction) {
+        this.instructions.add(instruction);
     }
 
-    public void executerFile () {
+    /*public void executerFile () {
         this.instruction = Deck.getFileInstruction().getFirst();
 
         if (instruction == 'B') {
             if ((direction == 'N') ) {
-                //positionY --
+                this.position[1]--;
             } else if (direction == 'E') {
-                //positionY ++
+                this.position[0]++;
             } else if (direction == 'S') {
-                //positionY ++
+                this.position[1]++;
             } else if (direction == 'O') {
-                //positionX --
+                this.position[0]--;
             }
 
         } else if (instruction == 'J') {
@@ -113,7 +97,7 @@ public class Joueur {
             }
         }
     }
-
+*/
     public void buildMur(char typeMur, int i, int j) {
         if (i < 8 && j < 8) {
             int k = i + (j - 1) * 8; //position dans la liste cases
