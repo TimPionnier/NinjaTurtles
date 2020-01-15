@@ -37,13 +37,8 @@ public class Deck {
         //Distribution main
         for (int i=0;i<5;i++){
             this.main.add(this.pioche.get(0));
-            System.out.println(this.pioche.get(0));
             this.pioche.remove(0);
 
-        }
-
-        for (Character charac : this.main) {
-            System.out.print(charac);
         }
     }
 
@@ -58,14 +53,26 @@ public class Deck {
     public void suppCarteMain (int i) {
         this.main.remove(i);
         System.out.println("Carte supprimé");
-        for (Character charac : this.main) {
-            System.out.print(charac);
+        System.out.print("Main : ");
+        for (Character carte:
+             this.main) {
+            System.out.print(carte + " ");
         }
+        System.out.println();
     }
 
-    /*public static ArrayDeque<Character> getFileInstruction() {
-        return fileInstruction;
-    }*/
+    public ArrayDeque<Character> getFileInstruction() {
+        return this.fileInstruction;
+    }
+
+    public void addFileInstruction(int i){
+        this.fileInstruction.add(this.main.get(i));
+        System.out.print("File d'instruction : ");
+        for (Character carte:
+                this.fileInstruction) {
+            System.out.print(carte + " ");
+        }
+    }
 
     public int getNbrMurs(){
         return this.murs.size();
