@@ -9,8 +9,8 @@ public class Deck {
     private ArrayList<Character> pioche = new ArrayList<>();
     private ArrayList<Character> murs = new ArrayList<>();
     private ArrayList<Character> defausse = new ArrayList<>();
-    private static ArrayList<Character> main = new ArrayList<>();
-    private static ArrayDeque<Character> fileInstruction = new ArrayDeque<>();
+    private ArrayList<Character> main = new ArrayList<>();
+    private ArrayDeque<Character> fileInstruction = new ArrayDeque<>();
 
 
 
@@ -37,11 +37,17 @@ public class Deck {
         //Distribution main
         for (int i=0;i<5;i++){
             this.main.add(this.pioche.get(0));
+            System.out.println(this.pioche.get(0));
             this.pioche.remove(0);
+
+        }
+
+        for (Character charac : this.main) {
+            System.out.print(charac);
         }
     }
 
-    public static ArrayList<Character> getMain() {
+    public ArrayList<Character> getMain() {
         return main;
     }
 
@@ -52,11 +58,14 @@ public class Deck {
     public void suppCarteMain (int i) {
         this.main.remove(i);
         System.out.println("Carte supprimé");
+        for (Character charac : this.main) {
+            System.out.print(charac);
+        }
     }
 
-    public static ArrayDeque<Character> getFileInstruction() {
+    /*public static ArrayDeque<Character> getFileInstruction() {
         return fileInstruction;
-    }
+    }*/
 
     public int getNbrMurs(){
         return this.murs.size();

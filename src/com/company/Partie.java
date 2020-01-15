@@ -18,7 +18,7 @@ public class Partie  extends BasicGameState {
     private GameContainer gc;
 
     private static int nbrJoueur;
-    private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+    private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 
     //Recuperation des BasicGameState
     private AddToProgram addToProgram;
@@ -43,13 +43,12 @@ public class Partie  extends BasicGameState {
         this.plateau = new Plateau();
         this.plateau.setPlateau();
 
-        this.main = Deck.getMain();
 
         Joueur joueur1 = new Joueur(new int[]{0, 1},'1');
         this.joueurs.add(joueur1);
         Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
         this.joueurs.add(joueur2);
-        System.out.println(this.joueurs.size());
+        //System.out.println(this.joueurs.size());
 
         //Récupération de la HashMap reliant les états des cases aux images à afficher
         Cartes cartes = new Cartes();
@@ -99,7 +98,7 @@ public class Partie  extends BasicGameState {
         int u = 20;
         int v = 620;
         for (int i=0 ; i<5; i++){
-            g.drawImage(this.list_cartes.get(this.main.get(i)),u ,v );
+            g.drawImage(this.list_cartes.get(this.joueurs.get(0).getDeck().getCarteMain(i)),u ,v );
             u += 120;
         }
     }
@@ -149,11 +148,7 @@ public class Partie  extends BasicGameState {
         }
 
         //recuperer valeur carte
-        if ((xpos > 20)&&(xpos < 140)) {
-            if (input.isMouseButtonDown(0)) {
-                System.out.println("salut mon pote ta carte est : " + this.main.get(0));
-            }
-        }
+
     }
 
 

@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class AddToProgram extends Tour {
 
@@ -31,8 +32,8 @@ public class AddToProgram extends Tour {
 
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<5; i++){
-            g.drawImage(this.list_cartes.get(joueur.getDeck().getCarteMain(i)),u ,v );
+        for (int i=0 ; i<this.joueur.getDeck().getMain().size(); i++){
+            g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)),u ,v );
             u += 120;
         }
     }
@@ -44,10 +45,15 @@ public class AddToProgram extends Tour {
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos>20 && xpos<140) && (ypos<620 && ypos>770)){
+        if ((xpos > 20)&&(xpos < 140)) {
             if (input.isMouseButtonDown(0)) {
-                this.joueur.addInstruction(joueur.getDeck().getCarteMain(0));
-                joueur.getDeck().suppCarteMain(0);
+                System.out.println("salut mon pote ta carte est : " + this.joueur.getDeck().getCarteMain(0));
+                this.joueur.getDeck().suppCarteMain(0);
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
