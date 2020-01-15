@@ -96,15 +96,12 @@ public class Partie  extends BasicGameState {
 
 
        //Main du joueur
-       int u = 20;
-       int v = 620;
-       char[] arrayMain = new char[5];
+        int u = 20;
+        int v = 620;
         for (int i=0 ; i<5; i++){
-           arrayMain[i] = this.main.get(i);
-            System.out.println(arrayMain[i]);
-           g.drawImage(this.list_cartes.get(this.main.get(i)),u ,v );
-           u += 120;
-       }
+            g.drawImage(this.list_cartes.get(this.main.get(i)),u ,v );
+            u += 120;
+        }
     }
 
 
@@ -141,9 +138,6 @@ public class Partie  extends BasicGameState {
         //Check for button Walls
         if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
             btnWalls = new Image("map/Walls-clicked.png");
-            if (input.isMouseButtonDown(0)) {
-                sbg.enterState(2);
-            }
         }
         if ((xpos<90 || xpos>240) || (ypos>240 || ypos<187)){
             btnWalls = new Image("map/Walls.png");

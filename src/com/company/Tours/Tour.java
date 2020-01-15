@@ -35,12 +35,4 @@ public abstract class Tour extends BasicGameState {
         this.stateBasedGame = stateBasedGame;
     }
 
-
-    @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-        int xpos = Mouse.getX();
-        int ypos = Mouse.getY();
-        mouse = "xpos: " + xpos + " ; ypos: " + ypos;
-
-    }
 }
