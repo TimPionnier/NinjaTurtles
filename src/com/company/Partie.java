@@ -153,6 +153,13 @@ public class Partie  extends BasicGameState {
         for (Joueur joueur : this.joueurs){
             joueur.updateJoueur(this.plateau);
         }
+
+        //recuperer valeur carte
+        if ((xpos > 20)&&(xpos < 140)) {
+            if (input.isMouseButtonDown(0)) {
+                System.out.println("salut mon pote ta carte est : " + this.main.get(0));
+            }
+        }
     }
 
 
