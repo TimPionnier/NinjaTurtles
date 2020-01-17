@@ -99,6 +99,7 @@ public class Joueur {
     }
 */
     public void buildMur(char typeMur, int i, int j) {
+
         if (i < 8 && j < 8) {
             int k = i + (j - 1) * 8; //position dans la liste cases
             if (typeMur == 'G' || typeMur == 'P') {

@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 
 public class Partie  extends BasicGameState {
+    int murX = 0;
+    int murY = 0;
+    String murPos = "bhjk ";
     private int ID;
     String mouse = "No input yet!";
     static String demande = "";
@@ -74,6 +77,7 @@ public class Partie  extends BasicGameState {
         g.drawString(mouse,150,50);
         g.drawString(demande, 200, 700 );
         g.drawString(txt,130,600);
+        g.drawString(murPos, 200, 100);
 
 
         //Affichage des éléments du plateau
@@ -109,6 +113,83 @@ public class Partie  extends BasicGameState {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
+
+
+
+
+        //get MurX
+
+        if (xpos > 150 && xpos < 190) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 0;
+            }
+        } else  if (xpos > 190 && xpos < 230) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 1;
+            }
+        } else  if (xpos > 230 && xpos < 270) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 2;
+            }
+        } else  if (xpos > 270 && xpos < 310) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 3;
+            }
+        } else  if (xpos > 310 && xpos < 350) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 4;
+            }
+        } else  if (xpos > 350 && xpos < 390) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 5;
+            }
+        } else  if (xpos > 390 && xpos < 430) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 6;
+            }
+        } else  if (xpos > 430 && xpos < 470) {
+            if (input.isMouseButtonDown(0)) {
+                murX = 7;
+            }
+        }
+
+        //get MurY
+
+        if (ypos > 520 && ypos < 560) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 0;
+            }
+        } else  if (ypos > 480 && ypos < 520) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 1;
+            }
+        } else  if (ypos > 440 && ypos < 480) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 2;
+            }
+        } else  if (ypos > 400 && ypos < 440) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 3;
+            }
+        } else  if (ypos > 360 && ypos < 400) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 4;
+            }
+        } else  if (ypos > 320 && ypos < 360) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 5;
+            }
+        } else  if (ypos > 280 && ypos < 320) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 6;
+            }
+        } else  if (ypos > 240 && ypos < 280) {
+            if (input.isMouseButtonDown(0)) {
+                murY = 7;
+            }
+        }
+
+        murPos = "mur : " + murX + " " + murY;
 
 
         //Check for button Add
