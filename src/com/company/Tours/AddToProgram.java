@@ -30,11 +30,21 @@ public class AddToProgram extends Tour {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
 
+        //Main joueur
         int u = 20;
         int v = 620;
         for (int i=0 ; i<this.joueur.getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)),u ,v );
             u += 120;
+        }
+
+        //File joueur (face cachée)
+        u = 20;
+        v = 100;
+        for (int i = 0; i < this.joueur.getDeck().getFileInstruction().size(); i++) {
+            //R pour carte face cachée
+            g.drawImage(this.list_cartes.get('R'),u,v);
+            u += 80;
         }
     }
 
@@ -45,12 +55,13 @@ public class AddToProgram extends Tour {
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos > 20)&&(xpos < 140)) {
+        if ((xpos > 20 && xpos < 140) && (ypos>30 && ypos<180)) {
             if (input.isMouseButtonDown(0)) {
-                System.out.println("salut mon pote ta carte est : " + this.joueur.getDeck().getCarteMain(0));
+                this.joueur.getDeck().addFileInstruction(0);
                 this.joueur.getDeck().suppCarteMain(0);
+                //Wait for click
                 try {
-                    TimeUnit.MILLISECONDS.sleep(100);
+                    TimeUnit.MILLISECONDS.sleep(250);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

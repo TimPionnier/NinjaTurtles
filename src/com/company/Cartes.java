@@ -21,6 +21,7 @@ public class Cartes {
         Image carteLaser = new Image("map/cards/LaserCard.png");
         Image carteViolette = new Image("map/cards/PurpleCard.png");
         Image carteJaune = new Image("map/cards/YellowCard.png");
+        Image carteBack = new Image("map/cards/backcard_petit.png");
 
         cartes = new HashMap<>();
 
@@ -32,6 +33,7 @@ public class Cartes {
         cartes.put('L',carteLaser);
         cartes.put('V',carteViolette);
         cartes.put('J',carteJaune);
+        cartes.put('R',carteBack);
 
     }
 

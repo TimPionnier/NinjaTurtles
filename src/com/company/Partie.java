@@ -101,9 +101,18 @@ public class Partie  extends BasicGameState {
        //Main du joueur
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<5; i++){
+        for (int i=0 ; i<this.joueurs.get(0).getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueurs.get(0).getDeck().getCarteMain(i)),u ,v );
             u += 120;
+        }
+
+        //File joueur
+        u = 20;
+        v = 250;
+        for (int i = 0; i < this.joueurs.get(0).getDeck().getFileInstruction().size(); i++) {
+            //R pour carte face cachée
+            g.drawImage(this.list_cartes.get('R'),u,v);
+            u += 80;
         }
     }
 
