@@ -42,6 +42,16 @@ public class Deck {
         }
     }
 
+    public ArrayList<Character> getMurs(){
+        return murs;
+    }
+
+    public char getMur(int i){
+        return this.murs.get(i);
+    }
+
+
+
     public ArrayList<Character> getMain() {
         return main;
     }
@@ -74,9 +84,6 @@ public class Deck {
         }
     }
 
-    public int getNbrMurs(){
-        return this.murs.size();
-    }
 
     public static ArrayList<Character> shuffle (ArrayList<Character> liste){
         Random rand = new Random();

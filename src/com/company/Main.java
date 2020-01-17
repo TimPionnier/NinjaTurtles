@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.Tours.AddToProgram;
+import com.company.Tours.BuildWall;
+import com.company.Tours.ExecProgram;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -11,7 +13,7 @@ public class Main extends StateBasedGame {
     public static int playState = 2;
     public static int addToProgramState = 3;
     public static int execProgram = 4;
-    public static int buildWalls = 5;
+    public static int buildWall = 5;
     public static int game = 0;
 
     public Main(String name) throws SlickException {
@@ -25,12 +27,17 @@ public class Main extends StateBasedGame {
         WindowGame menu = new WindowGame(menuState);
         Partie partie = new Partie(playState,2);
         AddToProgram addToProgram = new AddToProgram(addToProgramState);
+        ExecProgram execProgram = new ExecProgram(4);
+        BuildWall buildWall = new BuildWall(5);
 
         partie.setAddToProgram(addToProgram);
+        partie.setBuildWall(buildWall);
 
         this.addState(menu);
         this.addState(partie);
         this.addState(addToProgram);
+        this.addState(execProgram);
+        this.addState(buildWall);
         this.enterState(menuState);
     }
 

@@ -1,15 +1,33 @@
 package com.company.Tours;
 
+import com.company.Cartes;
+import com.company.Joueur;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class ExecProgram extends BasicGameState {
+import java.util.HashMap;
+
+public class ExecProgram extends Tour {
+    private Joueur joueur;
+    private HashMap<Character, Image> list_cartes;
+
+    public ExecProgram(int state) throws SlickException {
+        super(state);
+        Cartes cartes = new Cartes();
+        this.list_cartes = cartes.getCartes();
+    }
+
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
+
     @Override
     public int getID() {
-        return 0;
+        return 4;
     }
 
     @Override
@@ -19,7 +37,24 @@ public class ExecProgram extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+        g.drawImage(dammier, 150, 241);
 
+        //Affichage des éléments du plateau
+        int x = 190;
+        int y = 200;
+
+
+        //Affichage des cases en fonction de leur état
+        for (int i=0 ; i<64; i++) {
+            if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+            }
+            x += 40;
+            if (i%8==0){
+                x = 190 ;
+                y+=40;
+            }
+        }
     }
 
     @Override

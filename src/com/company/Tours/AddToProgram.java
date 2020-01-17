@@ -26,9 +26,26 @@ public class AddToProgram extends Tour {
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
+
+        //Affichage des éléments du plateau
+        int x = 190;
+        int y = 200;
+
+
+        //Affichage des cases en fonction de leur état
+        for (int i=0 ; i<64; i++) {
+            if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+            }
+            x += 40;
+            if (i%8==0){
+                x = 190 ;
+                y+=40;
+            }
+        }
 
         //Main joueur
         int u = 20;
@@ -55,7 +72,7 @@ public class AddToProgram extends Tour {
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos > 20 && xpos < 140) && (ypos>30 && ypos<180)) {
+        if ((xpos > 20 && xpos < 130) && (ypos>30 && ypos<180)) {
             if (input.isMouseButtonDown(0)) {
                 this.joueur.getDeck().addFileInstruction(0);
                 this.joueur.getDeck().suppCarteMain(0);
@@ -66,6 +83,55 @@ public class AddToProgram extends Tour {
                     e.printStackTrace();
                 }
             }
+        } else if ((xpos > 140 && xpos < 250) && (ypos>30 && ypos<180)) {
+            if (input.isMouseButtonDown(0)) {
+                this.joueur.getDeck().addFileInstruction(1);
+                this.joueur.getDeck().suppCarteMain(1);
+                //Wait for click
+                try {
+                    TimeUnit.MILLISECONDS.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if ((xpos > 260 && xpos < 370) && (ypos>30 && ypos<180)) {
+            if (input.isMouseButtonDown(0)) {
+                this.joueur.getDeck().addFileInstruction(2);
+                this.joueur.getDeck().suppCarteMain(2);
+                //Wait for click
+                try {
+                    TimeUnit.MILLISECONDS.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if ((xpos > 380 && xpos < 490) && (ypos>30 && ypos<180)) {
+            if (input.isMouseButtonDown(0)) {
+                this.joueur.getDeck().addFileInstruction(3);
+                this.joueur.getDeck().suppCarteMain(3);
+                //Wait for click
+                try {
+                    TimeUnit.MILLISECONDS.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if ((xpos > 500 && xpos < 610) && (ypos>30 && ypos<180)) {
+            if (input.isMouseButtonDown(0)) {
+                this.joueur.getDeck().addFileInstruction(4);
+                this.joueur.getDeck().suppCarteMain(4);
+                //Wait for click
+                try {
+                    TimeUnit.MILLISECONDS.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+    }
+
+    @Override
+    public int getID() {
+        return 3;
     }
 }

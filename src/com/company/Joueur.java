@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Joueur {
     private static Character[] main = new Character[5];
     private Deck deck = new Deck();
+
     private static Character[] defausse = new Character[0];
     private int[] position;
     private char direction = 'N';
