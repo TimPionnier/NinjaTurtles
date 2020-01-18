@@ -35,6 +35,7 @@ public class Partie  extends BasicGameState {
     private ArrayList<Character> main;
     private HashMap<Character,Image> list_cartes;
 
+    private int tourJoueur = 1;
 
 
     public Partie(int state, int nbrJoueur) {
@@ -45,6 +46,7 @@ public class Partie  extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
 
+        System.out.println("Création");
         this.plateau = new Plateau();
         this.plateau.setPlateau();
 
@@ -124,10 +126,9 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
-
-
-
-
+        //Joueur en cours
+        int currentPlayer = this.tourJoueur%this.nbrJoueur;
+        System.out.println("Tour du joueur " + currentPlayer);
 
 
         //Check for button Add

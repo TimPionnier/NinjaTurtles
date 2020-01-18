@@ -1,6 +1,12 @@
 package com.company;
 
+import org.newdawn.slick.Game;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Plateau {
     private final int NB_CASES = 64;
@@ -9,7 +15,8 @@ public class Plateau {
     private static int nbrJoueur = 2;
     private static ArrayList<Case> cases;
 
-    public Plateau() {
+    public Plateau() throws SlickException {
+
         this.cases = new ArrayList<>();
         int k = 0;
         for (int i = 0; i <= 7; i++) {
@@ -43,10 +50,6 @@ public class Plateau {
                 this.cases.get(i).setEtat('C');
             }
         }
-        
-
-
-
         /*
         if(nbrJoueur == 2){
             plateau[0][1] = Carte.carteTortue;
@@ -67,5 +70,6 @@ public class Plateau {
             }
         }*/
     }
+
 
 }

@@ -26,8 +26,10 @@ public abstract class Tour extends BasicGameState {
     protected Image dammier;
     protected Plateau plateau;
 
-    public Tour(int state) {
+    public Tour(int state, Plateau plateau)
+    {
         this.state = state;
+        this.plateau = plateau;
     }
 
     @Override
@@ -40,7 +42,6 @@ public abstract class Tour extends BasicGameState {
         dammier = new Image("map/dammier.png");
         this.gameContainer = gc;
         this.stateBasedGame = stateBasedGame;
-        this.plateau = Partie.getPlateau();
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }

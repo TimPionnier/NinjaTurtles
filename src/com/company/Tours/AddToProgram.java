@@ -2,6 +2,7 @@ package com.company.Tours;
 
 import com.company.Cartes;
 import com.company.Joueur;
+import com.company.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -15,8 +16,8 @@ public class AddToProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
-    public AddToProgram(int state) throws SlickException {
-        super(state);
+    public AddToProgram(int state, Plateau plateau) throws SlickException {
+        super(state,plateau);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }
@@ -29,6 +30,7 @@ public class AddToProgram extends Tour {
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
+        g.drawString("Défausser ses cartes",225,775);
 
         //Affichage des éléments du plateau
         int x = 190;
@@ -36,6 +38,7 @@ public class AddToProgram extends Tour {
 
 
         //Affichage des cases en fonction de leur état
+
         for (int i=0 ; i<64; i++) {
             if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
                 g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
@@ -72,59 +75,75 @@ public class AddToProgram extends Tour {
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos > 20 && xpos < 130) && (ypos>30 && ypos<180)) {
-            if (input.isMouseButtonDown(0)) {
-                this.joueur.getDeck().addFileInstruction(0);
-                this.joueur.getDeck().suppCarteMain(0);
-                //Wait for click
-                try {
-                    TimeUnit.MILLISECONDS.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        if(this.joueur.getDeck().getMain().size()>0) {
+            //récupération des clics sur les cartes = ajout à la file d'instruction
+            if ((xpos > 20 && xpos < 130) && (ypos > 30 && ypos < 180)) {
+                if (input.isMouseButtonDown(0)) {
+                    this.joueur.getDeck().addFileInstruction(0);
+                    this.joueur.getDeck().suppCarteMain(0);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        } else if ((xpos > 140 && xpos < 250) && (ypos>30 && ypos<180)) {
-            if (input.isMouseButtonDown(0)) {
-                this.joueur.getDeck().addFileInstruction(1);
-                this.joueur.getDeck().suppCarteMain(1);
-                //Wait for click
-                try {
-                    TimeUnit.MILLISECONDS.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            } else if ((xpos > 140 && xpos < 250) && (ypos > 30 && ypos < 180)) {
+                if (input.isMouseButtonDown(0)) {
+                    this.joueur.getDeck().addFileInstruction(1);
+                    this.joueur.getDeck().suppCarteMain(1);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        } else if ((xpos > 260 && xpos < 370) && (ypos>30 && ypos<180)) {
-            if (input.isMouseButtonDown(0)) {
-                this.joueur.getDeck().addFileInstruction(2);
-                this.joueur.getDeck().suppCarteMain(2);
-                //Wait for click
-                try {
-                    TimeUnit.MILLISECONDS.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            } else if ((xpos > 260 && xpos < 370) && (ypos > 30 && ypos < 180)) {
+                if (input.isMouseButtonDown(0)) {
+                    this.joueur.getDeck().addFileInstruction(2);
+                    this.joueur.getDeck().suppCarteMain(2);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        } else if ((xpos > 380 && xpos < 490) && (ypos>30 && ypos<180)) {
-            if (input.isMouseButtonDown(0)) {
-                this.joueur.getDeck().addFileInstruction(3);
-                this.joueur.getDeck().suppCarteMain(3);
-                //Wait for click
-                try {
-                    TimeUnit.MILLISECONDS.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            } else if ((xpos > 380 && xpos < 490) && (ypos > 30 && ypos < 180)) {
+                if (input.isMouseButtonDown(0)) {
+                    this.joueur.getDeck().addFileInstruction(3);
+                    this.joueur.getDeck().suppCarteMain(3);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        } else if ((xpos > 500 && xpos < 610) && (ypos>30 && ypos<180)) {
-            if (input.isMouseButtonDown(0)) {
-                this.joueur.getDeck().addFileInstruction(4);
-                this.joueur.getDeck().suppCarteMain(4);
-                //Wait for click
-                try {
-                    TimeUnit.MILLISECONDS.sleep(250);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            } else if ((xpos > 500 && xpos < 610) && (ypos > 30 && ypos < 180)) {
+                if (input.isMouseButtonDown(0)) {
+                    this.joueur.getDeck().addFileInstruction(4);
+                    this.joueur.getDeck().suppCarteMain(4);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else if ((xpos > 226 && xpos < 407) && (ypos > 5 && ypos < 23)) {
+                if (input.isMouseButtonDown(0)) {
+                    System.out.println("defausse");
+                    this.joueur.getDeck().remplirDefausse();
+                    this.joueur.getDeck().remplirMain();
+                    stateBasedGame.enterState(2);
+                    //Wait for click
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.company.Tours;
 
 import com.company.Cartes;
 import com.company.Joueur;
+import com.company.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -17,8 +18,8 @@ public class BuildWall extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
-    public BuildWall(int state) throws SlickException{
-        super(state);
+    public BuildWall(int state, Plateau plateau) throws SlickException{
+        super(state,plateau);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }
@@ -52,17 +53,16 @@ public class BuildWall extends Tour {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         char etatMur =' ';
-        mouse = "xposs: " + xpos + " ; ypos: " + ypos;
+        mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
 
 
         //getEtatMur
         if (xpos > 20 && xpos < 60) {
             if (input.isMouseButtonDown(0)) {
-
                 etatMur = this.joueur.getDeck().getMur(0);
-                System.out.println("etat mur = " + etatMur);
             }
+            System.out.println("etat mur = " + etatMur);
         }
 
         //get MurX

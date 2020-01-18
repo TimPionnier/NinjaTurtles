@@ -35,11 +35,7 @@ public class Deck {
         this.pioche = shuffle(this.pioche);
 
         //Distribution main
-        for (int i=0;i<5;i++){
-            this.main.add(this.pioche.get(0));
-            this.pioche.remove(0);
-
-        }
+        this.remplirMain();
     }
 
     public ArrayList<Character> getMurs(){
@@ -81,6 +77,20 @@ public class Deck {
         for (Character carte:
                 this.fileInstruction) {
             System.out.print(carte + " ");
+        }
+    }
+
+    public void remplirMain(){
+        while(this.main.size() < 5){
+            this.main.add(this.pioche.get(0));
+            this.pioche.remove(0);
+        }
+    }
+
+    public void remplirDefausse(){
+        while(this.main.size() > 0){
+            this.defausse.add(this.main.get(0));
+            this.main.remove(0);
         }
     }
 
