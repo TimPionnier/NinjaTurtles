@@ -1,26 +1,32 @@
 package com.company.Tours;
 
 import com.company.Cartes;
+import com.company.Case;
 import com.company.Joueur;
+import com.company.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildWall extends Tour {
     int murX = 0;
     int murY = 0;
+    char etatMur =' ';
     String murPos = " ";
 
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
+    private static ArrayList<Case> cases;
 
     public BuildWall(int state) throws SlickException{
         super(state);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
+        this.cases = Plateau.getCases();
     }
 
     public void setJoueur(Joueur joueur) {
@@ -51,7 +57,7 @@ public class BuildWall extends Tour {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
-        char etatMur =' ';
+
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
 
@@ -59,11 +65,11 @@ public class BuildWall extends Tour {
         //getEtatMur
         if (xpos > 20 && xpos < 60) {
             if (input.isMouseButtonDown(0)) {
-
                 etatMur = this.joueur.getDeck().getMur(0);
-                System.out.println("etat mur = " + etatMur);
+
             }
         }
+
 
         //get MurX
         if (xpos > 150 && xpos < 190) {
@@ -137,11 +143,20 @@ public class BuildWall extends Tour {
         }
 
         murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
+        //addMur(murX, murY, etatMur);
     }
 
     @Override
     public int getID() {
         return 5;
+    }
+
+    public void addMur(int x, int y, char etatMur) {
+        for (int i = 0; i < this.cases.size(); i++) {
+            if ((this.cases.get(i).getPosition(0) == x && this.cases.get(i).getPosition(1) == y)) {
+                this.cases.get(i).setEtat(etatMur);
+            }
+        }
     }
 
 

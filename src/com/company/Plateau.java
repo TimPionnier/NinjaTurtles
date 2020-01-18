@@ -25,7 +25,7 @@ public class Plateau {
         return cases.get(i);
     }
 
-    public ArrayList<Case> getCases() {
+    public static ArrayList<Case> getCases() {
         return cases;
     }
 
