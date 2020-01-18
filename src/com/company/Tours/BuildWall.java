@@ -26,7 +26,7 @@ public class BuildWall extends Tour {
         super(state,plateau);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
-        this.cases = Plateau.getCases();
+        this.cases = plateau.getCases();
     }
 
     public void setJoueur(Joueur joueur) {
@@ -143,7 +143,7 @@ public class BuildWall extends Tour {
         }
 
         murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
-        //addMur(murX, murY, etatMur);
+        addMur(murX, murY, etatMur);
     }
 
     @Override

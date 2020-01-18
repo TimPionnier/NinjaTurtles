@@ -31,6 +31,7 @@ public class AddToProgram extends Tour {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
         g.drawString("Défausser ses cartes",225,775);
+        g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
 
         //Affichage des éléments du plateau
         int x = 190;

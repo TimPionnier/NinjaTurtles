@@ -21,6 +21,7 @@ public class Partie  extends BasicGameState {
 
     private static int nbrJoueur;
     private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+    private int currentPlayer = 0;
 
     //Recuperation des BasicGameState
     private AddToProgram addToProgram;
@@ -35,7 +36,9 @@ public class Partie  extends BasicGameState {
     private ArrayList<Character> main;
     private HashMap<Character,Image> list_cartes;
 
-    private int tourJoueur = 1;
+    private boolean nouveauTour = true;
+
+    private int currentTour = 0;
 
 
     public Partie(int state, int nbrJoueur) {
@@ -81,6 +84,7 @@ public class Partie  extends BasicGameState {
         g.drawString(mouse,150,50);
         g.drawString(demande, 200, 700 );
         g.drawString(txt,130,600);
+        g.drawString("Tour du Joueur " + this.currentPlayer,225,10);
 
 
         //Affichage des éléments du plateau
@@ -104,15 +108,15 @@ public class Partie  extends BasicGameState {
        //Main du joueur
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<this.joueurs.get(0).getDeck().getMain().size(); i++){
-            g.drawImage(this.list_cartes.get(this.joueurs.get(0).getDeck().getCarteMain(i)),u ,v );
+        for (int i=0 ; i<this.joueurs.get(this.currentPlayer-1).getDeck().getMain().size(); i++){
+            g.drawImage(this.list_cartes.get(this.joueurs.get(this.currentPlayer-1).getDeck().getCarteMain(i)),u ,v );
             u += 120;
         }
 
         //File joueur
         u = 20;
-        v = 250;
-        for (int i = 0; i < this.joueurs.get(0).getDeck().getFileInstruction().size(); i++) {
+        v = 100;
+        for (int i = 0; i < this.joueurs.get(this.currentPlayer-1).getDeck().getFileInstruction().size(); i++) {
             //R pour carte face cachée
             g.drawImage(this.list_cartes.get('R'),u,v);
             u += 80;
@@ -127,15 +131,24 @@ public class Partie  extends BasicGameState {
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
         //Joueur en cours
-        int currentPlayer = this.tourJoueur%this.nbrJoueur;
-        System.out.println("Tour du joueur " + currentPlayer);
+        if (nouveauTour){
+            this.currentTour++;
+            this.currentPlayer = this.currentTour%this.nbrJoueur;
+            if (this.currentPlayer == 0){
+                this.currentPlayer = this.nbrJoueur;
+            }
+            System.out.println("Tour: "+currentTour);
+            System.out.println("Tour du joueur " + this.currentPlayer);
+            this.nouveauTour = false;
+        }
 
 
         //Check for button Add
         if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
             btnAdd = new Image("map/ADD-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.addToProgram.setJoueur(joueurs.get(0));
+                this.addToProgram.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.nouveauTour = true;
                 sbg.enterState(3);
             }
         }
@@ -147,7 +160,8 @@ public class Partie  extends BasicGameState {
         if ((xpos>250 && xpos<400) && (ypos<240 && ypos>187)){
             btnExe = new Image("map/EXE-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.execProgram.setJoueur(joueurs.get(0));
+                this.execProgram.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.nouveauTour = true;
                 sbg.enterState(4);
             }
         }
@@ -159,7 +173,8 @@ public class Partie  extends BasicGameState {
         if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
             btnWalls = new Image("map/Walls-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.buildWall.setJoueur(joueurs.get(0));
+                this.buildWall.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.nouveauTour = true;
                 sbg.enterState(5);
             }
         }
@@ -171,9 +186,6 @@ public class Partie  extends BasicGameState {
         for (Joueur joueur : this.joueurs){
             joueur.updateJoueur(this.plateau);
         }
-
-        //recuperer valeur carte
-
     }
 
 
