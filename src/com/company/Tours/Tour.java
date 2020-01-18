@@ -1,6 +1,7 @@
 package com.company.Tours;
 
 import com.company.Cartes;
+import com.company.Joueur;
 import com.company.Partie;
 import com.company.Plateau;
 import org.lwjgl.input.Mouse;
@@ -26,10 +27,11 @@ public abstract class Tour extends BasicGameState {
     protected Image dammier;
     protected Plateau plateau;
 
-    public Tour(int state, Plateau plateau)
+    protected Joueur joueur;
+
+    public Tour(int state)
     {
         this.state = state;
-        this.plateau = plateau;
     }
 
     @Override
@@ -64,5 +66,4 @@ public abstract class Tour extends BasicGameState {
             }
         }
     }
-
 }

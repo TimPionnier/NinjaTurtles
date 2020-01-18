@@ -16,15 +16,12 @@ public class AddToProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
-    public AddToProgram(int state, Plateau plateau) throws SlickException {
-        super(state,plateau);
+    public AddToProgram(int state) throws SlickException {
+        super(state);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }
 
-    public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
-    }
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
@@ -33,13 +30,10 @@ public class AddToProgram extends Tour {
         g.drawString("Défausser ses cartes",225,775);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
 
-        //Affichage des éléments du plateau
-        int x = 190;
-        int y = 200;
-
 
         //Affichage des cases en fonction de leur état
-
+        int x = 190;
+        int y = 200;
         for (int i=0 ; i<64; i++) {
             if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
                 g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
@@ -148,6 +142,11 @@ public class AddToProgram extends Tour {
                 }
             }
         }
+    }
+
+    public void setTour(Joueur joueur, Plateau plateau) {
+        this.joueur = joueur;
+        this.plateau = plateau;
     }
 
     @Override

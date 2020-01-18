@@ -147,7 +147,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
             btnAdd = new Image("map/ADD-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.addToProgram.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.addToProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(3);
             }
@@ -160,7 +160,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>250 && xpos<400) && (ypos<240 && ypos>187)){
             btnExe = new Image("map/EXE-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.execProgram.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.execProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(4);
             }
@@ -173,7 +173,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
             btnWalls = new Image("map/Walls-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.buildWall.setJoueur(joueurs.get(this.currentPlayer-1));
+                this.buildWall.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(5);
             }

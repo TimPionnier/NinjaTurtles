@@ -22,16 +22,12 @@ public class BuildWall extends Tour {
     private HashMap<Character, Image> list_cartes;
     private static ArrayList<Case> cases;
 
-    public BuildWall(int state, Plateau plateau) throws SlickException{
-        super(state,plateau);
+    public BuildWall(int state) throws SlickException{
+        super(state);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
-        this.cases = plateau.getCases();
     }
 
-    public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
-    }
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
@@ -46,6 +42,22 @@ public class BuildWall extends Tour {
             g.drawImage(this.list_cartes.get(this.joueur.getDeck().getMur(i)), u, v);
             u += 120;
         }
+
+        //Affichage des cases en fonction de leur état
+        int x = 190;
+        int y = 200;
+        for (int i=0 ; i<64; i++) {
+            if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+            }
+            x += 40;
+            if (i%8==0){
+                x = 190 ;
+                y+=40;
+            }
+        }
+
+
         /*for (int i=0 ; i<this.joueur.getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)),u ,v );
             u += 120;
@@ -57,6 +69,8 @@ public class BuildWall extends Tour {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
+
+        this.cases = this.plateau.getCases();
 
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
@@ -164,6 +178,11 @@ public class BuildWall extends Tour {
         }
 
         System.out.println(murPos);
+    }
+
+    public void setTour(Joueur joueur, Plateau plateau) {
+        this.joueur = joueur;
+        this.plateau = plateau;
     }
 
 

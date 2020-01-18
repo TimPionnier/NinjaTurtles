@@ -16,15 +16,12 @@ public class ExecProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
-    public ExecProgram(int state, Plateau plateau) throws SlickException {
-        super(state,plateau);
+    public ExecProgram(int state) throws SlickException {
+        super(state);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }
 
-    public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
-    }
 
     @Override
     public int getID() {
@@ -61,5 +58,10 @@ public class ExecProgram extends Tour {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
+    }
+
+    public void setTour(Joueur joueur, Plateau plateau) {
+        this.joueur = joueur;
+        this.plateau = plateau;
     }
 }
