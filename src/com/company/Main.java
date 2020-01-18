@@ -26,9 +26,9 @@ public class Main extends StateBasedGame {
     public void initStatesList(GameContainer gc) throws SlickException {
         WindowGame menu = new WindowGame(menuState);
         Partie partie = new Partie(playState,2);
-        AddToProgram addToProgram = new AddToProgram(addToProgramState);
-        ExecProgram execProgram = new ExecProgram(4);
-        BuildWall buildWall = new BuildWall(5);
+        AddToProgram addToProgram = new AddToProgram(addToProgramState,partie.getPlateau());
+        ExecProgram execProgram = new ExecProgram(4,partie.getPlateau());
+        BuildWall buildWall = new BuildWall(5,partie.getPlateau());
 
         partie.setAddToProgram(addToProgram);
         partie.setBuildWall(buildWall);

@@ -2,6 +2,7 @@ package com.company.Tours;
 
 import com.company.Cartes;
 import com.company.Joueur;
+import com.company.Plateau;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,8 +16,8 @@ public class ExecProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
-    public ExecProgram(int state) throws SlickException {
-        super(state);
+    public ExecProgram(int state, Plateau plateau) throws SlickException {
+        super(state,plateau);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
     }

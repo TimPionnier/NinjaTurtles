@@ -22,8 +22,8 @@ public class BuildWall extends Tour {
     private HashMap<Character, Image> list_cartes;
     private static ArrayList<Case> cases;
 
-    public BuildWall(int state) throws SlickException{
-        super(state);
+    public BuildWall(int state, Plateau plateau) throws SlickException{
+        super(state,plateau);
         Cartes cartes = new Cartes();
         this.list_cartes = cartes.getCartes();
         this.cases = Plateau.getCases();
@@ -65,11 +65,11 @@ public class BuildWall extends Tour {
         //getEtatMur
         if (xpos > 20 && xpos < 60) {
             if (input.isMouseButtonDown(0)) {
-                etatMur = this.joueur.getDeck().getMur(0);
 
+                etatMur = this.joueur.getDeck().getMur(0);
+                System.out.println("etat mur = " + etatMur);
             }
         }
-
 
         //get MurX
         if (xpos > 150 && xpos < 190) {
