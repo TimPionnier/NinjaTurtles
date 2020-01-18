@@ -36,6 +36,7 @@ public class ExecProgram extends Tour {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         g.drawImage(dammier, 150, 241);
+        g.drawImage(btnEnd, 250, 560);
 
         //Affichage des éléments du plateau
         int x = 190;

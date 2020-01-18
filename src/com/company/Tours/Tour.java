@@ -15,6 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.HashMap;
 
 public abstract class Tour extends BasicGameState {
+    protected Image btnEnd;
 
     private int state;
     private HashMap<Character, Image> list_cartes;
@@ -42,6 +43,7 @@ public abstract class Tour extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame stateBasedGame) throws SlickException {
         dammier = new Image("map/dammier.png");
+        btnEnd = new Image("map/btnEnd.png");
         this.gameContainer = gc;
         this.stateBasedGame = stateBasedGame;
         Cartes cartes = new Cartes();

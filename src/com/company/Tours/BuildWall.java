@@ -34,6 +34,7 @@ public class BuildWall extends Tour {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
         g.drawString(murPos, 200, 100);
+        g.drawImage(btnEnd, 250, 560);
 
         //Murs joueur
         int u = 20;
@@ -159,7 +160,7 @@ public class BuildWall extends Tour {
         murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
 
         if ((murX != -1) && (murY != -1) && (etatMur != ' ')) {
-            addMur(murX, murY, etatMur);
+            addMur(murY, murX, etatMur);
             murX = -1; murY = -1; etatMur = ' ';
         }
     }

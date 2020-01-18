@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AddToProgram extends Tour {
 
+
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
 
@@ -29,6 +30,7 @@ public class AddToProgram extends Tour {
         g.drawImage(dammier, 150, 241);
         g.drawString("Défausser ses cartes",225,775);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
+        g.drawImage(btnEnd, 250, 560);
 
 
         //Affichage des cases en fonction de leur état
