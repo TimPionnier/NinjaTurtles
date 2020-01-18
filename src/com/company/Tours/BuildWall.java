@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildWall extends Tour {
-    int murX = 0;
-    int murY = 0;
+    int murX = -1;
+    int murY = -1;
     char etatMur =' ';
     String murPos = " ";
 
@@ -72,35 +72,35 @@ public class BuildWall extends Tour {
         }
 
         //get MurX
-        if (xpos > 150 && xpos < 190) {
+        if (xpos > 150 && xpos < 190 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 0;
             }
-        } else  if (xpos > 190 && xpos < 230) {
+        } else  if (xpos > 190 && xpos < 230 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 1;
             }
-        } else  if (xpos > 230 && xpos < 270) {
+        } else  if (xpos > 230 && xpos < 270 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 2;
             }
-        } else  if (xpos > 270 && xpos < 310) {
+        } else  if (xpos > 270 && xpos < 310 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 3;
             }
-        } else  if (xpos > 310 && xpos < 350) {
+        } else  if (xpos > 310 && xpos < 350 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 4;
             }
-        } else  if (xpos > 350 && xpos < 390) {
+        } else  if (xpos > 350 && xpos < 390 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 5;
             }
-        } else  if (xpos > 390 && xpos < 430) {
+        } else  if (xpos > 390 && xpos < 430 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 6;
             }
-        } else  if (xpos > 430 && xpos < 470) {
+        } else  if (xpos > 430 && xpos < 470 && ypos < 560 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 7;
             }
@@ -108,42 +108,46 @@ public class BuildWall extends Tour {
 
         //get MurY
 
-        if (ypos > 520 && ypos < 560) {
+        if (ypos > 520 && ypos < 560 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 0;
             }
-        } else  if (ypos > 480 && ypos < 520) {
+        } else  if (ypos > 480 && ypos < 520 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 1;
             }
-        } else  if (ypos > 440 && ypos < 480) {
+        } else  if (ypos > 440 && ypos < 480 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 2;
             }
-        } else  if (ypos > 400 && ypos < 440) {
+        } else  if (ypos > 400 && ypos < 440 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 3;
             }
-        } else  if (ypos > 360 && ypos < 400) {
+        } else  if (ypos > 360 && ypos < 400 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 4;
             }
-        } else  if (ypos > 320 && ypos < 360) {
+        } else  if (ypos > 320 && ypos < 360 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 5;
             }
-        } else  if (ypos > 280 && ypos < 320) {
+        } else  if (ypos > 280 && ypos < 320 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 6;
             }
-        } else  if (ypos > 240 && ypos < 280) {
+        } else  if (ypos > 240 && ypos < 280 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 7;
             }
         }
 
         murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
-        addMur(murX, murY, etatMur);
+
+        if ((murX != -1) && (murY != -1) && (etatMur != ' ')) {
+            addMur(murX, murY, etatMur);
+            murX = -1; murY = -1; etatMur = ' ';
+        }
     }
 
     @Override
@@ -151,12 +155,15 @@ public class BuildWall extends Tour {
         return 5;
     }
 
-    public void addMur(int x, int y, char etatMur) {
+    public void addMur(int murX, int murY, char etatMur) {
         for (int i = 0; i < this.cases.size(); i++) {
-            if ((this.cases.get(i).getPosition(0) == x && this.cases.get(i).getPosition(1) == y)) {
+            if ((this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY)) {
                 this.cases.get(i).setEtat(etatMur);
+                System.out.println(murPos);
             }
         }
+
+        System.out.println(murPos);
     }
 
 
