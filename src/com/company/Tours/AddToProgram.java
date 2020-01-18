@@ -2,6 +2,7 @@ package com.company.Tours;
 
 import com.company.Cartes;
 import com.company.Joueur;
+import com.company.Partie;
 import com.company.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -66,11 +67,24 @@ public class AddToProgram extends Tour {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException{
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException{
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
+
+        if ((xpos >250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
+            btnEnd = new Image("map/btnEnd-clicked.png");
+            if (input.isMouseButtonDown(0)) {
+                if (this.joueur.getDeck().getMain().size() < 5) {
+                    this.joueur.getDeck().remplirMain();
+                }
+                sbg.enterState(2);
+                Partie.waitForClick();
+            }
+        }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
+            btnEnd = new Image("map/btnEnd.png");
+        }
 
         if(this.joueur.getDeck().getMain().size()>0) {
             //récupération des clics sur les cartes = ajout à la file d'instruction
@@ -78,69 +92,39 @@ public class AddToProgram extends Tour {
                 if (input.isMouseButtonDown(0)) {
                     this.joueur.getDeck().addFileInstruction(0);
                     this.joueur.getDeck().suppCarteMain(0);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Partie.waitForClick();
                 }
             } else if ((xpos > 140 && xpos < 250) && (ypos > 30 && ypos < 180)) {
                 if (input.isMouseButtonDown(0)) {
                     this.joueur.getDeck().addFileInstruction(1);
                     this.joueur.getDeck().suppCarteMain(1);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Partie.waitForClick();
                 }
             } else if ((xpos > 260 && xpos < 370) && (ypos > 30 && ypos < 180)) {
                 if (input.isMouseButtonDown(0)) {
                     this.joueur.getDeck().addFileInstruction(2);
                     this.joueur.getDeck().suppCarteMain(2);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Partie.waitForClick();
                 }
             } else if ((xpos > 380 && xpos < 490) && (ypos > 30 && ypos < 180)) {
                 if (input.isMouseButtonDown(0)) {
                     this.joueur.getDeck().addFileInstruction(3);
                     this.joueur.getDeck().suppCarteMain(3);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Partie.waitForClick();
                 }
             } else if ((xpos > 500 && xpos < 610) && (ypos > 30 && ypos < 180)) {
                 if (input.isMouseButtonDown(0)) {
                     this.joueur.getDeck().addFileInstruction(4);
                     this.joueur.getDeck().suppCarteMain(4);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Partie.waitForClick();
                 }
             } else if ((xpos > 226 && xpos < 407) && (ypos > 5 && ypos < 23)) {
                 if (input.isMouseButtonDown(0)) {
                     System.out.println("defausse");
                     this.joueur.getDeck().remplirDefausse();
                     this.joueur.getDeck().remplirMain();
-                    stateBasedGame.enterState(2);
-                    //Wait for click
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(250);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    //stateBasedGame.enterState(2);
+                    Partie.waitForClick();
                 }
             }
         }

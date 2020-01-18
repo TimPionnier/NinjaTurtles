@@ -32,6 +32,7 @@ public class Main extends StateBasedGame {
 
         partie.setAddToProgram(addToProgram);
         partie.setBuildWall(buildWall);
+        partie.setExecProgram(execProgram);
 
         this.addState(menu);
         this.addState(partie);

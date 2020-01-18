@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 
 public class Partie  extends BasicGameState {
@@ -150,6 +151,7 @@ public class Partie  extends BasicGameState {
                 this.addToProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(3);
+                waitForClick();
             }
         }
         if ((xpos<410 || xpos>560) || (ypos>240 || ypos<187)){
@@ -163,6 +165,7 @@ public class Partie  extends BasicGameState {
                 this.execProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(4);
+                waitForClick();
             }
         }
         if ((xpos<250 || xpos>400) || (ypos>240 || ypos<187)){
@@ -176,6 +179,7 @@ public class Partie  extends BasicGameState {
                 this.buildWall.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
                 this.nouveauTour = true;
                 sbg.enterState(5);
+                waitForClick();
             }
         }
         if ((xpos<90 || xpos>240) || (ypos>240 || ypos<187)){
@@ -189,7 +193,14 @@ public class Partie  extends BasicGameState {
     }
 
 
-
+    public static void waitForClick() {
+        //Wait for click
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void keyReleased(int key, char c) {
 
