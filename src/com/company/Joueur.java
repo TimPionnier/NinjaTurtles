@@ -4,13 +4,14 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Joueur {
-    private static Character[] main = new Character[5];
     private Deck deck = new Deck();
 
-    private static Character[] defausse = new Character[0];
     private int[] position;
-    private char direction = 'N';
+    private char direction = 'S';
     private char numJoueur;
+
+
+
     private ArrayDeque<Character> instructions = new ArrayDeque<>();
 
     public Joueur(int[] position, char numJoueur) {
@@ -20,6 +21,9 @@ public class Joueur {
 
     public void updateJoueur(Plateau plateau) {
         for (int i = 0; i < plateau.getCases().size(); i++) {
+            if (plateau.getCase(i).getEtat() == this.numJoueur){
+                plateau.getCase(i).setEtat(' ');
+            }
             if ((plateau.getCase(i).getPosition(0) == this.position[0] && plateau.getCase(i).getPosition(1) == this.position[1])) {
                 plateau.getCase(i).setEtat(this.numJoueur);
             }
@@ -28,16 +32,18 @@ public class Joueur {
 
     public void setDirection(char nvllDirection) {this.direction = nvllDirection;}
 
-    public int[] getPosition() {
-        return this.position;
+    public char getDirection() { return this.direction; }
+
+    public int getPosition(int axis) {
+        return this.position[axis];
     }
 
     public char getNumJoueur() {
         return this.numJoueur;
     }
 
-    public void setPosition(int[] position) {
-        this.position = position;
+    public void setPosition(int axis, int position) {
+        this.position[axis] = position;
     }
 
     public void setNumJoueur(char numJoueur) {
