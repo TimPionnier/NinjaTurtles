@@ -6,6 +6,12 @@ import org.newdawn.slick.state.*;
 
 public class WindowGame extends BasicGameState {
 
+    private static int nbrJoueur;
+
+    public static int getNbrJoueur() {
+        return nbrJoueur;
+    }
+
     private GameContainer gc;
     private Image background;
     private Image playButton;
@@ -38,6 +44,18 @@ public class WindowGame extends BasicGameState {
         if (Input.KEY_ESCAPE == key) {
             gc.exit();
         }
+
+        switch (key){
+            case Input.KEY_2:
+                nbrJoueur = 2;
+                break;
+            case  Input.KEY_3:
+                nbrJoueur = 3;
+                break;
+            case Input.KEY_4:
+                nbrJoueur = 4;
+                break;
+        }
     }
 
     @Override
@@ -55,6 +73,7 @@ public class WindowGame extends BasicGameState {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
+       // System.out.println("nbrJoueur = " + nbrJoueur);
 
         if ((xpos>260 && xpos<380) && (ypos<340 && ypos>297)){
             playButton = new Image("map/boutonPlayClicked.png");

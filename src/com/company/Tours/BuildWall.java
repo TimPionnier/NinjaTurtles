@@ -82,7 +82,7 @@ public class BuildWall extends Tour {
                 Partie.waitForClick();
             }
         }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
-            btnEnd = new Image("map/btnEnd.png");
+            btnEnd = new Image("map/btnEnd1.png");
         }
 
         System.out.println(this.joueur.getDeck().getMurs().size());

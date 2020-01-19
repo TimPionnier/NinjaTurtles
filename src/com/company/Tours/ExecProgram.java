@@ -66,7 +66,7 @@ public class ExecProgram extends Tour {
                 Partie.waitForClick();
             }
         }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
-            btnEnd = new Image("map/btnEnd.png");
+            btnEnd = new Image("map/btnEnd1.png");
         }
 
         if (this.joueur.getDeck().getFileInstruction().size()>0) {
@@ -74,18 +74,49 @@ public class ExecProgram extends Tour {
 
 
             if (instruction == 'B') {
-                this.plateau.getCase(this.joueur.getPosition(0),this.joueur.getPosition(1)).setEtat(' ');
-                if (this.joueur.getDirection() == 'N' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
-                    this.joueur.setPosition(0,this.joueur.getPosition(0) - 1);
-                } else if (this.joueur.getDirection() == 'E' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
-                    this.joueur.setPosition(1,this.joueur.getPosition(1) + 1);
-                } else if (this.joueur.getDirection() == 'S' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
-                    this.joueur.setPosition(0,this.joueur.getPosition(0) + 1);
-                } else if (this.joueur.getDirection() == 'O' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
-                    this.joueur.setPosition(1,this.joueur.getPosition(1) - 1);
-                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?'){
-                    this.winner.setJoueur(this.joueur);
-                    sbg.enterState(6);
+
+                this.plateau.getCase(this.joueur.getPosition(0), this.joueur.getPosition(1)).setEtat(' '); //on reset la valeur de la case pour afficher la tortue uniquement sur sa nvl position
+                if (this.joueur.getDirection() == 'N' ) {
+                    if (this.joueur.getPosition(0) == 0) {
+                        this.joueur.returnStart();
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
+                        this.joueur.setPosition(0, this.joueur.getPosition(0) - 1);
+
+                    }
+
+                } else if (this.joueur.getDirection() == 'E' ) {
+                    if (this.joueur.getPosition(1) == 7) {
+                        this.joueur.returnStart();
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
+                        this.joueur.setPosition(1, this.joueur.getPosition(1) + 1);
+                    }
+
+                } else if (this.joueur.getDirection() == 'S'  ) {
+                    if (this.joueur.getPosition(0) == 7) {
+                        this.joueur.returnStart();
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
+                        this.joueur.setPosition(0, this.joueur.getPosition(0) + 1);
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                        this.winner.setJoueur(this.joueur);
+                        //Partie.getJoueurs().remove(this.joueur);
+                        sbg.enterState(6);
+                    }
+
+                } else if (this.joueur.getDirection() == 'O' ) {
+                    if (this.joueur.getPosition(1) == 0) {
+                        this.joueur.returnStart();
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
+                        this.joueur.setPosition(1, this.joueur.getPosition(1) - 1);
+                    }
+
+                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '1' ||
+                            this.joueur.getFrontCase(this.plateau).getEtat() == '2' ||
+                            this.joueur.getFrontCase(this.plateau).getEtat() == '3' ||
+                            this.joueur.getFrontCase(this.plateau).getEtat() == '4' ) {
+                    //renvoie le joueur qui joue et celui dans lequel il est rentré à leur position de départ
+                    Partie.makeJoueurReturnStart(this.joueur.getFrontCase(this.plateau).getEtat());
+                    this.joueur.returnStart();
+
                 } else if (this.joueur.getFrontCase(this.plateau).getEtat() == 'G' ||
                            this.joueur.getFrontCase(this.plateau).getEtat() == 'P' ||
                            this.joueur.getFrontCase(this.plateau).getEtat() == 'C'){
@@ -150,5 +181,4 @@ public class ExecProgram extends Tour {
     public static void setWinner(Winner winner) {
         ExecProgram.winner = winner;
     }
-
 }

@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.Tours.Tour;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
@@ -32,6 +34,8 @@ public class Joueur {
 
     public void updateJoueur(Plateau plateau){
         plateau.getCase(this.position[0],this.position[1]).setEtat(this.numJoueur);
+       // Cartes.updateDirectionImage();
+        //System.out.println("update direction" + Partie.getCurrentPlayer());
     }
 
     public void setDirection(char nvllDirection) {this.direction = nvllDirection;}
@@ -77,5 +81,21 @@ public class Joueur {
                 throw new IllegalStateException("Unexpected value: " + this.direction);
         }
         return front;
+    }
+
+    public void returnStart() {
+        //ajouter tous les cas en fonction du nbr de joueur
+        switch (this.numJoueur) {
+            case '1':
+                this.position = new int[]{0, 1};
+                break;
+            case '2':
+                this.position = new int[]{0, 5};
+                break;
+            case '3':
+
+        }
+
+        this.direction = 'S';
     }
 }

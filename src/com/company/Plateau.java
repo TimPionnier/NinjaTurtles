@@ -38,14 +38,35 @@ public class Plateau {
         return cases;
     }
 
-    public static void setPlateau() {
-        //Affichage du joyau
-        getCase(7,3).setEtat('?');
+    public static void setPlateau(int nbrJoueur) {
+        switch (nbrJoueur) {
+            case 2:
+                //Affichage du joyau
+                getCase(7,3).setEtat('?');
 
-        //Affichage des caisses en bois
-        for (int i = 0; i < 8; i++) {
-            getCase(i,7).setEtat('C');
+                //Affichage des caisses en bois
+                for (int i = 0; i < 8; i++) {
+                    getCase(i,7).setEtat('C');
+                }
+                break;
+            case 3:
+                //Affichage du joyau
+                getCase(7,0).setEtat('?');
+                getCase(7,3).setEtat('?');
+                getCase(7,6).setEtat('?');
+
+                //Affichage des caisses en bois
+                for (int i = 0; i < 8; i++) {
+                    getCase(i,7).setEtat('C');
+                }
+                break;
+            case 4:
+                //Affichage du joyau
+                getCase(7,1).setEtat('?');
+                getCase(7,6).setEtat('?');
+
         }
+
     }
 
 

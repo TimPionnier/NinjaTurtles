@@ -20,8 +20,8 @@ public class Partie  extends BasicGameState {
     private String txt = "";
     private GameContainer gc;
 
-    private static int nbrJoueur;
-    private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+    private static int nbrJoueur ;
+    private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int currentPlayer = 0;
 
     //Recuperation des BasicGameState
@@ -32,6 +32,11 @@ public class Partie  extends BasicGameState {
 
     private Image dammier;
     private Image btnWalls;
+
+    public static ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
     private Image btnExe;
     private Image btnAdd;
     private static Plateau plateau;
@@ -48,18 +53,53 @@ public class Partie  extends BasicGameState {
         this.nbrJoueur = nbrJoueur;
     }
 
+    public void setPartie(int nbrJoueur) throws SlickException {
+        System.out.println("Création");
+        this.plateau = new Plateau();
+        Joueur joueur1 = new Joueur(new int[]{0, 1},'1');
+        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
+        Joueur joueur3 ;
+        Joueur joueur4 ;
+        switch (nbrJoueur){
+            case 2:
+                this.plateau.setPlateau(nbrJoueur);
+                this.joueurs.add(joueur1);
+                this.joueurs.add(joueur2);
+                break;
+            case 3:
+                this.plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{0, 0},'1');
+                joueur2 = new Joueur(new int[]{0, 3},'2');
+                joueur3 = new Joueur(new int[]{0, 6},'3');
+                this.joueurs.add(joueur1);
+                this.joueurs.add(joueur2);
+                this.joueurs.add(joueur3);
+                break;
+            case 4:
+                this.plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{0, 0},'1');
+                joueur2 = new Joueur(new int[]{0, 2},'2');
+                joueur3 = new Joueur(new int[]{0, 5},'3');
+                joueur4 = new Joueur(new int[]{0, 7},'4');
+                this.joueurs.add(joueur1);
+                this.joueurs.add(joueur2);
+                this.joueurs.add(joueur3);
+                this.joueurs.add(joueur4);
+                break;
+        }
+
+    }
+
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
 
-        System.out.println("Création");
-        this.plateau = new Plateau();
-        this.plateau.setPlateau();
+        setPartie(nbrJoueur);
 
 
-        Joueur joueur1 = new Joueur(new int[]{0, 1},'1');
-        this.joueurs.add(joueur1);
-        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
-        this.joueurs.add(joueur2);
+
+
+
+
         //System.out.println(this.joueurs.size());
 
         //Récupération de la HashMap reliant les états des cases aux images à afficher
@@ -130,6 +170,11 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
+        //checkFinDePartie
+        /*if(Partie.getJoueurs().size() == 1) {
+            sbg.enterState(6);
+        }*/
+
         //Joueur en cours
         if (nouveauTour){
             this.currentTour++;
@@ -154,7 +199,7 @@ public class Partie  extends BasicGameState {
             }
         }
         if ((xpos<410 || xpos>560) || (ypos>240 || ypos<187)){
-            btnAdd = new Image("map/ADD.png");
+            btnAdd = new Image("map/ADD1.png");
         }
 
         //Check for button exe
@@ -168,7 +213,7 @@ public class Partie  extends BasicGameState {
             }
         }
         if ((xpos<250 || xpos>400) || (ypos>240 || ypos<187)){
-            btnExe = new Image("map/EXE.png");
+            btnExe = new Image("map/EXE1.png");
         }
 
         //Check for button Walls
@@ -182,7 +227,7 @@ public class Partie  extends BasicGameState {
             }
         }
         if ((xpos<90 || xpos>240) || (ypos>240 || ypos<187)){
-            btnWalls = new Image("map/Walls.png");
+            btnWalls = new Image("map/Walls1.png");
         }
 
 
@@ -190,7 +235,6 @@ public class Partie  extends BasicGameState {
             joueur.updateJoueur(this.plateau);
         }
     }
-
 
     public static void waitForClick() {
         //Wait for click
@@ -207,6 +251,29 @@ public class Partie  extends BasicGameState {
             gc.exit();
         }
 
+        switch (key){
+            case Input.KEY_2:
+                nbrJoueur = 2;
+                break;
+            case  Input.KEY_3:
+                nbrJoueur = 3;
+                break;
+            case Input.KEY_4:
+                nbrJoueur = 4;
+                break;
+        }
+
+
+    }
+
+    public static void makeJoueurReturnStart(char numJoueur) {
+        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
+        for (int i = 0; i < joueurs.size(); i++) {
+            if (joueurs.get(i).getNumJoueur() == numJoueur) {
+                plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
+                joueurs.get(i).returnStart();
+            }
+        }
 
     }
 
