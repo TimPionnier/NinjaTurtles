@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class ExecProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
+    private static Winner winner;
 
     public ExecProgram(int state) throws SlickException {
         super(state);
@@ -82,7 +83,11 @@ public class ExecProgram extends Tour {
                     this.joueur.setPosition(0,this.joueur.getPosition(0) + 1);
                 } else if (this.joueur.getDirection() == 'O' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                     this.joueur.setPosition(1,this.joueur.getPosition(1) - 1);
-                } else if (this.joueur.getFrontCase(this.plateau).getEtat() != ' '){
+                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?'){
+                    this.winner.setJoueur(this.joueur);
+                    sbg.enterState(6);
+                }
+                else if (this.joueur.getFrontCase(this.plateau).getEtat() != ' '){
                     System.out.println("Attention ! Un mur bloque le passage");
                 }
 
@@ -126,7 +131,8 @@ public class ExecProgram extends Tour {
         this.plateau = plateau;
     }
 
-    /*public void useLaser(char direction){
-        if ()
-    }*/
+    public static void setWinner(Winner winner) {
+        ExecProgram.winner = winner;
+    }
+
 }

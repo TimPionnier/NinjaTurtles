@@ -28,6 +28,7 @@ public class Partie  extends BasicGameState {
     private AddToProgram addToProgram;
     private BuildWall buildWall;
     private ExecProgram execProgram;
+    private Winner winner;
 
     private Image dammier;
     private Image btnWalls;
@@ -238,5 +239,10 @@ public class Partie  extends BasicGameState {
 
     public void setExecProgram(ExecProgram execProgram) {
         this.execProgram = execProgram;
+    }
+
+    public void setWinner(Winner winner) {
+        this.winner = winner;
+        this.execProgram.setWinner(winner);
     }
 }

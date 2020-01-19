@@ -12,8 +12,9 @@ public class Main extends StateBasedGame {
     public static int menuState = 1;
     public static int playState = 2;
     public static int addToProgramState = 3;
-    public static int execProgram = 4;
-    public static int buildWall = 5;
+    public static int execProgramState = 4;
+    public static int buildWallState = 5;
+    public static int winnerState = 6;
     public static int game = 0;
 
     public Main(String name) throws SlickException {
@@ -27,18 +28,21 @@ public class Main extends StateBasedGame {
         WindowGame menu = new WindowGame(menuState);
         Partie partie = new Partie(playState,2);
         AddToProgram addToProgram = new AddToProgram(addToProgramState);
-        ExecProgram execProgram = new ExecProgram(4);
-        BuildWall buildWall = new BuildWall(5);
+        ExecProgram execProgram = new ExecProgram(execProgramState);
+        BuildWall buildWall = new BuildWall(buildWallState);
+        Winner winner = new Winner(winnerState);
 
         partie.setAddToProgram(addToProgram);
         partie.setBuildWall(buildWall);
         partie.setExecProgram(execProgram);
+        partie.setWinner(winner);
 
         this.addState(menu);
         this.addState(partie);
         this.addState(addToProgram);
         this.addState(execProgram);
         this.addState(buildWall);
+        this.addState(winner);
         this.enterState(menuState);
     }
 
