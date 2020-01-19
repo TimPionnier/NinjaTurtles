@@ -29,24 +29,24 @@ public class AddToProgram extends Tour {
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawString(mouse,150,50);
-        g.drawImage(dammier, 150, 241);
+        g.drawImage(dammier, 150, 200);
         g.drawString("Défausser ses cartes",225,775);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
         g.drawImage(btnEnd, 250, 560);
 
 
         //Affichage des cases en fonction de leur état
-        int x = 190;
+        int x = 150;
         int y = 200;
-        for (int i=0 ; i<64; i++) {
-            if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+        for (int i=0 ; i<8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
+                }
+                x += 40;
             }
-            x += 40;
-            if (i%8==0){
-                x = 190 ;
-                y+=40;
-            }
+            x = 150 ;
+            y+=40;
         }
 
         //Main joueur
@@ -124,7 +124,7 @@ public class AddToProgram extends Tour {
                     System.out.println("defausse");
                     this.joueur.getDeck().remplirDefausse();
                     this.joueur.getDeck().remplirMain();
-                    //stateBasedGame.enterState(2);
+                    stateBasedGame.enterState(2);
                     Partie.waitForClick();
                 }
             }

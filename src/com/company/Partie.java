@@ -78,7 +78,7 @@ public class Partie  extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawImage(dammier, 150, 241);
+        g.drawImage(dammier, 150, 200);
         g.drawImage(btnWalls, 90, 560);
         g.drawImage(btnExe, 250, 560);
         g.drawImage(btnAdd, 410, 560);
@@ -89,20 +89,18 @@ public class Partie  extends BasicGameState {
 
 
         //Affichage des éléments du plateau
-        int x = 190;
+        int x = 150;
         int y = 200;
-
-
         //Affichage des cases en fonction de leur état
-       for (int i=0 ; i<64; i++) {
-           if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-               g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+       for (int i=0 ; i<8; i++) {
+           for (int j = 0; j < 8; j++) {
+               if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                   g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
+               }
+               x += 40;
            }
-           x += 40;
-           if (i%8==0){
-               x = 190 ;
-               y+=40;
-           }
+           x = 150 ;
+           y+=40;
        }
 
 

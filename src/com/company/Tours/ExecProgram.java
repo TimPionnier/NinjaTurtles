@@ -27,23 +27,23 @@ public class ExecProgram extends Tour {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawString(mouse,150,50);
-        g.drawImage(dammier, 150, 241);
+        g.drawImage(dammier, 150, 200);
         g.drawImage(btnEnd, 250, 560);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
 
 
         //Affichage des cases en fonction de leur état
-        int x = 190;
+        int x = 150;
         int y = 200;
-        for (int i=0 ; i<64; i++) {
-            if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
+        for (int i=0 ; i<8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
+                }
+                x += 40;
             }
-            x += 40;
-            if (i%8==0){
-                x = 190 ;
-                y+=40;
-            }
+            x = 150 ;
+            y+=40;
         }
     }
 
@@ -73,14 +73,17 @@ public class ExecProgram extends Tour {
 
 
             if (instruction == 'B') {
-                if ((this.joueur.getDirection() == 'N') ) {
+                this.plateau.getCase(this.joueur.getPosition(0),this.joueur.getPosition(1)).setEtat(' ');
+                if (this.joueur.getDirection() == 'N' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                     this.joueur.setPosition(0,this.joueur.getPosition(0) - 1);
-                } else if (this.joueur.getDirection() == 'E') {
+                } else if (this.joueur.getDirection() == 'E' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                     this.joueur.setPosition(1,this.joueur.getPosition(1) + 1);
-                } else if (this.joueur.getDirection() == 'S') {
+                } else if (this.joueur.getDirection() == 'S' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                     this.joueur.setPosition(0,this.joueur.getPosition(0) + 1);
-                } else if (this.joueur.getDirection() == 'O') {
+                } else if (this.joueur.getDirection() == 'O' && this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                     this.joueur.setPosition(1,this.joueur.getPosition(1) - 1);
+                } else if (this.joueur.getFrontCase(this.plateau).getEtat() != ' '){
+                    System.out.println("Attention ! Un mur bloque le passage");
                 }
 
             } else if (instruction == 'J') {
@@ -104,14 +107,11 @@ public class ExecProgram extends Tour {
                     this.joueur.setDirection('N');
                 }
             } else if (instruction == 'L') {
-                if (this.joueur.getDirection() == 'N') {
-                    //useLaser('N');
-                } else if (this.joueur.getDirection() == 'E') {
-                    //useLaser('E');
-                } else if (this.joueur.getDirection() == 'S') {
-                    //useLaser('S');
-                } else if (this.joueur.getDirection() == 'O') {
-                    //useLaser('O');
+                if (this.joueur.getFrontCase(plateau).getEtat() == 'G') {
+                    this.joueur.getFrontCase(plateau).setEtat(' ');
+                }
+                else {
+                    System.out.println("Action impossible ici");
                 }
             }
             Partie.waitForClick();
@@ -125,4 +125,8 @@ public class ExecProgram extends Tour {
         this.joueur = joueur;
         this.plateau = plateau;
     }
+
+    /*public void useLaser(char direction){
+        if ()
+    }*/
 }

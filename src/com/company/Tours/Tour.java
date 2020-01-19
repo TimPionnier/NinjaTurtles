@@ -57,7 +57,7 @@ public abstract class Tour extends BasicGameState {
 
 
         //Affichage des cases en fonction de leur état
-        for (int i=0 ; i<64; i++) {
+        /*for (int i=0 ; i<64; i++) {
             if (this.plateau.getCase(i).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
                 g.drawImage(this.list_cartes.get(this.plateau.getCase(i).getEtat()), x, y);
             }
@@ -66,6 +66,6 @@ public abstract class Tour extends BasicGameState {
                 x = 190 ;
                 y+=40;
             }
-        }
+        }*/
     }
 }

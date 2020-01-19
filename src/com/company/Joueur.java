@@ -19,7 +19,7 @@ public class Joueur {
         this.position = position;
     }
 
-    public void updateJoueur(Plateau plateau) {
+    /*public void updateJoueur(Plateau plateau) {
         for (int i = 0; i < plateau.getCases().size(); i++) {
             if (plateau.getCase(i).getEtat() == this.numJoueur){
                 plateau.getCase(i).setEtat(' ');
@@ -28,6 +28,10 @@ public class Joueur {
                 plateau.getCase(i).setEtat(this.numJoueur);
             }
         }
+    }*/
+
+    public void updateJoueur(Plateau plateau){
+        plateau.getCase(this.position[0],this.position[1]).setEtat(this.numJoueur);
     }
 
     public void setDirection(char nvllDirection) {this.direction = nvllDirection;}
@@ -54,70 +58,24 @@ public class Joueur {
         return deck;
     }
 
-    public void addInstruction(Character instruction) {
-        this.instructions.add(instruction);
-    }
-
-    /*public void executerFile () {
-        this.instruction = Deck.getFileInstruction().getFirst();
-
-        if (instruction == 'B') {
-            if ((direction == 'N') ) {
-                this.position[1]--;
-            } else if (direction == 'E') {
-                this.position[0]++;
-            } else if (direction == 'S') {
-                this.position[1]++;
-            } else if (direction == 'O') {
-                this.position[0]--;
-            }
-
-        } else if (instruction == 'J') {
-            if (direction == 'N') {
-                setDirection('O');
-            } else if (direction == 'E') {
-                setDirection('N');
-            } else if (direction == 'S') {
-                setDirection('E');
-            } else if (direction == 'O') {
-                setDirection('S');
-            }
-        } else if (instruction == 'V') {
-            if (direction == 'N') {
-                setDirection('E');
-            } else if (direction == 'E') {
-                setDirection('S');
-            } else if (direction == 'S') {
-                setDirection('O');
-            } else if (direction == 'O') {
-                setDirection('N');
-            }
-        } else if (instruction == 'L') {
-            if (direction == 'N') {
-                //useLaser('N');
-            } else if (direction == 'E') {
-                //useLaser('E');
-            } else if (direction == 'S') {
-                //useLaser('S');
-            } else if (direction == 'O') {
-                //useLaser('O');
-            }
+    public Case getFrontCase(Plateau plateau){
+        Case front;
+        switch (this.direction){
+            case 'N':
+                front = plateau.getCase(this.position[0]-1,this.position[1]);
+                break;
+            case 'E':
+                front = plateau.getCase(this.position[0],this.position[1]+1);
+                break;
+            case 'O':
+                front = plateau.getCase(this.position[0],this.position[1]-1);
+                break;
+            case 'S':
+                front = plateau.getCase(this.position[0]+1,this.position[1]);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + this.direction);
         }
-    }
-*/
-    public void buildMur(char typeMur, int i, int j) {
-
-        if (i < 8 && j < 8) {
-            int k = i + (j - 1) * 8; //position dans la liste cases
-            if (typeMur == 'G' || typeMur == 'P') {
-                Plateau.getCase(k).setEtat(typeMur);
-            } else {
-                System.out.println("erreur entree type mur");
-            }
-        } else {
-            System.out.println("erreur entree des positions du mur");
-        }
-
-
+        return front;
     }
 }
