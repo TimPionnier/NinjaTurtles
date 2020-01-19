@@ -86,11 +86,27 @@ public class ExecProgram extends Tour {
                 } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?'){
                     this.winner.setJoueur(this.joueur);
                     sbg.enterState(6);
+                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == 'G' ||
+                           this.joueur.getFrontCase(this.plateau).getEtat() == 'P' ||
+                           this.joueur.getFrontCase(this.plateau).getEtat() == 'C'){
+                    System.out.println("Attention ! Un mur bloque le passage. Vous faites demi-tour");
+                    switch (this.joueur.getDirection()){
+                        case 'N':
+                            this.joueur.setDirection('S');
+                            break;
+                        case 'S':
+                            this.joueur.setDirection('N');
+                            break;
+                        case 'E':
+                            this.joueur.setDirection('O');
+                            break;
+                        case 'O':
+                            this.joueur.setDirection('E');
+                            break;
+                        default:
+                            System.out.println("Error");
+                    }
                 }
-                else if (this.joueur.getFrontCase(this.plateau).getEtat() != ' '){
-                    System.out.println("Attention ! Un mur bloque le passage");
-                }
-
             } else if (instruction == 'J') {
                 if (this.joueur.getDirection() == 'N') {
                     this.joueur.setDirection('O');
