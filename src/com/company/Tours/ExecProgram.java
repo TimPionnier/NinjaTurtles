@@ -1,12 +1,8 @@
 package com.company.Tours;
 
-import com.company.Cartes;
-import com.company.Joueur;
-import com.company.Plateau;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import com.company.*;
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -28,11 +24,11 @@ public class ExecProgram extends Tour {
         return 4;
     }
 
-
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
+        g.drawImage(btnEnd, 250, 560);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
 
 
@@ -52,11 +48,30 @@ public class ExecProgram extends Tour {
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        Input input = gc.getInput();
+        int xpos = Mouse.getX();
+        int ypos = Mouse.getY();
+
+
+        mouse = "xposs: " + xpos + " ; ypos: " + ypos;
+        if ((xpos >250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
+            btnEnd = new Image("map/btnEnd-clicked.png");
+            if (input.isMouseButtonDown(0)) {
+                if (this.joueur.getDeck().getMain().size() < 5) {
+                    this.joueur.getDeck().remplirMain();
+                }
+                sbg.enterState(2);
+                Partie.waitForClick();
+            }
+        }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
+            btnEnd = new Image("map/btnEnd.png");
+        }
+
         if (this.joueur.getDeck().getFileInstruction().size()>0) {
             char instruction = this.joueur.getDeck().getFileInstruction().remove();
 
-            
+
             if (instruction == 'B') {
                 if ((this.joueur.getDirection() == 'N') ) {
                     this.joueur.setPosition(0,this.joueur.getPosition(0) - 1);
@@ -99,6 +114,7 @@ public class ExecProgram extends Tour {
                     //useLaser('O');
                 }
             }
+            Partie.waitForClick();
         }
         else {
             stateBasedGame.enterState(2);

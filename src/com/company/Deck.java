@@ -67,6 +67,10 @@ public class Deck {
         System.out.println();
     }
 
+    public void suppMur(int i) {
+        this.murs.remove(i);
+    }
+
     public ArrayDeque<Character> getFileInstruction() {
         return this.fileInstruction;
     }

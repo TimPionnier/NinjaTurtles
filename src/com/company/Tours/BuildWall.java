@@ -1,9 +1,6 @@
 package com.company.Tours;
 
-import com.company.Cartes;
-import com.company.Case;
-import com.company.Joueur;
-import com.company.Plateau;
+import com.company.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -34,6 +31,7 @@ public class BuildWall extends Tour {
         g.drawString(mouse,150,50);
         g.drawImage(dammier, 150, 241);
         g.drawString(murPos, 200, 100);
+        g.drawImage(btnEnd, 250, 560);
 
         //Murs joueur
         int u = 20;
@@ -65,7 +63,7 @@ public class BuildWall extends Tour {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
@@ -74,14 +72,50 @@ public class BuildWall extends Tour {
 
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-
-
-        //getEtatMur
-        if (xpos > 20 && xpos < 60) {
+        if ((xpos >250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
+            btnEnd = new Image("map/btnEnd-clicked.png");
             if (input.isMouseButtonDown(0)) {
+                if (this.joueur.getDeck().getMain().size() < 5) {
+                    this.joueur.getDeck().remplirMain();
+                }
+                sbg.enterState(2);
+                Partie.waitForClick();
+            }
+        }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
+            btnEnd = new Image("map/btnEnd.png");
+        }
 
+        System.out.println(this.joueur.getDeck().getMurs().size());
+        //getEtatMur
+        if (xpos > 20 && xpos < 60 && ypos > 140 && ypos < 180) {
+            if (input.isMouseButtonDown(0)) {
                 etatMur = this.joueur.getDeck().getMur(0);
-                System.out.println("etat mur = " + etatMur);
+                this.joueur.getDeck().suppMur(0);
+                Partie.waitForClick();
+            }
+        } else if (xpos > 140 && xpos < 180 && ypos > 140 && ypos < 180) {
+            if (input.isMouseButtonDown(0) && this.joueur.getDeck().getMurs().size() > 1) {
+                etatMur = this.joueur.getDeck().getMur(1);
+                this.joueur.getDeck().suppMur(1);
+                Partie.waitForClick();
+            }
+        } else if (xpos > 260 && xpos < 300 && ypos > 140 && ypos < 180) {
+            if (input.isMouseButtonDown(0) && this.joueur.getDeck().getMurs().size() > 2) {
+                etatMur = this.joueur.getDeck().getMur(2);
+                this.joueur.getDeck().suppMur(2);
+                Partie.waitForClick();
+            }
+        } else if (xpos > 380 && xpos < 420 && ypos > 140 && ypos < 180) {
+            if (input.isMouseButtonDown(0) && this.joueur.getDeck().getMurs().size() > 3) {
+                etatMur = this.joueur.getDeck().getMur(3);
+                this.joueur.getDeck().suppMur(3);
+                Partie.waitForClick();
+            }
+        } else if (xpos > 500 && xpos < 540 && ypos > 140 && ypos < 180) {
+            if (input.isMouseButtonDown(0) && this.joueur.getDeck().getMurs().size() > 4) {
+                etatMur = this.joueur.getDeck().getMur(4);
+                this.joueur.getDeck().suppMur(4);
+                Partie.waitForClick();
             }
         }
 
@@ -159,7 +193,7 @@ public class BuildWall extends Tour {
         murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
 
         if ((murX != -1) && (murY != -1) && (etatMur != ' ')) {
-            addMur(murX, murY, etatMur);
+            addMur(murY, murX, etatMur);
             murX = -1; murY = -1; etatMur = ' ';
         }
     }
@@ -171,9 +205,11 @@ public class BuildWall extends Tour {
 
     public void addMur(int murX, int murY, char etatMur) {
         for (int i = 0; i < this.cases.size(); i++) {
-            if ((this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY)) {
-                this.cases.get(i).setEtat(etatMur);
-                System.out.println(murPos);
+            if (this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY) {
+                if(this.cases.get(i).getEtat() == ' ') {
+                    this.cases.get(i).setEtat(etatMur);
+                    System.out.println(murPos);
+                }
             }
         }
 

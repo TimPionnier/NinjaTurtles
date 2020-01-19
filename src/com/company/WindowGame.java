@@ -29,7 +29,7 @@ public class WindowGame extends BasicGameState {
         background = new Image("map/background.jpeg");
         playButton = new Image("map/boutonPlay.png");
         Music mixtape = new Music("sound/mixtape.ogg");
-        mixtape.loop();
+        //mixtape.loop();
 
     }
 
