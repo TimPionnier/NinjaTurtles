@@ -21,8 +21,6 @@ public class BuildWall extends Tour {
 
     public BuildWall(int state) throws SlickException{
         super(state);
-        Cartes cartes = new Cartes();
-        this.list_cartes = cartes.getCartes();
     }
 
 
@@ -218,9 +216,10 @@ public class BuildWall extends Tour {
         System.out.println(murPos);
     }
 
-    public void setTour(Joueur joueur, Plateau plateau) {
+    public void setTour(Joueur joueur, Plateau plateau, HashMap<Character, Image> list_cartes) {
         this.joueur = joueur;
         this.plateau = plateau;
+        this.list_cartes = list_cartes;
     }
 
 
