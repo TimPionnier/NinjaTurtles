@@ -20,6 +20,7 @@ public class Partie  extends BasicGameState {
     private String txt = "";
     private GameContainer gc;
 
+
     private static int nbrJoueur ;
     private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int currentPlayer = 0;
@@ -32,6 +33,7 @@ public class Partie  extends BasicGameState {
 
     private Image dammier;
     private Image btnWalls;
+
 
     public static ArrayList<Joueur> getJoueurs() {
         return joueurs;
@@ -111,6 +113,8 @@ public class Partie  extends BasicGameState {
         btnWalls = new Image("map/Walls.png");
         btnExe = new Image("map/EXE.png");
         btnAdd = new Image("map/Add.png");
+
+
     }
 
 
@@ -119,6 +123,8 @@ public class Partie  extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        g.setColor(Color.black);
+
         g.drawImage(dammier, 150, 200);
         g.drawImage(btnWalls, 90, 560);
         g.drawImage(btnExe, 250, 560);
@@ -127,6 +133,16 @@ public class Partie  extends BasicGameState {
         g.drawString(demande, 200, 700 );
         g.drawString(txt,130,600);
         g.drawString("Tour du Joueur " + this.currentPlayer,225,10);
+        int k = 0;
+        //int y = 0;
+        for (int i = 0; i < 9; i++) {
+            g.drawLine(150, 520 - k, 470, 520 - k);
+            g.drawLine(150 + k, 520, 150 + k, 200);
+            k += 40;
+
+        }
+
+
 
 
         //Affichage des éléments du plateau

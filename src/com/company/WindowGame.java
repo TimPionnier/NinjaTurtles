@@ -12,8 +12,9 @@ public class WindowGame extends BasicGameState {
         return nbrJoueur;
     }
 
+    private Image backGroundNinjaTurtles;
     private GameContainer gc;
-    private Image background;
+    //private Image background;
     private Image playButton;
     int xpos = Mouse.getX();
     int ypos = Mouse.getY();
@@ -31,8 +32,8 @@ public class WindowGame extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
-
-        background = new Image("map/background.jpeg");
+        backGroundNinjaTurtles = new Image("map/ninjaTurtlesBackground.jpg");
+        //background = new Image("map/background.jpeg");
         playButton = new Image("map/boutonPlay.png");
         Music mixtape = new Music("sound/mixtape.ogg");
         //mixtape.loop();
@@ -61,7 +62,8 @@ public class WindowGame extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         //g.scale(Display.getWidth()/620, Display.getHeight()/802);
-        g.drawImage(background, 0, 0);
+        g.drawImage(backGroundNinjaTurtles, 0, 0);
+        //g.drawImage(background, 0, 0);
         g.drawImage(playButton, 250, 450);
         g.drawString(mouse,125,50);
 
@@ -86,7 +88,7 @@ public class WindowGame extends BasicGameState {
         }
 
         if(getID() == 2 ) {
-            background = null;
+            //background = null;
             //Partie.askNbrJoueur(key);
         }
 
