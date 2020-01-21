@@ -54,8 +54,8 @@ public class Main extends StateBasedGame {
             app.setDisplayMode(620, 802, false);
             app.setTargetFrameRate(60);
             app.start();
-        } catch (SlickException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            //e.printStackTrace();
         }
 
     }

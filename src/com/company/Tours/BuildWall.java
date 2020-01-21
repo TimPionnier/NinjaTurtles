@@ -204,7 +204,7 @@ public class BuildWall extends Tour {
     public void addMur(int murX, int murY, char etatMur) {
         for (int i = 0; i < this.cases.size(); i++) {
             if (this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY) {
-                if(this.cases.get(i).getEtat() == ' ') {
+                if(this.cases.get(i).getEtat() == ' ' && autoriseMur(nbrJoueur, this.plateau.getCase(murX, murY))) {
                     this.cases.get(i).setEtat(etatMur);
                     System.out.println(murPos);
                     stateBasedGame.enterState(2);
@@ -222,21 +222,56 @@ public class BuildWall extends Tour {
         this.list_cartes = list_cartes;
     }
 
-    public static boolean checkPath(Case current){
-        int x = current.getPosition(0);
-        int y = current.getPosition(1);
+    public boolean autoriseMur(int nbrJoueur, Case cibleMur) {
+        switch (nbrJoueur) {
+            case 2:
+                if (checkPath(this.plateau.getCase(7, 3), cibleMur)){
+                    return true;
+                }else {
+                    return false;
+                }
+                break;
+            case 3:
+                if( checkPath(this.plateau.getCase(7, 0), cibleMur) && checkPath(this.plateau.getCase(7, 3), cibleMur)
+                        && checkPath(this.plateau.getCase(7, 6), cibleMur)) {
+                    return true;
+                }else {
+                    return false;
+                }
+                break;
+            case 4:
+                if( checkPath(this.plateau.getCase(7, 1), cibleMur) && checkPath(this.plateau.getCase(7, 6), cibleMur)) {
+                    return true;
+                }else {
+                    return false;
+                }
+                break;
+        }
+        
+    }
+
+    public static boolean checkPath(Case joyau, Case cibleMur){
+        cibleMur.setEtat('P');
+        int x = joyau.getPosition(0);
+        int y = joyau.getPosition(1);
+
         if ((x+1)<8 && Plateau.getCase(x+1,y).getEtat() == ' '){
-            checkPath(Plateau.getCase(x+1,y));
-        }
+            checkPath(Plateau.getCase(x+1,y), cibleMur);
+        } else { return false; }
+
         if ((x-1)>-1 && Plateau.getCase(x-1,y).getEtat() == ' '){
-            checkPath(Plateau.getCase(x-1,y));
-        }
+            checkPath(Plateau.getCase(x-1,y), cibleMur);
+        } else { return false; }
+
         if ((y+1)<8 && Plateau.getCase(x,y+1).getEtat() == ' '){
-            checkPath(Plateau.getCase(x,y+1));
-        }
+            checkPath(Plateau.getCase(x,y+1), cibleMur);
+        } else { return false; }
+
         if ((y-1)>-1 && Plateau.getCase(x,y-1).getEtat() == ' '){
-            checkPath(Plateau.getCase(x,y-1));
-        }
+            checkPath(Plateau.getCase(x,y-1), cibleMur);
+        }else { return false; }
+
+        cibleMur.setEtat(' ');
         return true;
     }
 
