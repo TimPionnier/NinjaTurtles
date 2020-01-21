@@ -204,12 +204,12 @@ public class BuildWall extends Tour {
     public void addMur(int murX, int murY, char etatMur) {
         for (int i = 0; i < this.cases.size(); i++) {
             if (this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY) {
-                if(this.cases.get(i).getEtat() == ' ' && autoriseMur(nbrJoueur, this.plateau.getCase(murX, murY))) {
+                //if(this.cases.get(i).getEtat() == ' ' && autoriseMur(nbrJoueur, this.plateau.getCase(murX, murY))) {
                     this.cases.get(i).setEtat(etatMur);
                     System.out.println(murPos);
                     stateBasedGame.enterState(2);
                     Partie.waitForClick();
-                }
+               // }
             }
         }
 
@@ -222,7 +222,7 @@ public class BuildWall extends Tour {
         this.list_cartes = list_cartes;
     }
 
-    public boolean autoriseMur(int nbrJoueur, Case cibleMur) {
+   /* public boolean autoriseMur(int nbrJoueur, Case cibleMur) {
         switch (nbrJoueur) {
             case 2:
                 if (checkPath(this.plateau.getCase(7, 3), cibleMur)){
@@ -247,7 +247,7 @@ public class BuildWall extends Tour {
                 }
                 break;
         }
-        
+
     }
 
     public static boolean checkPath(Case joyau, Case cibleMur){
@@ -273,7 +273,7 @@ public class BuildWall extends Tour {
 
         cibleMur.setEtat(' ');
         return true;
-    }
+    } */
 
 
 }

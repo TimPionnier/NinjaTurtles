@@ -78,7 +78,7 @@ public class Partie  extends BasicGameState {
                 this.plateau.setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{6, 0},'1');
                 joueur2 = new Joueur(new int[]{0, 3},'2');
-                joueur3 = new Joueur(new int[]{0, 6},'3');
+                joueur3 = new Joueur(new int[]{0, 4},'3');
                 this.joueurs.add(joueur1);
                 this.joueurs.add(joueur2);
                 this.joueurs.add(joueur3);
@@ -115,11 +115,6 @@ public class Partie  extends BasicGameState {
         btnAdd = new Image("map/Add.png");
 
 
-    }
-
-
-    public ArrayList<Character> getMain() {
-        return main;
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -302,17 +297,6 @@ public class Partie  extends BasicGameState {
                 break;
         }
 
-
-    }
-
-    public static void makeJoueurReturnStart(char numJoueur) {
-        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
-        for (int i = 0; i < joueurs.size(); i++) {
-            if (joueurs.get(i).getNumJoueur() == numJoueur) {
-                plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
-                joueurs.get(i).returnStart();
-            }
-        }
 
     }
 
