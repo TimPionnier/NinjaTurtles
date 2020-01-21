@@ -62,6 +62,11 @@ public class Joueur {
         return deck;
     }
 
+    public Deck deleteDeck() {
+        this.deck = null;
+        return deck;
+    };
+
     public Case getFrontCase(Plateau plateau){
         Case front;
         switch (this.direction){
@@ -85,16 +90,51 @@ public class Joueur {
 
     public void returnStart() {
         //ajouter tous les cas en fonction du nbr de joueur
-        switch (this.numJoueur) {
-            case '1':
-                this.position = new int[]{0, 1};
-                break;
-            case '2':
-                this.position = new int[]{0, 5};
-                break;
-            case '3':
+        switch(Partie.getJoueurs().size()) {
+            case 2:
+                switch (this.numJoueur) {
+                    case '1':
+                        this.position = new int[]{0, 1};
+                        break;
+                    case '2':
+                        this.position = new int[]{0, 5};
+                        break;
 
+                }
+                break;
+            case 3:
+                switch (this.numJoueur) {
+                    case '1':
+                        this.position = new int[]{0, 0};
+                        break;
+                    case '2':
+                        this.position = new int[]{0, 3};
+                        break;
+                    case '3':
+                        this.position = new int[]{0, 6};
+                        break;
+
+                }
+                break;
+            case 4:
+                switch (this.numJoueur) {
+                    case '1':
+                        this.position = new int[]{0, 0};
+                        break;
+                    case '2':
+                        this.position = new int[]{0, 2};
+                        break;
+                    case '3':
+                        this.position = new int[]{0, 5};
+                        break;
+                    case '4':
+                        this.position = new int[]{0, 7};
+                        break;
+
+                }
+                break;
         }
+
 
         this.direction = 'S';
     }

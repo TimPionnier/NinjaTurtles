@@ -5,10 +5,7 @@ import com.company.Joueur;
 import com.company.Partie;
 import com.company.Plateau;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -16,6 +13,7 @@ import java.util.HashMap;
 
 public abstract class Tour extends BasicGameState {
     protected Image btnEnd;
+    protected int nbrJoueur;
 
     private int state;
     private HashMap<Character, Image> list_cartes;

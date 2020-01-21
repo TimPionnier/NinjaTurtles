@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Partie  extends BasicGameState {
+    private boolean partieSet = true;
     private int ID;
     String mouse = "No input yet!";
     static String demande = "";
@@ -50,25 +51,34 @@ public class Partie  extends BasicGameState {
     private int currentTour = 0;
 
 
-    public Partie(int state, int nbrJoueur) {
+    public Partie(int state) {
         this.ID = state;
-        this.nbrJoueur = nbrJoueur;
+        //this.nbrJoueur = nbrJoueur;
+    }
+
+    public static void setNbrJoueur(int i) {
+        nbrJoueur = i;
     }
 
     public void setPartie(int nbrJoueur) throws SlickException {
         System.out.println("Création");
         this.plateau = new Plateau();
-        Joueur joueur1 = new Joueur(new int[]{0, 1},'1');
-        Joueur joueur2 = new Joueur(new int[]{0, 5},'2');
+        Joueur joueur0 = new Joueur(new int[]{5, 1},' ');
+        Joueur joueur1 ;
+        Joueur joueur2 ;
         Joueur joueur3 ;
         Joueur joueur4 ;
         switch (nbrJoueur){
             case 2:
+                this.joueurs.remove(joueur0);
                 this.plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{0, 1},'1');
+                joueur2 = new Joueur(new int[]{7, 5},'2');
                 this.joueurs.add(joueur1);
                 this.joueurs.add(joueur2);
                 break;
             case 3:
+                this.joueurs.remove(joueur0);
                 this.plateau.setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{0, 0},'1');
                 joueur2 = new Joueur(new int[]{0, 3},'2');
@@ -78,16 +88,19 @@ public class Partie  extends BasicGameState {
                 this.joueurs.add(joueur3);
                 break;
             case 4:
+                this.joueurs.remove(joueurs.get(0));
                 this.plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{0, 0},'1');
-                joueur2 = new Joueur(new int[]{0, 2},'2');
-                joueur3 = new Joueur(new int[]{0, 5},'3');
-                joueur4 = new Joueur(new int[]{0, 7},'4');
+                joueur1 = new Joueur(new int[]{7, 0},'1');
+                joueur2 = new Joueur(new int[]{7, 2},'2');
+                joueur3 = new Joueur(new int[]{7, 5},'3');
+                joueur4 = new Joueur(new int[]{7, 7},'4');
                 this.joueurs.add(joueur1);
                 this.joueurs.add(joueur2);
                 this.joueurs.add(joueur3);
                 this.joueurs.add(joueur4);
                 break;
+            default:
+                this.joueurs.add(joueur0);
         }
 
     }
@@ -95,12 +108,8 @@ public class Partie  extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
 
+
         setPartie(nbrJoueur);
-
-
-
-
-
 
         //System.out.println(this.joueurs.size());
 
@@ -123,7 +132,7 @@ public class Partie  extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.setColor(Color.black);
+        g.setColor(Color.white);
 
         g.drawImage(dammier, 150, 200);
         g.drawImage(btnWalls, 90, 560);
@@ -164,8 +173,10 @@ public class Partie  extends BasicGameState {
        //Main du joueur
         int u = 20;
         int v = 620;
+        System.out.println(this.nbrJoueur);
         for (int i=0 ; i<this.joueurs.get(this.currentPlayer-1).getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueurs.get(this.currentPlayer-1).getDeck().getCarteMain(i)),u ,v );
+
             u += 120;
         }
 
@@ -186,17 +197,37 @@ public class Partie  extends BasicGameState {
         int ypos = Mouse.getY();
         mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
+        //reset partie
+        if (partieSet) {
+            setPartie(nbrJoueur);
+            System.out.println(nbrJoueur);
+            System.out.println(joueurs.size());
+            partieSet = false;
+        }
+
         //checkFinDePartie
-        /*if(Partie.getJoueurs().size() == 1) {
+        if(this.joueurs.size()==1) {
+            this.winner.addToWinners(joueurs.get(0));
+            this.winner.updateWinnerList();
             sbg.enterState(6);
-        }*/
+        }
 
         //Joueur en cours
         if (nouveauTour){
+            System.out.println("Joueur: ");
+            for (Character joueur:
+                 this.winner.getWinnersChar()) {
+                System.out.println(joueur);
+            }
             this.currentTour++;
             this.currentPlayer = this.currentTour%this.nbrJoueur;
+            char currentPlayerChar = (char)this.currentPlayer;
+            System.out.println("Joueuer current: "+ currentPlayerChar);
+            if (this.winner.getWinnersChar().contains((char)this.currentPlayer)){
+                this.currentPlayer++;
+            }
             if (this.currentPlayer == 0){
-                this.currentPlayer = this.nbrJoueur;
+                this.currentPlayer = this.joueurs.size();
             }
             System.out.println("Tour: "+currentTour);
             System.out.println("Tour du joueur " + this.currentPlayer);
@@ -208,7 +239,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
             btnAdd = new Image("map/ADD-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.addToProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
+                this.addToProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes);
                 this.nouveauTour = true;
                 sbg.enterState(3);
                 waitForClick();
@@ -222,7 +253,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>250 && xpos<400) && (ypos<240 && ypos>187)){
             btnExe = new Image("map/EXE-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.execProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
+                this.execProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes,this.joueurs);
                 this.nouveauTour = true;
                 sbg.enterState(4);
                 waitForClick();
@@ -236,7 +267,7 @@ public class Partie  extends BasicGameState {
         if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
             btnWalls = new Image("map/Walls-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.buildWall.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau);
+                this.buildWall.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes);
                 this.nouveauTour = true;
                 sbg.enterState(5);
                 waitForClick();

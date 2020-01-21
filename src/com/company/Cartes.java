@@ -8,22 +8,16 @@ import java.util.HashMap;
 public class Cartes {
 
     protected static HashMap<Character,Image> cartes;
-    Image woodBox = new Image("map/woodBox.png");
-    Image turtle1S = new Image ("map/Donatelo40S.png");
-    Image turtle1N = new Image ("map/Donatelo40N.png");
-    Image turtle1O = new Image ("map/Donatelo40O.png");
-    Image turtle1E = new Image ("map/Donatelo40E.png");
-    Image turtle2S = new Image ("map/Leonardo40S.png");
-    Image turtle2N = new Image ("map/Leonardo40N.png");
-    Image turtle2O = new Image ("map/Leonardo40O.png");
-    Image turtle2E = new Image ("map/Leonardo40E.png");
+
+
 
 
     public Cartes() throws SlickException {
 
         Image jewel = new Image("map/RUBY40.png");
-
-
+        Image woodBox = new Image("map/woodBox.png");
+        Image turtle1S = new Image ("map/Donatelo40S.png");
+        Image turtle2S = new Image ("map/Leonardo40S.png");
         Image carteBleue = new Image("map/cards/BlueCard.png");
         Image carteLaser = new Image("map/cards/LaserCard.png");
         Image carteViolette = new Image("map/cards/PurpleCard.png");
