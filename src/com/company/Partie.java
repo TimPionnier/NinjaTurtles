@@ -256,6 +256,7 @@ public class Partie  extends BasicGameState {
         }
 
 
+        //Mise à jour des positions des joueurs qui n'ont pas encore atteint le joyau
         for (Joueur joueur : this.joueurs){
             if (!this.winner.getWinners().contains(joueur)) {
                 joueur.updateJoueur(this.plateau);

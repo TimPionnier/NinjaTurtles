@@ -222,5 +222,23 @@ public class BuildWall extends Tour {
         this.list_cartes = list_cartes;
     }
 
+    public static boolean checkPath(Case current){
+        int x = current.getPosition(0);
+        int y = current.getPosition(1);
+        if ((x+1)<8 && Plateau.getCase(x+1,y).getEtat() == ' '){
+            checkPath(Plateau.getCase(x+1,y));
+        }
+        if ((x-1)>-1 && Plateau.getCase(x-1,y).getEtat() == ' '){
+            checkPath(Plateau.getCase(x-1,y));
+        }
+        if ((y+1)<8 && Plateau.getCase(x,y+1).getEtat() == ' '){
+            checkPath(Plateau.getCase(x,y+1));
+        }
+        if ((y-1)>-1 && Plateau.getCase(x,y-1).getEtat() == ' '){
+            checkPath(Plateau.getCase(x,y-1));
+        }
+        return true;
+    }
+
 
 }
