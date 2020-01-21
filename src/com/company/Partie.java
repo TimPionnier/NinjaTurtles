@@ -22,7 +22,8 @@ public class Partie  extends BasicGameState {
     private GameContainer gc;
 
 
-    private static int nbrJoueur ;
+    public static int nbrJoueur ;
+
     private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
     private int currentPlayer = 0;
 
