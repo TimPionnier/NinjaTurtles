@@ -6,17 +6,17 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ExecProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
     private static Winner winner;
+    private static ArrayList<Joueur> joueurs = new ArrayList<>();
 
     public ExecProgram(int state) throws SlickException {
         super(state);
-        Cartes cartes = new Cartes();
-        this.list_cartes = cartes.getCartes();
     }
 
 
@@ -81,7 +81,8 @@ public class ExecProgram extends Tour {
                         this.joueur.returnStart();
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                         this.joueur.setPosition(0, this.joueur.getPosition(0) - 1);
-
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                        this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'E' ) {
@@ -89,17 +90,17 @@ public class ExecProgram extends Tour {
                         this.joueur.returnStart();
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
                         this.joueur.setPosition(1, this.joueur.getPosition(1) + 1);
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                        this.winner.addToWinners(this.joueur);
                     }
 
-                } else if (this.joueur.getDirection() == 'S'  ) {
+                } else if (this.joueur.getDirection() == 'S') {
                     if (this.joueur.getPosition(0) == 7) {
                         this.joueur.returnStart();
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
                         this.joueur.setPosition(0, this.joueur.getPosition(0) + 1);
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
-                        this.winner.setJoueur(this.joueur);
-                        //Partie.getJoueurs().remove(this.joueur);
-                        sbg.enterState(6);
+                        this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'O' ) {
@@ -107,6 +108,8 @@ public class ExecProgram extends Tour {
                         this.joueur.returnStart();
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
                         this.joueur.setPosition(1, this.joueur.getPosition(1) - 1);
+                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                        this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '1' ||
@@ -139,6 +142,7 @@ public class ExecProgram extends Tour {
                     }
                 }
             } else if (instruction == 'J') {
+                this.list_cartes.get(this.joueur.getNumJoueur()).rotate(-90);
                 if (this.joueur.getDirection() == 'N') {
                     this.joueur.setDirection('O');
                 } else if (this.joueur.getDirection() == 'E') {
@@ -149,6 +153,7 @@ public class ExecProgram extends Tour {
                     this.joueur.setDirection('S');
                 }
             } else if (instruction == 'V') {
+                this.list_cartes.get(this.joueur.getNumJoueur()).rotate(90);
                 if (this.joueur.getDirection() == 'N') {
                     this.joueur.setDirection('E');
                 } else if (this.joueur.getDirection() == 'E') {
@@ -173,9 +178,11 @@ public class ExecProgram extends Tour {
         }
     }
 
-    public void setTour(Joueur joueur, Plateau plateau) {
+    public void setTour(Joueur joueur, Plateau plateau, HashMap<Character,Image> list_cartes, ArrayList<Joueur> joueurs) {
         this.joueur = joueur;
         this.plateau = plateau;
+        this.list_cartes = list_cartes;
+        this.joueurs = joueurs;
     }
 
     public static void setWinner(Winner winner) {
