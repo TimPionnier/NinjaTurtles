@@ -61,24 +61,20 @@ public class Partie  extends BasicGameState {
     }
 
     public void setPartie(int nbrJoueur) throws SlickException {
-        System.out.println("Création");
         this.plateau = new Plateau();
-        Joueur joueur0 = new Joueur(new int[]{5, 1},' ');
         Joueur joueur1 ;
         Joueur joueur2 ;
         Joueur joueur3 ;
         Joueur joueur4 ;
         switch (nbrJoueur){
             case 2:
-                this.joueurs.remove(joueur0);
-                this.plateau.setPlateau(nbrJoueur);
+                Partie.getPlateau().setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{0, 1},'1');
                 joueur2 = new Joueur(new int[]{7, 5},'2');
                 this.joueurs.add(joueur1);
                 this.joueurs.add(joueur2);
                 break;
             case 3:
-                this.joueurs.remove(joueur0);
                 this.plateau.setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{0, 0},'1');
                 joueur2 = new Joueur(new int[]{0, 3},'2');
@@ -88,7 +84,6 @@ public class Partie  extends BasicGameState {
                 this.joueurs.add(joueur3);
                 break;
             case 4:
-                this.joueurs.remove(joueurs.get(0));
                 this.plateau.setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{7, 0},'1');
                 joueur2 = new Joueur(new int[]{7, 2},'2');
@@ -99,8 +94,6 @@ public class Partie  extends BasicGameState {
                 this.joueurs.add(joueur3);
                 this.joueurs.add(joueur4);
                 break;
-            default:
-                this.joueurs.add(joueur0);
         }
 
     }
@@ -110,8 +103,6 @@ public class Partie  extends BasicGameState {
 
 
         setPartie(nbrJoueur);
-
-        //System.out.println(this.joueurs.size());
 
         //Récupération de la HashMap reliant les états des cases aux images à afficher
         Cartes cartes = new Cartes();
@@ -173,7 +164,6 @@ public class Partie  extends BasicGameState {
        //Main du joueur
         int u = 20;
         int v = 620;
-        System.out.println(this.nbrJoueur);
         for (int i=0 ; i<this.joueurs.get(this.currentPlayer-1).getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueurs.get(this.currentPlayer-1).getDeck().getCarteMain(i)),u ,v );
 
@@ -200,13 +190,11 @@ public class Partie  extends BasicGameState {
         //reset partie
         if (partieSet) {
             setPartie(nbrJoueur);
-            System.out.println(nbrJoueur);
-            System.out.println(joueurs.size());
             partieSet = false;
         }
 
         //checkFinDePartie
-        if(this.joueurs.size()==1) {
+        if(this.winner.getWinners().size()==Partie.nbrJoueur-1) {
             this.winner.addToWinners(joueurs.get(0));
             this.winner.updateWinnerList();
             sbg.enterState(6);
@@ -214,20 +202,13 @@ public class Partie  extends BasicGameState {
 
         //Joueur en cours
         if (nouveauTour){
-            System.out.println("Joueur: ");
-            for (Character joueur:
-                 this.winner.getWinnersChar()) {
-                System.out.println(joueur);
-            }
             this.currentTour++;
-            this.currentPlayer = this.currentTour%this.nbrJoueur;
-            char currentPlayerChar = (char)this.currentPlayer;
-            System.out.println("Joueuer current: "+ currentPlayerChar);
+            this.currentPlayer = this.currentTour%Partie.nbrJoueur;
             if (this.winner.getWinnersChar().contains((char)this.currentPlayer)){
                 this.currentPlayer++;
             }
             if (this.currentPlayer == 0){
-                this.currentPlayer = this.joueurs.size();
+                this.currentPlayer = Partie.nbrJoueur;
             }
             System.out.println("Tour: "+currentTour);
             System.out.println("Tour du joueur " + this.currentPlayer);
@@ -322,16 +303,6 @@ public class Partie  extends BasicGameState {
             }
         }
 
-    }
-
-    public static void askNbrJoueur(int key){
-        boolean condition = true; // on empeche le changement du nombre de joueur
-        demande = "A combien voulez vous jouer ?";
-        if (condition && (Input.KEY_1 == key || Input.KEY_2 == key || Input.KEY_3 == key)) {
-            Partie.nbrJoueur = key - 1;
-            demande = "";
-            condition = false;
-        }
     }
 
 
