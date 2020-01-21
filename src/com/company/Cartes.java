@@ -46,60 +46,12 @@ public class Cartes {
 
 
     }
-   /* public static void updateDirectionImage(){
-        for (int i = 0; i < Partie.getJoueurs().size(); i++) {
-            switch (Partie.getJoueurs().get(i).getDirection()){
-                case 'N':
-                    if (Partie.getJoueurs().get(i).getNumJoueur() == 1) {
-                        cartes.remove(cartes.containsKey(1));
-                        cartes.put('1',turtle1N);
-                    } else  if (Partie.getJoueurs().get(i).getNumJoueur() == 2) {
-                        cartes.remove(cartes.containsKey(2));
-                        cartes.put('2',turtle2N);
-                    }
-                    break;
-                case 'O':
-                    if (Partie.getJoueurs().get(i).getNumJoueur() == 1) {
-                        cartes.remove(cartes.containsKey(1));
-                        cartes.put('1',turtle1O);
-                    } else  if (Partie.getJoueurs().get(i).getNumJoueur() == 2) {
-                        cartes.remove(cartes.containsKey(2));
-                        cartes.put('2',turtle2O);
-                    }
-                    break;
-                case 'S':
-                    if (Partie.getJoueurs().get(i).getNumJoueur() == 1) {
-                        cartes.remove(cartes.containsKey(1));
-                        cartes.put('1',turtle1S);
-                    } else  if (Partie.getJoueurs().get(i).getNumJoueur() == 2) {
-                        cartes.remove(cartes.containsKey(2));
-                        cartes.put('2',turtle2S);
-                    }
-                    break;
-                case 'E':
-                    if (Partie.getJoueurs().get(i).getNumJoueur() == 1) {
-                        cartes.remove(cartes.containsKey(1));
-                        cartes.put('1',turtle1E);
-                    } else  if (Partie.getJoueurs().get(i).getNumJoueur() == 2) {
-                        cartes.remove(cartes.containsKey(2));
-                        cartes.put('2',turtle2E);
-                    }
-                    break;
-            }
-        }
-    }*/
 
 
     public static HashMap<Character, Image> getCartes() {
         return cartes;
     }
 
-    static char carteBleue = 'B';//"Fait avancer la tortue d'une case.";
-    static char carteJaune = 'J';//"Fait tourner la tortue dans le sens anti-horaire. Attention la tortue reste sur place.";
-    static char carteViolette = 'V';//"Fait tourner la tortue dans le sens horaire. Attention la tortue reste sur place.";
-    static char carteLaser = 'L';//"Utilise un laser pour attaquer ce qui est en face de la tortue.";
-    static char murPierres = 'P';//"Obstacle inamovible et indestructible.";
-    static char murGlace = 'G';//"Obstacle inamovible mais destructible par un laser.";
 
 
 }

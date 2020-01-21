@@ -16,7 +16,7 @@ public class Winner  extends BasicGameState {
     private Joueur joueur;
 
     private static ArrayList<Joueur> winners = new ArrayList<>();
-    private static ArrayList<Character> winnersChar = new ArrayList<>();
+    private static ArrayList<Integer> winnersInt = new ArrayList<>();
 
     private static String displayWinners = "";
 
@@ -56,7 +56,23 @@ public class Winner  extends BasicGameState {
 
     public static void addToWinners(Joueur joueur){
         winners.add(joueur);
-        winnersChar.add(joueur.getNumJoueur());
+        int numJoueur = joueur.getNumJoueur();
+        switch (numJoueur){
+            case 49:
+                numJoueur = 1;
+                break;
+            case 50:
+                numJoueur = 2;
+                break;
+            case 51:
+                numJoueur = 3;
+                break;
+            case 52:
+                numJoueur = 4;
+                break;
+        }
+        winnersInt.add(numJoueur);
+        Plateau.getCase(joueur.getPosition(0),joueur.getPosition(1)).setEtat(' ');
     }
 
     public static void updateWinnerList(){
@@ -69,7 +85,7 @@ public class Winner  extends BasicGameState {
         return winners;
     }
 
-    public static ArrayList<Character> getWinnersChar() {
-        return winnersChar;
+    public static ArrayList<Integer> getWinnersInt() {
+        return winnersInt;
     }
 }

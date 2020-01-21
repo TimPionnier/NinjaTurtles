@@ -76,7 +76,7 @@ public class Partie  extends BasicGameState {
                 break;
             case 3:
                 this.plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{0, 0},'1');
+                joueur1 = new Joueur(new int[]{6, 0},'1');
                 joueur2 = new Joueur(new int[]{0, 3},'2');
                 joueur3 = new Joueur(new int[]{0, 6},'3');
                 this.joueurs.add(joueur1);
@@ -149,7 +149,7 @@ public class Partie  extends BasicGameState {
         int x = 150;
         int y = 200;
         //Affichage des cases en fonction de leur état
-       for (int i=0 ; i<8; i++) {
+        for (int i=0 ; i<8; i++) {
            for (int j = 0; j < 8; j++) {
                if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
@@ -166,7 +166,6 @@ public class Partie  extends BasicGameState {
         int v = 620;
         for (int i=0 ; i<this.joueurs.get(this.currentPlayer-1).getDeck().getMain().size(); i++){
             g.drawImage(this.list_cartes.get(this.joueurs.get(this.currentPlayer-1).getDeck().getCarteMain(i)),u ,v );
-
             u += 120;
         }
 
@@ -193,18 +192,16 @@ public class Partie  extends BasicGameState {
             partieSet = false;
         }
 
-        //checkFinDePartie
-        if(this.winner.getWinners().size()==Partie.nbrJoueur-1) {
-            this.winner.addToWinners(joueurs.get(0));
-            this.winner.updateWinnerList();
-            sbg.enterState(6);
+        if (this.winner.getWinnersInt().size()>0){
+            System.out.println(this.winner.getWinnersInt().get(0));
         }
 
         //Joueur en cours
         if (nouveauTour){
             this.currentTour++;
             this.currentPlayer = this.currentTour%Partie.nbrJoueur;
-            if (this.winner.getWinnersChar().contains((char)this.currentPlayer)){
+            while (this.winner.getWinnersInt().contains(this.currentPlayer)){
+                this.currentTour++;
                 this.currentPlayer++;
             }
             if (this.currentPlayer == 0){
@@ -260,7 +257,20 @@ public class Partie  extends BasicGameState {
 
 
         for (Joueur joueur : this.joueurs){
-            joueur.updateJoueur(this.plateau);
+            if (!this.winner.getWinners().contains(joueur)) {
+                joueur.updateJoueur(this.plateau);
+            }
+        }
+
+        //checkFinDePartie
+        if(this.winner.getWinners().size()==Partie.nbrJoueur-1) {
+            for (Joueur joueur : this.joueurs){
+                if (!this.winner.getWinners().contains(joueur)){
+                    this.winner.addToWinners(joueur);
+                }
+            }
+            this.winner.updateWinnerList();
+            sbg.enterState(6);
         }
     }
 

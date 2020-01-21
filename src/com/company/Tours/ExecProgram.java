@@ -101,7 +101,6 @@ public class ExecProgram extends Tour {
                         this.joueur.setPosition(0, this.joueur.getPosition(0) + 1);
                     } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
                         this.winner.addToWinners(this.joueur);
-                        this.joueurs.remove(joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'O' ) {
