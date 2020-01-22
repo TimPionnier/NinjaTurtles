@@ -1,9 +1,9 @@
 package com.company.States.Tours;
 
 import com.company.Objects.Plateau.Case;
+import com.company.Objects.Plateau.Plateau;
 import com.company.Players.Joueur;
 import com.company.States.Partie;
-import com.company.Objects.Plateau.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -13,25 +13,28 @@ import java.util.HashMap;
 
 public class BuildWall extends Tour {
     private static ArrayList<Case> cases;
+    private static boolean buildOK = true;
     int murX = -1;
     int murY = -1;
     char etatMur = ' ';
     String murPos = " ";
     private ArrayList<Case> visited = new ArrayList<>();
     private Joueur joueur;
-    private static boolean buildOK = true;
 
     public BuildWall(int state) {
         super(state);
     }
 
+    public static void setBuildOK(boolean buildOK) {
+        BuildWall.buildOK = buildOK;
+    }
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.drawImage(dammier, 150, 200);
         g.drawString(murPos, 200, 100);
         g.drawImage(btnEnd, 250, 560);
-        g.drawString("Défausser ses cartes",225,775);
+        g.drawString("Défausser ses cartes", 225, 775);
 
         //Murs joueur
         int u = 20;
@@ -203,7 +206,7 @@ public class BuildWall extends Tour {
                 murY = -1;
                 etatMur = ' ';
                 buildOK = false;
-            } else if ((murX != -1) && (murY != -1) && Plateau.getCase(murX, murY).getEtat() != ' '){
+            } else if ((murX != -1) && (murY != -1) && Plateau.getCase(murX, murY).getEtat() != ' ') {
                 System.out.println("impossible de placer un mur ici");
                 System.out.println(Plateau.getCase(murX, murY).getEtat());
             }
@@ -260,7 +263,8 @@ public class BuildWall extends Tour {
 
     public boolean checkPath(Case current) {
         this.visited.add(current);
-        System.out.println(this.visited.get(visited.size()-1).getEtat());
+        System.out.println(this.visited.get(visited.size() - 1).getPosition(0) + " " + this.visited.get(visited.size() - 1).getPosition(1));
+        System.out.println(this.visited.get(visited.size() - 1).getEtat());
         int x = current.getPosition(0);
         int y = current.getPosition(1);
 
@@ -269,7 +273,7 @@ public class BuildWall extends Tour {
             return false;
         }
 
-        if (current.getEtat() == 'P' || current.getEtat() == 'G' || current.getEtat() == 'C') {
+        if (current.getEtat() == 'P' || current.getEtat() == 'C') {
             return false;
         }
 
@@ -314,10 +318,10 @@ public class BuildWall extends Tour {
             return true;
         }
 
-        return (y - 1 > -1) && !this.visited.contains(Plateau.getCase(x, y - 1)) && checkPath(Plateau.getCase(x, y - 1));
-    }
+        if ((y - 1 > -1) && !this.visited.contains(Plateau.getCase(x, y - 1)) && checkPath(Plateau.getCase(x, y - 1))){
+            return true;
+        }
 
-    public static void setBuildOK(boolean buildOK) {
-        BuildWall.buildOK = buildOK;
+        return false;
     }
 }
