@@ -13,92 +13,113 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
-public class Partie  extends BasicGameState {
-    private boolean partieSet = true;
-    private int ID;
-    String mouse = "No input yet!";
+public class Partie extends BasicGameState {
+    //Logique de tour
+    public static int nbrJoueur;
     static String demande = "";
-    private String txt = "";
-    private GameContainer gc;
-
-
-    public static int nbrJoueur ;
-
+    private static int ID;
     private static ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+    private static Plateau plateau;
+    private GameContainer gc;
     private int currentPlayer = 0;
-
+    private boolean nouveauTour = true;
+    private int currentTour = 0;
+    private ArrayList<Character> main;
+    private HashMap<Character, Image> list_cartes;
+    private boolean partieSet = true;
     //Recuperation des BasicGameState
     private AddToProgram addToProgram;
     private BuildWall buildWall;
     private ExecProgram execProgram;
     private Winner winner;
-
+    //Affichage
     private Image dammier;
     private Image btnWalls;
-
-
-    public static ArrayList<Joueur> getJoueurs() {
-        return joueurs;
-    }
-
     private Image btnExe;
     private Image btnAdd;
-    private static Plateau plateau;
-    private ArrayList<Character> main;
-    private HashMap<Character,Image> list_cartes;
-
-    private boolean nouveauTour = true;
-
-    private int currentTour = 0;
+    private String mouse = "No input yet!";
+    private String txt = "";
 
 
     public Partie(int state) {
-        this.ID = state;
-        //this.nbrJoueur = nbrJoueur;
+        ID = state;
     }
 
     public static void setNbrJoueur(int i) {
         nbrJoueur = i;
     }
 
+    public static ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public static void waitForClick() {
+        //Wait for click
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void makeJoueurReturnStart(char numJoueur) {
+        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
+        for (int i = 0; i < joueurs.size(); i++) {
+            if (joueurs.get(i).getNumJoueur() == numJoueur) {
+                Plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
+                joueurs.get(i).returnStart();
+            }
+        }
+
+    }
+
+    public static Plateau getPlateau() {
+        return plateau;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
     public void setPartie(int nbrJoueur) throws SlickException {
-        this.plateau = new Plateau();
-        Joueur joueur1 ;
-        Joueur joueur2 ;
-        Joueur joueur3 ;
-        Joueur joueur4 ;
-        switch (nbrJoueur){
+        plateau = new Plateau();
+        Joueur joueur1;
+        Joueur joueur2;
+        Joueur joueur3;
+        Joueur joueur4;
+        switch (nbrJoueur) {
             case 2:
-                Partie.getPlateau().setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{0, 1},'1');
-                joueur2 = new Joueur(new int[]{7, 5},'2');
-                this.joueurs.add(joueur1);
-                this.joueurs.add(joueur2);
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{0, 1}, '1');
+                joueur2 = new Joueur(new int[]{7, 5}, '2');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
                 break;
             case 3:
-                this.plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{6, 0},'1');
-                joueur2 = new Joueur(new int[]{0, 3},'2');
-                joueur3 = new Joueur(new int[]{0, 6},'3');
-                this.joueurs.add(joueur1);
-                this.joueurs.add(joueur2);
-                this.joueurs.add(joueur3);
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{6, 0}, '1');
+                joueur2 = new Joueur(new int[]{0, 3}, '2');
+                joueur3 = new Joueur(new int[]{0, 6}, '3');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
+                joueurs.add(joueur3);
                 break;
             case 4:
-                this.plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{7, 0},'1');
-                joueur2 = new Joueur(new int[]{7, 2},'2');
-                joueur3 = new Joueur(new int[]{7, 5},'3');
-                joueur4 = new Joueur(new int[]{7, 7},'4');
-                this.joueurs.add(joueur1);
-                this.joueurs.add(joueur2);
-                this.joueurs.add(joueur3);
-                this.joueurs.add(joueur4);
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{7, 0}, '1');
+                joueur2 = new Joueur(new int[]{7, 2}, '2');
+                joueur3 = new Joueur(new int[]{7, 5}, '3');
+                joueur4 = new Joueur(new int[]{7, 7}, '4');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
+                joueurs.add(joueur3);
+                joueurs.add(joueur4);
                 break;
         }
 
     }
 
+    @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.gc = gc;
 
@@ -107,7 +128,7 @@ public class Partie  extends BasicGameState {
 
         //Récupération de la HashMap reliant les états des cases aux images à afficher
         Cartes cartes = new Cartes();
-        this.list_cartes = cartes.getCartes();
+        this.list_cartes = Cartes.getCartes();
 
 
         dammier = new Image("map/dammier.png");
@@ -118,11 +139,7 @@ public class Partie  extends BasicGameState {
 
     }
 
-
-    public ArrayList<Character> getMain() {
-        return main;
-    }
-
+    @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.setColor(Color.white);
 
@@ -130,10 +147,10 @@ public class Partie  extends BasicGameState {
         g.drawImage(btnWalls, 90, 560);
         g.drawImage(btnExe, 250, 560);
         g.drawImage(btnAdd, 410, 560);
-        g.drawString(mouse,150,50);
-        g.drawString(demande, 200, 700 );
-        g.drawString(txt,130,600);
-        g.drawString("Tour du Joueur " + this.currentPlayer,225,10);
+        g.drawString(mouse, 150, 50);
+        g.drawString(demande, 200, 700);
+        g.drawString(txt, 130, 600);
+        g.drawString("Tour du Joueur " + this.currentPlayer, 225, 10);
         int k = 0;
         //int y = 0;
         for (int i = 0; i < 9; i++) {
@@ -144,43 +161,41 @@ public class Partie  extends BasicGameState {
         }
 
 
-
-
         //Affichage des éléments du plateau
         int x = 150;
         int y = 200;
         //Affichage des cases en fonction de leur état
-        for (int i=0 ; i<8; i++) {
-           for (int j = 0; j < 8; j++) {
-               if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                   g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
-               }
-               x += 40;
-           }
-           x = 150 ;
-           y+=40;
-       }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (Plateau.getCase(i, j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(Plateau.getCase(i, j).getEtat()), x, y);
+                }
+                x += 40;
+            }
+            x = 150;
+            y += 40;
+        }
 
 
-       //Main du joueur
+        //Main du joueur
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<this.joueurs.get(this.currentPlayer-1).getDeck().getMain().size(); i++){
-            g.drawImage(this.list_cartes.get(this.joueurs.get(this.currentPlayer-1).getDeck().getCarteMain(i)),u ,v );
+        for (int i = 0; i < joueurs.get(this.currentPlayer - 1).getDeck().getMain().size(); i++) {
+            g.drawImage(this.list_cartes.get(joueurs.get(this.currentPlayer - 1).getDeck().getCarteMain(i)), u, v);
             u += 120;
         }
 
         //File joueur
         u = 20;
         v = 100;
-        for (int i = 0; i < this.joueurs.get(this.currentPlayer-1).getDeck().getFileInstruction().size(); i++) {
+        for (int i = 0; i < joueurs.get(this.currentPlayer - 1).getDeck().getFileInstruction().size(); i++) {
             //R pour carte face cachée
-            g.drawImage(this.list_cartes.get('R'),u,v);
+            g.drawImage(this.list_cartes.get('R'), u, v);
             u += 80;
         }
     }
 
-
+    @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
@@ -193,95 +208,86 @@ public class Partie  extends BasicGameState {
             partieSet = false;
         }
 
-        if (this.winner.getWinnersInt().size()>0){
-            System.out.println(this.winner.getWinnersInt().get(0));
+        if (Winner.getWinnersInt().size() > 0) {
+            System.out.println(Winner.getWinnersInt().get(0));
         }
 
         //Joueur en cours
-        if (nouveauTour){
+        if (nouveauTour) {
             this.currentTour++;
-            this.currentPlayer = this.currentTour%Partie.nbrJoueur;
-            while (this.winner.getWinnersInt().contains(this.currentPlayer)){
+            this.currentPlayer = this.currentTour % Partie.nbrJoueur;
+            while (Winner.getWinnersInt().contains(this.currentPlayer)) {
                 this.currentTour++;
                 this.currentPlayer++;
             }
-            if (this.currentPlayer == 0){
+            if (this.currentPlayer == 0) {
                 this.currentPlayer = Partie.nbrJoueur;
             }
-            System.out.println("Tour: "+currentTour);
+            System.out.println("Tour: " + currentTour);
             System.out.println("Tour du joueur " + this.currentPlayer);
             this.nouveauTour = false;
         }
 
 
         //Check for button Add
-        if ((xpos>410 && xpos<560) && (ypos<240 && ypos>187)){
+        if ((xpos > 410 && xpos < 560) && (ypos < 240 && ypos > 187)) {
             btnAdd = new Image("map/ADD-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.addToProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes);
+                this.addToProgram.setTour(joueurs.get(this.currentPlayer - 1), plateau, this.list_cartes);
                 this.nouveauTour = true;
                 sbg.enterState(3);
                 waitForClick();
             }
         }
-        if ((xpos<410 || xpos>560) || (ypos>240 || ypos<187)){
+        if ((xpos < 410 || xpos > 560) || (ypos > 240 || ypos < 187)) {
             btnAdd = new Image("map/ADD1.png");
         }
 
         //Check for button exe
-        if ((xpos>250 && xpos<400) && (ypos<240 && ypos>187)){
+        if ((xpos > 250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
             btnExe = new Image("map/EXE-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.execProgram.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes,this.joueurs);
+                this.execProgram.setTour(joueurs.get(this.currentPlayer - 1), plateau, this.list_cartes, joueurs);
                 this.nouveauTour = true;
                 sbg.enterState(4);
                 waitForClick();
             }
         }
-        if ((xpos<250 || xpos>400) || (ypos>240 || ypos<187)){
+        if ((xpos < 250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
             btnExe = new Image("map/EXE1.png");
         }
 
         //Check for button Walls
-        if ((xpos>90 && xpos<240) && (ypos<240 && ypos>187)){
+        if ((xpos > 90 && xpos < 240) && (ypos < 240 && ypos > 187)) {
             btnWalls = new Image("map/Walls-clicked.png");
             if (input.isMouseButtonDown(0)) {
-                this.buildWall.setTour(this.joueurs.get(this.currentPlayer-1),this.plateau,this.list_cartes);
+                this.buildWall.setTour(joueurs.get(this.currentPlayer - 1), plateau, this.list_cartes);
                 this.nouveauTour = true;
                 sbg.enterState(5);
                 waitForClick();
             }
         }
-        if ((xpos<90 || xpos>240) || (ypos>240 || ypos<187)){
+        if ((xpos < 90 || xpos > 240) || (ypos > 240 || ypos < 187)) {
             btnWalls = new Image("map/Walls1.png");
         }
 
 
         //Mise à jour des positions des joueurs qui n'ont pas encore atteint le joyau
-        for (Joueur joueur : this.joueurs){
-            if (!this.winner.getWinners().contains(joueur)) {
-                joueur.updateJoueur(this.plateau);
+        for (Joueur joueur : joueurs) {
+            if (!Winner.getWinners().contains(joueur)) {
+                joueur.updateJoueur(plateau);
             }
         }
 
         //checkFinDePartie
-        if(this.winner.getWinners().size()==Partie.nbrJoueur-1) {
-            for (Joueur joueur : this.joueurs){
-                if (!this.winner.getWinners().contains(joueur)){
-                    this.winner.addToWinners(joueur);
+        if (Winner.getWinners().size() == Partie.nbrJoueur - 1) {
+            for (Joueur joueur : joueurs) {
+                if (!Winner.getWinners().contains(joueur)) {
+                    Winner.addToWinners(joueur);
                 }
             }
-            this.winner.updateWinnerList();
+            Winner.updateWinnerList();
             sbg.enterState(6);
-        }
-    }
-
-    public static void waitForClick() {
-        //Wait for click
-        try {
-            TimeUnit.MILLISECONDS.sleep(250);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
@@ -291,11 +297,11 @@ public class Partie  extends BasicGameState {
             gc.exit();
         }
 
-        switch (key){
+        switch (key) {
             case Input.KEY_2:
                 nbrJoueur = 2;
                 break;
-            case  Input.KEY_3:
+            case Input.KEY_3:
                 nbrJoueur = 3;
                 break;
             case Input.KEY_4:
@@ -304,26 +310,6 @@ public class Partie  extends BasicGameState {
         }
 
 
-    }
-
-    public static void makeJoueurReturnStart(char numJoueur) {
-        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
-        for (int i = 0; i < joueurs.size(); i++) {
-            if (joueurs.get(i).getNumJoueur() == numJoueur) {
-                plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
-                joueurs.get(i).returnStart();
-            }
-        }
-
-    }
-
-
-    public int getID() {
-        return 2;
-    }
-
-    public static Plateau getPlateau() {
-        return plateau;
     }
 
     public void setAddToProgram(AddToProgram addToProgram) {
@@ -340,6 +326,8 @@ public class Partie  extends BasicGameState {
 
     public void setWinner(Winner winner) {
         this.winner = winner;
-        this.execProgram.setWinner(winner);
+        ExecProgram.setWinner(winner);
     }
+
+
 }

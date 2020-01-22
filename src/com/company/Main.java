@@ -8,14 +8,14 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public class Main extends StateBasedGame {
-    public static String gameName = "NinjaTurtles :: Game";
-    public static int menuState = 1;
-    public static int playState = 2;
-    public static int addToProgramState = 3;
-    public static int execProgramState = 4;
-    public static int buildWallState = 5;
-    public static int winnerState = 6;
-    public static int game = 0;
+    private static String gameName = "NinjaTurtles :: Game";
+    private static int menuState = 1;
+    private static int playState = 2;
+    private static int addToProgramState = 3;
+    private static int execProgramState = 4;
+    private static int buildWallState = 5;
+    private static int winnerState = 6;
+    private static int game = 0;
 
     public Main(String name) throws SlickException {
         super(gameName);
