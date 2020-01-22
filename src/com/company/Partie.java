@@ -260,6 +260,7 @@ public class Partie extends BasicGameState {
             if (input.isMouseButtonDown(0)) {
                 this.buildWall.setTour(joueurs.get(this.currentPlayer - 1), plateau, this.list_cartes);
                 this.nouveauTour = true;
+                buildWall.setBuildOK(true);
                 sbg.enterState(5);
                 waitForClick();
             }
