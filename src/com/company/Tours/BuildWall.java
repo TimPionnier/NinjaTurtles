@@ -1,29 +1,30 @@
 package com.company.Tours;
 
-import com.company.*;
+import com.company.Case;
+import com.company.Joueur;
+import com.company.Partie;
+import com.company.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildWall extends Tour {
+    private static ArrayList<Case> cases;
+    private ArrayList<Case> visited = new ArrayList<>();
     int murX = -1;
     int murY = -1;
     char etatMur = ' ';
     String murPos = " ";
-
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
-    private static ArrayList<Case> cases;
 
-    private static ArrayList<Case> visited = new ArrayList<>();
-
-    public BuildWall(int state) throws SlickException {
+    public BuildWall(int state) {
         super(state);
     }
+
 
 
     @Override
@@ -46,8 +47,8 @@ public class BuildWall extends Tour {
         int y = 200;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (this.plateau.getCase(i, j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i, j).getEtat()), x, y);
+                if (Plateau.getCase(i, j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(Plateau.getCase(i, j).getEtat()), x, y);
                 }
                 x += 40;
             }
@@ -55,11 +56,6 @@ public class BuildWall extends Tour {
             y += 40;
         }
 
-
-        /*for (int i=0 ; i<this.joueur.getDeck().getMain().size(); i++){
-            g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)),u ,v );
-            u += 120;
-        }*/
     }
 
     @Override
@@ -68,7 +64,7 @@ public class BuildWall extends Tour {
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
 
-        this.cases = this.plateau.getCases();
+        cases = Plateau.getCases();
 
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
@@ -207,20 +203,18 @@ public class BuildWall extends Tour {
 
     public void addMur(int murX, int murY, char etatMur) {
 
-        if (Partie.getPlateau().getCase(murX,murY).getEtat() == ' ') {
-            Partie.getPlateau().getCase(murX,murY).setEtat(etatMur);
+        if (Plateau.getCase(murX, murY).getEtat() == ' ') {
+            Plateau.getCase(murX, murY).setEtat(etatMur);
         }
         if (autoriseMur(Partie.nbrJoueur)) {
-            //visited.clear();
-            stateBasedGame.enterState(2);
-            Partie.waitForClick();
+            this.visited.clear();
         } else {
-            //visited.clear();
+            this.visited.clear();
             System.out.println("impossible de placer un mur ici");
-            Partie.getPlateau().getCase(murX,murY).setEtat(' ');
-            stateBasedGame.enterState(2);
-            Partie.waitForClick();
+            Plateau.getCase(murX, murY).setEtat(' ');
         }
+        stateBasedGame.enterState(2);
+        Partie.waitForClick();
         System.out.println(murPos);
     }
 
@@ -233,83 +227,78 @@ public class BuildWall extends Tour {
     public boolean autoriseMur(int nbrJoueur) {
         switch (nbrJoueur) {
             case 2:
-                if (checkPath(this.plateau.getCase(7, 3))){
+                if (checkPath(Plateau.getCase(7, 3))) {
                     return true;
                 }
             case 3:
-                if(checkPath(this.plateau.getCase(7, 0)) && checkPath(this.plateau.getCase(7, 3))
-                        && checkPath(this.plateau.getCase(7, 6))) {
+                if (checkPath(Plateau.getCase(7, 0)) && checkPath(Plateau.getCase(7, 3))
+                        && checkPath(Plateau.getCase(7, 6))) {
                     return true;
                 }
             case 4:
-                if( checkPath(this.plateau.getCase(7, 1)) && checkPath(this.plateau.getCase(7, 6))) {
+                if (checkPath(Plateau.getCase(7, 1)) && checkPath(Plateau.getCase(7, 6))) {
                     return true;
                 }
         }
         return false;
     }
 
-    public static boolean checkPath(Case current){
-        visited.add(current);
+    public boolean checkPath(Case current) {
+        this.visited.add(current);
         int x = current.getPosition(0);
         int y = current.getPosition(1);
 
 
-        if (x>7 || y>7 || x<-1 || y<-1){
+        if (x > 7 || y > 7 || x < -1 || y < -1) {
             return false;
         }
 
-        if (current.getEtat() == 'P' || current.getEtat() == 'G' || current.getEtat() == 'C'){
+        if (current.getEtat() == 'P' || current.getEtat() == 'G' || current.getEtat() == 'C') {
             return false;
         }
 
 
-        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '1') ||
-                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '1') ||
-                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '1') ||
-                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '1')){
+        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '1') ||
+                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '1') ||
+                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '1') ||
+                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '1')) {
             return true;
         }
 
-        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '2') ||
-                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '2') ||
-                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '2') ||
-                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '2')){
+        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '2') ||
+                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '2') ||
+                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '2') ||
+                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '2')) {
             return true;
         }
 
-        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '3') ||
-                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '3') ||
-                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '3') ||
-                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '3')){
+        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '3') ||
+                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '3') ||
+                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '3') ||
+                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '3')) {
             return true;
         }
 
-        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '4') ||
-                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '4') ||
-                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '4') ||
-                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '4')){
+        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '4') ||
+                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '4') ||
+                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '4') ||
+                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '4')) {
             return true;
         }
 
-        if ((x+1 < 8) && !visited.contains(Plateau.getCase(x+1,y)) && checkPath(Plateau.getCase(x+1,y))){
+        if ((x + 1 < 8) && !this.visited.contains(Plateau.getCase(x + 1, y)) && checkPath(Plateau.getCase(x + 1, y))) {
             return true;
         }
 
-        if ((x-1 > -1) && !visited.contains(Plateau.getCase(x-1,y)) && checkPath(Plateau.getCase(x-1,y))){
+        if ((x - 1 > -1) && !this.visited.contains(Plateau.getCase(x - 1, y)) && checkPath(Plateau.getCase(x - 1, y))) {
             return true;
         }
 
-        if ((y+1 < 8) && !visited.contains(Plateau.getCase(x,y+1)) && checkPath(Plateau.getCase(x,y+1))){
+        if ((y + 1 < 8) && !this.visited.contains(Plateau.getCase(x, y + 1)) && checkPath(Plateau.getCase(x, y + 1))) {
             return true;
         }
 
-        if ((y-1 > -1)  && !visited.contains(Plateau.getCase(x,y-1)) && checkPath(Plateau.getCase(x,y-1))){
-            return true;
-        }
-
-        return false;
+        return (y - 1 > -1) && !this.visited.contains(Plateau.getCase(x, y - 1)) && checkPath(Plateau.getCase(x, y - 1));
     }
-
 
 }

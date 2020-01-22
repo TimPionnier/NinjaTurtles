@@ -7,17 +7,16 @@ import java.util.HashMap;
 
 public class Cartes {
 
-    protected static HashMap<Character,Image> cartes;
-
-
+    protected static HashMap<Character, Image> cartes;
 
 
     public Cartes() throws SlickException {
 
+        //Lien entre les états des cases et l'affichage de l'image correspondantes
         Image jewel = new Image("map/RUBY40.png");
         Image woodBox = new Image("map/woodBox.png");
-        Image turtle1S = new Image ("map/Donatelo40S.png");
-        Image turtle2S = new Image ("map/Leonardo40S.png");
+        Image turtle1S = new Image("map/Donatelo40S.png");
+        Image turtle2S = new Image("map/Leonardo40S.png");
         Image carteBleue = new Image("map/cards/BlueCard.png");
         Image carteLaser = new Image("map/cards/LaserCard.png");
         Image carteViolette = new Image("map/cards/PurpleCard.png");
@@ -30,19 +29,19 @@ public class Cartes {
 
         cartes = new HashMap<>();
 
-        cartes.put('C',woodBox);
-        cartes.put('1',turtle1S);
-        cartes.put('2',turtle2S);
+        cartes.put('C', woodBox);
+        cartes.put('1', turtle1S);
+        cartes.put('2', turtle2S);
         cartes.put('3', turtle3S);
         cartes.put('4', turtle4);
-        cartes.put('?',jewel);
-        cartes.put('B',carteBleue);
-        cartes.put('L',carteLaser);
-        cartes.put('V',carteViolette);
-        cartes.put('J',carteJaune);
-        cartes.put('R',carteBack);
-        cartes.put('G',carteMurGlace);
-        cartes.put('P',carteMurPierre);
+        cartes.put('?', jewel);
+        cartes.put('B', carteBleue);
+        cartes.put('L', carteLaser);
+        cartes.put('V', carteViolette);
+        cartes.put('J', carteJaune);
+        cartes.put('R', carteBack);
+        cartes.put('G', carteMurGlace);
+        cartes.put('P', carteMurPierre);
 
 
     }
@@ -51,7 +50,6 @@ public class Cartes {
     public static HashMap<Character, Image> getCartes() {
         return cartes;
     }
-
 
 
 }
