@@ -3,7 +3,6 @@ package com.company.Tours;
 import com.company.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ public class ExecProgram extends Tour {
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
     private static Winner winner;
-    private static ArrayList<Joueur> joueurs = new ArrayList<>();
 
     public ExecProgram(int state) throws SlickException {
         super(state);
@@ -79,50 +77,50 @@ public class ExecProgram extends Tour {
                 if (this.joueur.getDirection() == 'N' ) {
                     if (this.joueur.getPosition(0) == 0) {
                         this.joueur.returnStart();
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
+                    } else if (this.joueur.getFrontCase().getEtat() == ' ') {
                         this.joueur.setPosition(0, this.joueur.getPosition(0) - 1);
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                    } else if (this.joueur.getFrontCase().getEtat() == '?') {
                         this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'E' ) {
                     if (this.joueur.getPosition(1) == 7) {
                         this.joueur.returnStart();
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
+                    } else if (this.joueur.getFrontCase().getEtat() == ' '){
                         this.joueur.setPosition(1, this.joueur.getPosition(1) + 1);
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                    } else if (this.joueur.getFrontCase().getEtat() == '?') {
                         this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'S') {
                     if (this.joueur.getPosition(0) == 7) {
                         this.joueur.returnStart();
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' '){
+                    } else if (this.joueur.getFrontCase().getEtat() == ' '){
                         this.joueur.setPosition(0, this.joueur.getPosition(0) + 1);
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                    } else if (this.joueur.getFrontCase().getEtat() == '?') {
                         this.winner.addToWinners(this.joueur);
                     }
 
                 } else if (this.joueur.getDirection() == 'O' ) {
                     if (this.joueur.getPosition(1) == 0) {
                         this.joueur.returnStart();
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == ' ') {
+                    } else if (this.joueur.getFrontCase().getEtat() == ' ') {
                         this.joueur.setPosition(1, this.joueur.getPosition(1) - 1);
-                    } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '?') {
+                    } else if (this.joueur.getFrontCase().getEtat() == '?') {
                         this.winner.addToWinners(this.joueur);
                     }
 
-                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == '1' ||
-                            this.joueur.getFrontCase(this.plateau).getEtat() == '2' ||
-                            this.joueur.getFrontCase(this.plateau).getEtat() == '3' ||
-                            this.joueur.getFrontCase(this.plateau).getEtat() == '4' ) {
+                } else if (this.joueur.getFrontCase().getEtat() == '1' ||
+                            this.joueur.getFrontCase().getEtat() == '2' ||
+                            this.joueur.getFrontCase().getEtat() == '3' ||
+                            this.joueur.getFrontCase().getEtat() == '4' ) {
                     //renvoie le joueur qui joue et celui dans lequel il est rentré à leur position de départ
-                    Partie.makeJoueurReturnStart(this.joueur.getFrontCase(this.plateau).getEtat());
+                    Partie.makeJoueurReturnStart(this.joueur.getFrontCase().getEtat());
                     this.joueur.returnStart();
 
-                } else if (this.joueur.getFrontCase(this.plateau).getEtat() == 'G' ||
-                           this.joueur.getFrontCase(this.plateau).getEtat() == 'P' ||
-                           this.joueur.getFrontCase(this.plateau).getEtat() == 'C'){
+                } else if (this.joueur.getFrontCase().getEtat() == 'G' ||
+                           this.joueur.getFrontCase().getEtat() == 'P' ||
+                           this.joueur.getFrontCase().getEtat() == 'C'){
                     System.out.println("Attention ! Un mur bloque le passage. Vous faites demi-tour");
                     switch (this.joueur.getDirection()){
                         case 'N':
@@ -164,13 +162,14 @@ public class ExecProgram extends Tour {
                     this.joueur.setDirection('N');
                 }
             } else if (instruction == 'L') {
-                if (this.joueur.getFrontCase(plateau).getEtat() == 'G') {
-                    this.joueur.getFrontCase(plateau).setEtat(' ');
+                if (this.joueur.getFrontCase().getEtat() == 'G') {
+                    this.joueur.getFrontCase().setEtat(' ');
                 }
                 else {
                     System.out.println("Action impossible ici");
                 }
             }
+            joueur.updateJoueur();
             Partie.waitForClick();
         }
         else {
@@ -182,7 +181,6 @@ public class ExecProgram extends Tour {
         this.joueur = joueur;
         this.plateau = plateau;
         this.list_cartes = list_cartes;
-        this.joueurs = joueurs;
     }
 
     public static void setWinner(Winner winner) {

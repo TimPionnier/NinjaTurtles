@@ -272,7 +272,7 @@ public class Partie extends BasicGameState {
         //Mise à jour des positions des joueurs qui n'ont pas encore atteint le joyau
         for (Joueur joueur : joueurs) {
             if (!Winner.getWinners().contains(joueur)) {
-                joueur.updateJoueur(plateau);
+                joueur.updateJoueur();
             }
         }
 
