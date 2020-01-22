@@ -271,7 +271,7 @@ public class Partie extends BasicGameState {
                 break;
             case 3:
                 Plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{6, 0}, '1');
+                joueur1 = new Joueur(new int[]{0, 0}, '1');
                 joueur2 = new Joueur(new int[]{0, 3}, '2');
                 joueur3 = new Joueur(new int[]{0, 6}, '3');
                 joueurs.add(joueur1);
@@ -280,10 +280,10 @@ public class Partie extends BasicGameState {
                 break;
             case 4:
                 Plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{7, 0}, '1');
-                joueur2 = new Joueur(new int[]{7, 2}, '2');
-                joueur3 = new Joueur(new int[]{7, 5}, '3');
-                joueur4 = new Joueur(new int[]{7, 7}, '4');
+                joueur1 = new Joueur(new int[]{0, 0}, '1');
+                joueur2 = new Joueur(new int[]{0, 2}, '2');
+                joueur3 = new Joueur(new int[]{0, 5}, '3');
+                joueur4 = new Joueur(new int[]{0, 7}, '4');
                 joueurs.add(joueur1);
                 joueurs.add(joueur2);
                 joueurs.add(joueur3);

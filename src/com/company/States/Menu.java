@@ -27,8 +27,8 @@ public class Menu extends BasicGameState {
         two = new Image("map/btnTwo.png");
         three = new Image("map/btnThree.png");
         four = new Image("map/btnFour.png");
-        Music mixtape = new Music("sound/mixtape.ogg");
-        //mixtape.loop();
+        Music mixtape = new Music("sound/chicken.ogg");
+        mixtape.loop();
     }
 
 
