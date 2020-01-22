@@ -8,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
     private static int ID;
 
-    String mouse = "No input yet!";
+    //String mouse = "No input yet!";
     private Image backGroundNinjaTurtles;
     private GameContainer gc;
     private Image two;
@@ -29,15 +29,8 @@ public class Menu extends BasicGameState {
         four = new Image("map/btnFour.png");
         Music mixtape = new Music("sound/mixtape.ogg");
         //mixtape.loop();
-
     }
 
-
-    public void keyReleased(int key, char c) {
-        if (Input.KEY_ESCAPE == key) {
-            gc.exit();
-        }
-    }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -46,8 +39,6 @@ public class Menu extends BasicGameState {
         g.drawImage(two, 80, 450);
         g.drawImage(three, 250, 450);
         g.drawImage(four, 420, 450);
-        g.drawString(mouse, 125, 50);
-
     }
 
     @Override
@@ -55,7 +46,6 @@ public class Menu extends BasicGameState {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
-        mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
         //Choix du nombre de joueur
         if ((xpos > 80 && xpos < 230) && (ypos < 350 && ypos > 295)) {
@@ -91,6 +81,12 @@ public class Menu extends BasicGameState {
             two = new Image("map/btnTwo.png");
         }
 
+    }
+
+    public void keyReleased(int key, char c) {
+        if (Input.KEY_ESCAPE == key) {
+            gc.exit();
+        }
     }
 
     @Override
