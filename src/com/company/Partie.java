@@ -40,83 +40,6 @@ public class Partie extends BasicGameState {
     private String txt = "";
 
 
-    public Partie(int state) {
-        ID = state;
-    }
-
-    public static void setNbrJoueur(int i) {
-        nbrJoueur = i;
-    }
-
-    public static ArrayList<Joueur> getJoueurs() {
-        return joueurs;
-    }
-
-    public static void waitForClick() {
-        //Wait for click
-        try {
-            TimeUnit.MILLISECONDS.sleep(250);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void makeJoueurReturnStart(char numJoueur) {
-        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
-        for (int i = 0; i < joueurs.size(); i++) {
-            if (joueurs.get(i).getNumJoueur() == numJoueur) {
-                Plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
-                joueurs.get(i).returnStart();
-            }
-        }
-
-    }
-
-    public static Plateau getPlateau() {
-        return plateau;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setPartie(int nbrJoueur) throws SlickException {
-        plateau = new Plateau();
-        Joueur joueur1;
-        Joueur joueur2;
-        Joueur joueur3;
-        Joueur joueur4;
-        switch (nbrJoueur) {
-            case 2:
-                Plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{0, 1}, '1');
-                joueur2 = new Joueur(new int[]{0, 5}, '2');
-                joueurs.add(joueur1);
-                joueurs.add(joueur2);
-                break;
-            case 3:
-                Plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{6, 0}, '1');
-                joueur2 = new Joueur(new int[]{0, 3}, '2');
-                joueur3 = new Joueur(new int[]{0, 6}, '3');
-                joueurs.add(joueur1);
-                joueurs.add(joueur2);
-                joueurs.add(joueur3);
-                break;
-            case 4:
-                Plateau.setPlateau(nbrJoueur);
-                joueur1 = new Joueur(new int[]{7, 0}, '1');
-                joueur2 = new Joueur(new int[]{7, 2}, '2');
-                joueur3 = new Joueur(new int[]{7, 5}, '3');
-                joueur4 = new Joueur(new int[]{7, 7}, '4');
-                joueurs.add(joueur1);
-                joueurs.add(joueur2);
-                joueurs.add(joueur3);
-                joueurs.add(joueur4);
-                break;
-        }
-
-    }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -289,25 +212,88 @@ public class Partie extends BasicGameState {
         }
     }
 
-    public void keyReleased(int key, char c) {
+    public static void waitForClick() {
+        //Wait for click
+        try {
+            TimeUnit.MILLISECONDS.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void makeJoueurReturnStart(char numJoueur) {
+        //renvoie à sa position de depart le joueur dont numJoueur == le parametre de cette fontion
+        for (int i = 0; i < joueurs.size(); i++) {
+            if (joueurs.get(i).getNumJoueur() == numJoueur) {
+                Plateau.getCase(joueurs.get(i).getPosition(0), joueurs.get(i).getPosition(1)).setEtat(' ');
+                joueurs.get(i).returnStart();
+            }
+        }
+
+    }
+
+    public Partie(int state) {
+        ID = state;
+    }
+
+    public static void setNbrJoueur(int i) {
+        nbrJoueur = i;
+    }
+
+    public static ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public static Plateau getPlateau() {
+        return plateau;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setPartie(int nbrJoueur) throws SlickException {
+        plateau = new Plateau();
+        Joueur joueur1;
+        Joueur joueur2;
+        Joueur joueur3;
+        Joueur joueur4;
+        switch (nbrJoueur) {
+            case 2:
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{0, 1}, '1');
+                joueur2 = new Joueur(new int[]{0, 5}, '2');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
+                break;
+            case 3:
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{6, 0}, '1');
+                joueur2 = new Joueur(new int[]{0, 3}, '2');
+                joueur3 = new Joueur(new int[]{0, 6}, '3');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
+                joueurs.add(joueur3);
+                break;
+            case 4:
+                Plateau.setPlateau(nbrJoueur);
+                joueur1 = new Joueur(new int[]{7, 0}, '1');
+                joueur2 = new Joueur(new int[]{7, 2}, '2');
+                joueur3 = new Joueur(new int[]{7, 5}, '3');
+                joueur4 = new Joueur(new int[]{7, 7}, '4');
+                joueurs.add(joueur1);
+                joueurs.add(joueur2);
+                joueurs.add(joueur3);
+                joueurs.add(joueur4);
+                break;
+        }
+
+    }
+
+    public void keyReleased(int key, char c) {
         if (Input.KEY_ESCAPE == key) {
             gc.exit();
         }
-
-        switch (key) {
-            case Input.KEY_2:
-                nbrJoueur = 2;
-                break;
-            case Input.KEY_3:
-                nbrJoueur = 3;
-                break;
-            case Input.KEY_4:
-                nbrJoueur = 4;
-                break;
-        }
-
-
     }
 
     public void setAddToProgram(AddToProgram addToProgram) {
