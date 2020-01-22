@@ -1,4 +1,8 @@
-package com.company;
+package com.company.Players;
+
+import com.company.Objects.Plateau.Case;
+import com.company.Objects.Plateau.Plateau;
+import com.company.States.Partie;
 
 public class Joueur {
     private Deck deck = new Deck();

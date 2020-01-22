@@ -1,4 +1,4 @@
-package com.company;
+package com.company.States;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;

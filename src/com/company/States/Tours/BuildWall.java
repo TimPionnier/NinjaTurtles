@@ -1,9 +1,9 @@
-package com.company.Tours;
+package com.company.States.Tours;
 
-import com.company.Case;
-import com.company.Joueur;
-import com.company.Partie;
-import com.company.Plateau;
+import com.company.Objects.Plateau.Case;
+import com.company.Players.Joueur;
+import com.company.States.Partie;
+import com.company.Objects.Plateau.Plateau;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;

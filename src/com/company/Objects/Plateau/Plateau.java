@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Objects.Plateau;
 
 import java.util.ArrayList;
 

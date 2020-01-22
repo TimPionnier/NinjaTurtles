@@ -1,8 +1,11 @@
 package com.company;
 
-import com.company.Tours.AddToProgram;
-import com.company.Tours.BuildWall;
-import com.company.Tours.ExecProgram;
+import com.company.States.Menu;
+import com.company.States.Partie;
+import com.company.States.Tours.AddToProgram;
+import com.company.States.Tours.BuildWall;
+import com.company.States.Tours.ExecProgram;
+import com.company.States.Winner;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

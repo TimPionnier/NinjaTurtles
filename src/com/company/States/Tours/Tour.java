@@ -1,7 +1,7 @@
-package com.company.Tours;
+package com.company.States.Tours;
 
-import com.company.Cartes;
-import com.company.Plateau;
+import com.company.Objects.Cartes;
+import com.company.Objects.Plateau.Plateau;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Players;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

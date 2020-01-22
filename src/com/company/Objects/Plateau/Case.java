@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Objects.Plateau;
 
 public class Case {
     private int[] position = new int[2];

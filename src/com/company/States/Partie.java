@@ -1,8 +1,11 @@
-package com.company;
+package com.company.States;
 
-import com.company.Tours.AddToProgram;
-import com.company.Tours.BuildWall;
-import com.company.Tours.ExecProgram;
+import com.company.Objects.Cartes;
+import com.company.Players.Joueur;
+import com.company.Objects.Plateau.Plateau;
+import com.company.States.Tours.AddToProgram;
+import com.company.States.Tours.BuildWall;
+import com.company.States.Tours.ExecProgram;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Objects;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -43,7 +43,7 @@ public class Cartes {
         cartes.put('G', carteMurGlace);
         cartes.put('P', carteMurPierre);
     }
-    
+
     public static HashMap<Character, Image> getCartes() {
         return cartes;
     }

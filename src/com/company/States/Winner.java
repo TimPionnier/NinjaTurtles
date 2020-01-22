@@ -1,5 +1,7 @@
-package com.company;
+package com.company.States;
 
+import com.company.Objects.Plateau.Plateau;
+import com.company.Players.Joueur;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
