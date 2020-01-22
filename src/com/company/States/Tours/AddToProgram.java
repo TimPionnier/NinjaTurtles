@@ -21,7 +21,6 @@ public class AddToProgram extends Tour {
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawString(mouse, 150, 50);
         g.drawImage(dammier, 150, 200);
         g.drawString("Défausser ses cartes", 225, 775);
         g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(), 225, 10);
@@ -65,7 +64,6 @@ public class AddToProgram extends Tour {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
-        mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
         if ((xpos > 250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
             btnEnd = new Image("map/btnEnd-clicked.png");

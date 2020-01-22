@@ -14,7 +14,6 @@ public abstract class Tour extends BasicGameState {
     protected Image btnEnd;
     protected GameContainer gameContainer;
     protected StateBasedGame stateBasedGame;
-    protected String mouse = "";
     protected Image dammier;
     protected Plateau plateau;
     protected HashMap<Character, Image> list_cartes;
