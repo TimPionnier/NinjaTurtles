@@ -19,7 +19,6 @@ public class BuildWall extends Tour {
     String murPos = " ";
     private ArrayList<Case> visited = new ArrayList<>();
     private Joueur joueur;
-    private HashMap<Character, Image> list_cartes;
     private static boolean buildOK = true;
 
     public BuildWall(int state) {

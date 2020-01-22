@@ -1,6 +1,5 @@
 package com.company.Tours;
 
-import com.company.Cartes;
 import com.company.Joueur;
 import com.company.Partie;
 import com.company.Plateau;
@@ -8,50 +7,46 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 public class AddToProgram extends Tour {
 
 
     private Joueur joueur;
-    private HashMap<Character, Image> list_cartes;
 
-    public AddToProgram(int state) throws SlickException {
+    public AddToProgram(int state) {
         super(state);
     }
 
 
-
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawString(mouse,150,50);
+        g.drawString(mouse, 150, 50);
         g.drawImage(dammier, 150, 200);
-        g.drawString("Défausser ses cartes",225,775);
-        g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(),225,10);
+        g.drawString("Défausser ses cartes", 225, 775);
+        g.drawString("Tour du Joueur " + this.joueur.getNumJoueur(), 225, 10);
         g.drawImage(btnEnd, 250, 560);
 
 
         //Affichage des cases en fonction de leur état
         int x = 150;
         int y = 200;
-        for (int i=0 ; i<8; i++) {
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
+                if (Plateau.getCase(i, j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(Plateau.getCase(i, j).getEtat()), x, y);
                 }
                 x += 40;
             }
-            x = 150 ;
-            y+=40;
+            x = 150;
+            y += 40;
         }
 
         //Main joueur
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<this.joueur.getDeck().getMain().size(); i++){
-            g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)),u ,v );
+        for (int i = 0; i < this.joueur.getDeck().getMain().size(); i++) {
+            g.drawImage(this.list_cartes.get(this.joueur.getDeck().getCarteMain(i)), u, v);
             u += 120;
         }
 
@@ -60,19 +55,19 @@ public class AddToProgram extends Tour {
         v = 100;
         for (int i = 0; i < this.joueur.getDeck().getFileInstruction().size(); i++) {
             //R pour carte face cachée
-            g.drawImage(this.list_cartes.get('R'),u,v);
+            g.drawImage(this.list_cartes.get('R'), u, v);
             u += 80;
         }
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException{
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos >250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
+        if ((xpos > 250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
             btnEnd = new Image("map/btnEnd-clicked.png");
             if (input.isMouseButtonDown(0)) {
                 if (this.joueur.getDeck().getMain().size() < 5) {
@@ -81,11 +76,11 @@ public class AddToProgram extends Tour {
                 sbg.enterState(2);
                 Partie.waitForClick();
             }
-        }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
+        } else if ((xpos < 250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
             btnEnd = new Image("map/btnEnd1.png");
         }
 
-        if(this.joueur.getDeck().getMain().size()>0) {
+        if (this.joueur.getDeck().getMain().size() > 0) {
             //récupération des clics sur les cartes = ajout à la file d'instruction
             if ((xpos > 20 && xpos < 130) && (ypos > 30 && ypos < 180)) {
                 if (input.isMouseButtonDown(0)) {
@@ -129,7 +124,7 @@ public class AddToProgram extends Tour {
         }
     }
 
-    public void setTour(Joueur joueur, Plateau plateau, HashMap<Character,Image> list_cartes) {
+    public void setTour(Joueur joueur, Plateau plateau, HashMap<Character, Image> list_cartes) {
         this.joueur = joueur;
         this.plateau = plateau;
         this.list_cartes = list_cartes;

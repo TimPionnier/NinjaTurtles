@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Cartes {
 
-    protected static HashMap<Character, Image> cartes;
+    private static HashMap<Character, Image> cartes;
 
 
     public Cartes() throws SlickException {
@@ -42,14 +42,9 @@ public class Cartes {
         cartes.put('R', carteBack);
         cartes.put('G', carteMurGlace);
         cartes.put('P', carteMurPierre);
-
-
     }
-
-
+    
     public static HashMap<Character, Image> getCartes() {
         return cartes;
     }
-
-
 }

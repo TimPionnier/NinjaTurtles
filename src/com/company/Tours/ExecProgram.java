@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class ExecProgram extends Tour {
     private Joueur joueur;
-    private HashMap<Character, Image> list_cartes;
 
     public ExecProgram(int state) {
         super(state);
