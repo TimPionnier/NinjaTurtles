@@ -1,11 +1,5 @@
 package com.company;
 
-import com.company.Tours.ExecProgram;
-import com.company.Tours.Tour;
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-
 public class Joueur {
     private Deck deck = new Deck();
 
@@ -14,34 +8,23 @@ public class Joueur {
     private char numJoueur;
 
 
-
-    private ArrayDeque<Character> instructions = new ArrayDeque<>();
-
     public Joueur(int[] position, char numJoueur) {
         this.numJoueur = numJoueur;
         this.position = position;
     }
 
-    /*public void updateJoueur(Plateau plateau) {
-        for (int i = 0; i < plateau.getCases().size(); i++) {
-            if (plateau.getCase(i).getEtat() == this.numJoueur){
-                plateau.getCase(i).setEtat(' ');
-            }
-            if ((plateau.getCase(i).getPosition(0) == this.position[0] && plateau.getCase(i).getPosition(1) == this.position[1])) {
-                plateau.getCase(i).setEtat(this.numJoueur);
-            }
-        }
-    }*/
-
-    public void updateJoueur(Plateau plateau){
-        plateau.getCase(this.position[0],this.position[1]).setEtat(this.numJoueur);
-       // Cartes.updateDirectionImage();
-        //System.out.println("update direction" + Partie.getCurrentPlayer());
+    //MAJ de l'état de la case occupée par le joueur (run à chaque itération de la méthode update de Partie)
+    public void updateJoueur() {
+        Plateau.getCase(this.position[0], this.position[1]).setEtat(this.numJoueur);
     }
 
-    public void setDirection(char nvllDirection) {this.direction = nvllDirection;}
+    public char getDirection() {
+        return this.direction;
+    }
 
-    public char getDirection() { return this.direction; }
+    public void setDirection(char nvllDirection) {
+        this.direction = nvllDirection;
+    }
 
     public int getPosition(int axis) {
         return this.position[axis];
@@ -51,37 +34,30 @@ public class Joueur {
         return this.numJoueur;
     }
 
+
     public void setPosition(int axis, int position) {
         this.position[axis] = position;
-    }
-
-    public void setNumJoueur(char numJoueur) {
-        this.numJoueur = numJoueur;
     }
 
     public Deck getDeck() {
         return deck;
     }
 
-    public Deck deleteDeck() {
-        this.deck = null;
-        return deck;
-    };
 
-    public Case getFrontCase(Plateau plateau){
+    public Case getFrontCase() {
         Case front;
-        switch (this.direction){
+        switch (this.direction) {
             case 'N':
-                front = plateau.getCase(this.position[0]-1,this.position[1]);
+                front = Plateau.getCase(this.position[0] - 1, this.position[1]);
                 break;
             case 'E':
-                front = plateau.getCase(this.position[0],this.position[1]+1);
+                front = Plateau.getCase(this.position[0], this.position[1] + 1);
                 break;
             case 'O':
-                front = plateau.getCase(this.position[0],this.position[1]-1);
+                front = Plateau.getCase(this.position[0], this.position[1] - 1);
                 break;
             case 'S':
-                front = plateau.getCase(this.position[0]+1,this.position[1]);
+                front = Plateau.getCase(this.position[0] + 1, this.position[1]);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + this.direction);
@@ -91,7 +67,7 @@ public class Joueur {
 
     public void returnStart() {
         //ajouter tous les cas en fonction du nbr de joueur
-        switch(Partie.getJoueurs().size()) {
+        switch (Partie.getJoueurs().size()) {
             case 2:
                 switch (this.numJoueur) {
                     case '1':
@@ -100,9 +76,9 @@ public class Joueur {
                     case '2':
                         this.position = new int[]{0, 5};
                         break;
-
                 }
                 break;
+
             case 3:
                 switch (this.numJoueur) {
                     case '1':
@@ -114,9 +90,9 @@ public class Joueur {
                     case '3':
                         this.position = new int[]{0, 6};
                         break;
-
                 }
                 break;
+
             case 4:
                 switch (this.numJoueur) {
                     case '1':

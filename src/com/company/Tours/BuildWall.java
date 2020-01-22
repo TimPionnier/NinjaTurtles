@@ -12,21 +12,23 @@ import java.util.HashMap;
 public class BuildWall extends Tour {
     int murX = -1;
     int murY = -1;
-    char etatMur =' ';
+    char etatMur = ' ';
     String murPos = " ";
 
     private Joueur joueur;
     private HashMap<Character, Image> list_cartes;
     private static ArrayList<Case> cases;
 
-    public BuildWall(int state) throws SlickException{
+    private static ArrayList<Case> visited = new ArrayList<>();
+
+    public BuildWall(int state) throws SlickException {
         super(state);
     }
 
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawString(mouse,150,50);
+        g.drawString(mouse, 150, 50);
         g.drawImage(dammier, 150, 200);
         g.drawString(murPos, 200, 100);
         g.drawImage(btnEnd, 250, 560);
@@ -34,7 +36,7 @@ public class BuildWall extends Tour {
         //Murs joueur
         int u = 20;
         int v = 620;
-        for (int i=0 ; i<this.joueur.getDeck().getMurs().size(); i++) {
+        for (int i = 0; i < this.joueur.getDeck().getMurs().size(); i++) {
             g.drawImage(this.list_cartes.get(this.joueur.getDeck().getMur(i)), u, v);
             u += 120;
         }
@@ -42,15 +44,15 @@ public class BuildWall extends Tour {
         //Affichage des cases en fonction de leur état
         int x = 150;
         int y = 200;
-        for (int i=0 ; i<8; i++) {
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (this.plateau.getCase(i,j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
-                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i,j).getEtat()), x, y);
+                if (this.plateau.getCase(i, j).getEtat() != ' ') { //Si la case n'est pas vide, il affiche l'image correspondant à l'état
+                    g.drawImage(this.list_cartes.get(this.plateau.getCase(i, j).getEtat()), x, y);
                 }
                 x += 40;
             }
-            x = 150 ;
-            y+=40;
+            x = 150;
+            y += 40;
         }
 
 
@@ -70,7 +72,7 @@ public class BuildWall extends Tour {
 
         mouse = "xposs: " + xpos + " ; ypos: " + ypos;
 
-        if ((xpos >250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
+        if ((xpos > 250 && xpos < 400) && (ypos < 240 && ypos > 187)) {
             btnEnd = new Image("map/btnEnd-clicked.png");
             if (input.isMouseButtonDown(0)) {
                 if (this.joueur.getDeck().getMain().size() < 5) {
@@ -79,7 +81,7 @@ public class BuildWall extends Tour {
                 sbg.enterState(2);
                 Partie.waitForClick();
             }
-        }else if ((xpos <250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
+        } else if ((xpos < 250 || xpos > 400) || (ypos > 240 || ypos < 187)) {
             btnEnd = new Image("map/btnEnd1.png");
         }
 
@@ -118,35 +120,35 @@ public class BuildWall extends Tour {
         }
 
         //get MurX
-        if (xpos > 150 && xpos < 190 && ypos < 560 && ypos > 240) {
+        if (xpos > 150 && xpos < 190 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 0;
             }
-        } else  if (xpos > 190 && xpos < 230 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 190 && xpos < 230 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 1;
             }
-        } else  if (xpos > 230 && xpos < 270 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 230 && xpos < 270 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 2;
             }
-        } else  if (xpos > 270 && xpos < 310 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 270 && xpos < 310 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 3;
             }
-        } else  if (xpos > 310 && xpos < 350 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 310 && xpos < 350 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 4;
             }
-        } else  if (xpos > 350 && xpos < 390 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 350 && xpos < 390 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 5;
             }
-        } else  if (xpos > 390 && xpos < 430 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 390 && xpos < 430 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 6;
             }
-        } else  if (xpos > 430 && xpos < 470 && ypos < 560 && ypos > 240) {
+        } else if (xpos > 430 && xpos < 470 && ypos < 600 && ypos > 240) {
             if (input.isMouseButtonDown(0)) {
                 murX = 7;
             }
@@ -158,31 +160,31 @@ public class BuildWall extends Tour {
             if (input.isMouseButtonDown(0)) {
                 murY = 0;
             }
-        } else  if (ypos > 520 && ypos < 560 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 520 && ypos < 560 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 1;
             }
-        } else  if (ypos > 480 && ypos < 520 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 480 && ypos < 520 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 2;
             }
-        } else  if (ypos > 440 && ypos < 480 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 440 && ypos < 480 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 3;
             }
-        } else  if (ypos > 400 && ypos < 440 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 400 && ypos < 440 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 4;
             }
-        } else  if (ypos > 360 && ypos < 400 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 360 && ypos < 400 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 5;
             }
-        } else  if (ypos > 320 && ypos < 360 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 320 && ypos < 360 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 6;
             }
-        } else  if (ypos > 280 && ypos < 320 && xpos < 470 && xpos > 150) {
+        } else if (ypos > 280 && ypos < 320 && xpos < 470 && xpos > 150) {
             if (input.isMouseButtonDown(0)) {
                 murY = 7;
             }
@@ -192,7 +194,9 @@ public class BuildWall extends Tour {
 
         if ((murX != -1) && (murY != -1) && (etatMur != ' ')) {
             addMur(murY, murX, etatMur);
-            murX = -1; murY = -1; etatMur = ' ';
+            murX = -1;
+            murY = -1;
+            etatMur = ' ';
         }
     }
 
@@ -202,17 +206,22 @@ public class BuildWall extends Tour {
     }
 
     public void addMur(int murX, int murY, char etatMur) {
-        for (int i = 0; i < this.cases.size(); i++) {
-            if (this.cases.get(i).getPosition(0) == murX && this.cases.get(i).getPosition(1) == murY) {
-                //if(this.cases.get(i).getEtat() == ' ' && autoriseMur(nbrJoueur, this.plateau.getCase(murX, murY))) {
-                    this.cases.get(i).setEtat(etatMur);
-                    System.out.println(murPos);
-                    stateBasedGame.enterState(2);
-                    Partie.waitForClick();
-               // }
-            }
-        }
 
+        if (Partie.getPlateau().getCase(murX,murY).getEtat() == ' ') {
+            Partie.getPlateau().getCase(murX,murY).setEtat(etatMur);
+        }
+        if (autoriseMur(Partie.nbrJoueur)) {
+            //visited.clear();
+            stateBasedGame.enterState(2);
+            Partie.waitForClick();
+        } else {
+            //visited.clear();
+            System.out.println("impossible de placer un mur ici");
+            this.joueur.getDeck().getMurs().add(etatMur);
+            Partie.getPlateau().getCase(murX,murY).setEtat(' ');
+            stateBasedGame.enterState(5);
+            Partie.waitForClick();
+        }
         System.out.println(murPos);
     }
 
@@ -222,58 +231,86 @@ public class BuildWall extends Tour {
         this.list_cartes = list_cartes;
     }
 
-   /* public boolean autoriseMur(int nbrJoueur, Case cibleMur) {
+    public boolean autoriseMur(int nbrJoueur) {
         switch (nbrJoueur) {
             case 2:
-                if (checkPath(this.plateau.getCase(7, 3), cibleMur)){
+                if (checkPath(this.plateau.getCase(7, 3))){
                     return true;
-                }else {
-                    return false;
                 }
-                break;
             case 3:
-                if( checkPath(this.plateau.getCase(7, 0), cibleMur) && checkPath(this.plateau.getCase(7, 3), cibleMur)
-                        && checkPath(this.plateau.getCase(7, 6), cibleMur)) {
+                if(checkPath(this.plateau.getCase(7, 0)) && checkPath(this.plateau.getCase(7, 3))
+                        && checkPath(this.plateau.getCase(7, 6))) {
                     return true;
-                }else {
-                    return false;
                 }
-                break;
             case 4:
-                if( checkPath(this.plateau.getCase(7, 1), cibleMur) && checkPath(this.plateau.getCase(7, 6), cibleMur)) {
+                if( checkPath(this.plateau.getCase(7, 1)) && checkPath(this.plateau.getCase(7, 6))) {
                     return true;
-                }else {
-                    return false;
                 }
-                break;
         }
-
+        return false;
     }
 
-    public static boolean checkPath(Case joyau, Case cibleMur){
-        cibleMur.setEtat('P');
-        int x = joyau.getPosition(0);
-        int y = joyau.getPosition(1);
+    public static boolean checkPath(Case current){
+        visited.add(current);
+        int x = current.getPosition(0);
+        int y = current.getPosition(1);
 
-        if ((x+1)<8 && Plateau.getCase(x+1,y).getEtat() == ' '){
-            checkPath(Plateau.getCase(x+1,y), cibleMur);
-        } else { return false; }
 
-        if ((x-1)>-1 && Plateau.getCase(x-1,y).getEtat() == ' '){
-            checkPath(Plateau.getCase(x-1,y), cibleMur);
-        } else { return false; }
+        if (x>7 || y>7 || x<-1 || y<-1){
+            return false;
+        }
 
-        if ((y+1)<8 && Plateau.getCase(x,y+1).getEtat() == ' '){
-            checkPath(Plateau.getCase(x,y+1), cibleMur);
-        } else { return false; }
+        if (current.getEtat() == 'P' || current.getEtat() == 'G' || current.getEtat() == 'C'){
+            return false;
+        }
 
-        if ((y-1)>-1 && Plateau.getCase(x,y-1).getEtat() == ' '){
-            checkPath(Plateau.getCase(x,y-1), cibleMur);
-        }else { return false; }
 
-        cibleMur.setEtat(' ');
-        return true;
-    } */
+        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '1') ||
+                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '1') ||
+                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '1') ||
+                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '1')){
+            return true;
+        }
+
+        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '2') ||
+                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '2') ||
+                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '2') ||
+                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '2')){
+            return true;
+        }
+
+        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '3') ||
+                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '3') ||
+                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '3') ||
+                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '3')){
+            return true;
+        }
+
+        if ((x+1 < 8) && (Plateau.getCase(x+1,y).getEtat() == '4') ||
+                (x-1 > -1) && (Plateau.getCase(x-1,y).getEtat() == '4') ||
+                (y+1 < 8) && (Plateau.getCase(x,y+1).getEtat() == '4') ||
+                (y-1 > -1) && (Plateau.getCase(x,y-1).getEtat() == '4')){
+            return true;
+        }
+
+        if ((x+1 < 8) && !visited.contains(Plateau.getCase(x+1,y)) && checkPath(Plateau.getCase(x+1,y))){
+            return true;
+        }
+
+        if ((x-1 > -1) && !visited.contains(Plateau.getCase(x-1,y)) && checkPath(Plateau.getCase(x-1,y))){
+            return true;
+        }
+
+        if ((y+1 < 8) && !visited.contains(Plateau.getCase(x,y+1)) && checkPath(Plateau.getCase(x,y+1))){
+            return true;
+        }
+
+        if ((y-1 > -1)  && !visited.contains(Plateau.getCase(x,y-1)) && checkPath(Plateau.getCase(x,y-1))){
+            return true;
+        }
+
+        return false;
+    }
 
 
 }
