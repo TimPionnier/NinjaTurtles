@@ -66,4 +66,8 @@ public abstract class Tour extends BasicGameState {
             }
         }*/
     }
+
+    public HashMap<Character, Image> getList_cartes() {
+        return list_cartes;
+    }
 }

@@ -90,7 +90,7 @@ public class Partie extends BasicGameState {
             case 2:
                 Plateau.setPlateau(nbrJoueur);
                 joueur1 = new Joueur(new int[]{0, 1}, '1');
-                joueur2 = new Joueur(new int[]{7, 5}, '2');
+                joueur2 = new Joueur(new int[]{0, 5}, '2');
                 joueurs.add(joueur1);
                 joueurs.add(joueur2);
                 break;

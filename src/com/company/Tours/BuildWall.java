@@ -1,11 +1,9 @@
 package com.company.Tours;
 
-import com.company.Case;
-import com.company.Joueur;
-import com.company.Partie;
-import com.company.Plateau;
+import com.company.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
@@ -211,10 +209,11 @@ public class BuildWall extends Tour {
         } else {
             this.visited.clear();
             System.out.println("impossible de placer un mur ici");
-            Plateau.getCase(murX, murY).setEtat(' ');
+            this.joueur.getDeck().getMurs().add(etatMur);
+            Partie.getPlateau().getCase(murX,murY).setEtat(' ');
+            stateBasedGame.enterState(5);
+            Partie.waitForClick();
         }
-        stateBasedGame.enterState(2);
-        Partie.waitForClick();
         System.out.println(murPos);
     }
 
@@ -300,5 +299,6 @@ public class BuildWall extends Tour {
 
         return (y - 1 > -1) && !this.visited.contains(Plateau.getCase(x, y - 1)) && checkPath(Plateau.getCase(x, y - 1));
     }
+
 
 }
