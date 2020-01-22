@@ -127,35 +127,35 @@ public class BuildWall extends Tour {
             //get MurX
             if (xpos > 150 && xpos < 190 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 0;
+                    murY = 0;
                 }
             } else if (xpos > 190 && xpos < 230 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 1;
+                    murY = 1;
                 }
             } else if (xpos > 230 && xpos < 270 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 2;
+                    murY = 2;
                 }
             } else if (xpos > 270 && xpos < 310 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 3;
+                    murY = 3;
                 }
             } else if (xpos > 310 && xpos < 350 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 4;
+                    murY = 4;
                 }
             } else if (xpos > 350 && xpos < 390 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 5;
+                    murY = 5;
                 }
             } else if (xpos > 390 && xpos < 430 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 6;
+                    murY = 6;
                 }
             } else if (xpos > 430 && xpos < 470 && ypos < 600 && ypos > 240) {
                 if (input.isMouseButtonDown(0)) {
-                    murX = 7;
+                    murY = 7;
                 }
             }
 
@@ -163,48 +163,49 @@ public class BuildWall extends Tour {
 
             if (ypos > 560 && ypos < 600 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 0;
+                    murX = 0;
                 }
             } else if (ypos > 520 && ypos < 560 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 1;
+                    murX = 1;
                 }
             } else if (ypos > 480 && ypos < 520 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 2;
+                    murX = 2;
                 }
             } else if (ypos > 440 && ypos < 480 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 3;
+                    murX = 3;
                 }
             } else if (ypos > 400 && ypos < 440 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 4;
+                    murX = 4;
                 }
             } else if (ypos > 360 && ypos < 400 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 5;
+                    murX = 5;
                 }
             } else if (ypos > 320 && ypos < 360 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 6;
+                    murX = 6;
                 }
             } else if (ypos > 280 && ypos < 320 && xpos < 470 && xpos > 150) {
                 if (input.isMouseButtonDown(0)) {
-                    murY = 7;
+                    murX = 7;
                 }
             }
 
             murPos = "mur : " + murX + " " + murY + " etat " + etatMur;
 
             if ((murX != -1) && (murY != -1) && (etatMur != ' ') && Plateau.getCase(murX, murY).getEtat() == ' ') {
-                addMur(murY, murX, etatMur);
+                addMur(murX, murY, etatMur);
                 murX = -1;
                 murY = -1;
                 etatMur = ' ';
                 buildOK = false;
             } else if ((murX != -1) && (murY != -1) && Plateau.getCase(murX, murY).getEtat() != ' '){
                 System.out.println("impossible de placer un mur ici");
+                System.out.println(Plateau.getCase(murX, murY).getEtat());
             }
         }
 
@@ -219,10 +220,10 @@ public class BuildWall extends Tour {
         Plateau.getCase(murX, murY).setEtat(etatMur);
 
         if (autoriseMur(Partie.nbrJoueur)) {
-            //this.visited.clear();
+            this.visited.clear();
         } else {
             this.visited.clear();
-            System.out.println("impossible de placer un mur ici");
+            System.out.println("block");
             this.joueur.getDeck().getMurs().add(etatMur);
             Plateau.getCase(murX, murY).setEtat(' ');
             buildOK = true;
@@ -259,6 +260,7 @@ public class BuildWall extends Tour {
 
     public boolean checkPath(Case current) {
         this.visited.add(current);
+        System.out.println(this.visited.get(visited.size()-1).getEtat());
         int x = current.getPosition(0);
         int y = current.getPosition(1);
 
