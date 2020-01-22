@@ -37,7 +37,6 @@ public class Partie extends BasicGameState {
     private Image btnWalls;
     private Image btnExe;
     private Image btnAdd;
-    private String mouse = "No input yet!";
     private String txt = "";
 
 
@@ -147,7 +146,6 @@ public class Partie extends BasicGameState {
         g.drawImage(btnWalls, 90, 560);
         g.drawImage(btnExe, 250, 560);
         g.drawImage(btnAdd, 410, 560);
-        g.drawString(mouse, 150, 50);
         g.drawString(demande, 200, 700);
         g.drawString(txt, 130, 600);
         g.drawString("Tour du Joueur " + this.currentPlayer, 225, 10);
@@ -200,7 +198,6 @@ public class Partie extends BasicGameState {
         Input input = gc.getInput();
         int xpos = Mouse.getX();
         int ypos = Mouse.getY();
-        mouse = "xpos: " + xpos + " ; ypos: " + ypos;
 
         //reset partie
         if (partieSet) {
