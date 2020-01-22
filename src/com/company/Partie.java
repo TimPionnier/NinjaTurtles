@@ -323,8 +323,6 @@ public class Partie extends BasicGameState {
 
     public void setWinner(Winner winner) {
         this.winner = winner;
-        ExecProgram.setWinner(winner);
     }
-
 
 }

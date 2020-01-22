@@ -5,7 +5,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class WindowGame extends BasicGameState {
+public class Menu extends BasicGameState {
     private static int ID;
 
     String mouse = "No input yet!";
@@ -15,7 +15,7 @@ public class WindowGame extends BasicGameState {
     private Image three;
     private Image four;
 
-    public WindowGame(int i) {
+    public Menu(int i) {
         ID = i;
     }
 

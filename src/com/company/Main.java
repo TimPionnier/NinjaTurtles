@@ -37,7 +37,7 @@ public class Main extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        WindowGame menu = new WindowGame(menuState);
+        Menu select = new Menu(menuState);
         Partie partie = new Partie(playState);
         AddToProgram addToProgram = new AddToProgram(addToProgramState);
         ExecProgram execProgram = new ExecProgram(execProgramState);
@@ -49,7 +49,7 @@ public class Main extends StateBasedGame {
         partie.setExecProgram(execProgram);
         partie.setWinner(winner);
 
-        this.addState(menu);
+        this.addState(select);
         this.addState(partie);
         this.addState(addToProgram);
         this.addState(execProgram);
