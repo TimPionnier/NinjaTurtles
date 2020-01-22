@@ -278,31 +278,10 @@ public class BuildWall extends Tour {
         }
 
 
-        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '1') ||
-                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '1') ||
-                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '1') ||
-                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '1')) {
-            return true;
-        }
-
-        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '2') ||
-                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '2') ||
-                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '2') ||
-                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '2')) {
-            return true;
-        }
-
-        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '3') ||
-                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '3') ||
-                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '3') ||
-                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '3')) {
-            return true;
-        }
-
-        if ((x + 1 < 8) && (Plateau.getCase(x + 1, y).getEtat() == '4') ||
-                (x - 1 > -1) && (Plateau.getCase(x - 1, y).getEtat() == '4') ||
-                (y + 1 < 8) && (Plateau.getCase(x, y + 1).getEtat() == '4') ||
-                (y - 1 > -1) && (Plateau.getCase(x, y - 1).getEtat() == '4')) {
+        if (Plateau.getCase(x, y).getEtat() == '1' ||
+                Plateau.getCase(x, y).getEtat() == '2' ||
+                Plateau.getCase(x, y).getEtat() == '3' ||
+                Plateau.getCase(x, y).getEtat() == '4') {
             return true;
         }
 
